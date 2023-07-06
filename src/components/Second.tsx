@@ -20,21 +20,18 @@ const Second = () => {
             <div className="flex flex-col gap-y-10 md:w-[45%] px-6 box-border">
               <div className="flex flex-col gap-y-6">
                 <h2 className="text-3xl font-bold text-gray-700 md:text-4xl lg:text-5xl max-w-lg">
-                  The most populer travel agency in the world
+                  Awesome travel destinations in the world
                 </h2>
                 <p className="lg:text-lg">
-                  Welcome to the Official Travel website. Build with the finest
-                  services for our customers and become the biggest travel agency
-                  in 2023. Find and discover the beauty of the world with us by
-                  your side
+                Kenya is a world-class wildlife destination, recommended both for experienced safari-goers and for those booking a first-time safari. The peerless Masai Mara National Reserve offers excellent big cat encounters and is the setting for the yearly wildebeest migration. Palm-lined beaches offer a perfect place to relax after an action-packed safari. About Kenya
                 </p>
               </div>
               <div className="flex gap-x-4">
                 <Link
-                  href="/gallery/WorldGallery"
+                  href="#"
                   className="px-4 py-[0.6rem] py-3 px-6 bg-gray-700 text-gray-100 hover:bg-gray-800 transition-all duration-300"
                 >
-                  Discover more places
+                  Discover awesome places
                 </Link>
                 <Link
                   href=""

@@ -112,8 +112,8 @@ const Desc = ({
                 <div className="flex items-center justify-center text-sm px-2 sm:hidden ">
                    
                   <h3>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum,
-                    commodi!
+                  In each and every destination, you will find information, advice, and experiences from locals. 
+                  Learn about the latest recommendations on attractions, places to eat, shop and much more.
                   </h3>
                 </div> 
                 <div className="hidden sm:flex sm:w-full sm:items-center">
@@ -121,11 +121,11 @@ const Desc = ({
                     <h2 className="text-xl lg:text-[1.375rem] font-bold">01</h2>
                     <p className="hidden sm:block xs:block text-xs lg:text-[0.8125rem] lg:leading-[1.15rem]">
                     {/* hidden */}
-                      Lorem ipsum dolor sit{" "}
+                      In each and every destination{" "}
                       <span className="hidden lg:inline">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
+                      you will find information, advice, and experiences from locals.{" "}
                         <span className="hidden 2xl:inline">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Learn about the latest recommendations on attractions, places to eat, shop and much more.
                         </span>
                       </span>
                     </p>
@@ -134,11 +134,12 @@ const Desc = ({
                     <h2 className="text-xl lg:text-[1.375rem] font-bold">02</h2>
                     <p className="hidden sm:block xs:block text-xs lg:text-[0.8125rem] lg:leading-[1.15rem]">
                     {/* hidden */}
-                      Lorem ipsum dolor sit{" "}
+                      
+                    Through effective management, infrastructure, engagement with local communities, rigorous protection,
+                    several species reintroductions, and well-managed and developed tourism{" "}
                       <span className="hidden lg:inline">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
                         <span className="hidden 2xl:inline">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
+                        , unique park to support both people and wildlife.{" "}
                         </span>
                       </span>
                     </p>
@@ -147,11 +148,11 @@ const Desc = ({
                     <h2 className="text-xl lg:text-[1.375rem] font-bold">03</h2>
                     <p className="hidden sm:block xs:block text-xs lg:text-[0.8125rem] lg:leading-[1.15rem]">
                     {/* hidden */}
-                      Lorem ipsum dolor sit{" "}
+                    Kenya is a world-class wildlife destination, recommended both for experienced safari-goers and for those booking a first-time safari.
                       <span className="hidden lg:inline">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.{" "}
+                      The peerless Masai Mara National Reserve offers excellent big cat encounters{" "}
                         <span className="hidden 2xl:inline">
-                          Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Palm-lined beaches offer a perfect place to relax after an action-packed safari.{" "}
                         </span>
                       </span>
                     </p>

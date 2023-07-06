@@ -1,10 +1,10 @@
 import { title } from "process";
 
 export const Navdata = [
-  {
-    title: "Home",
-    reference: "home",
-  },
+  // {
+  //   title: "Home",
+  //   reference: "home",
+  // },
   {
     title: "About",
     reference: "about",
