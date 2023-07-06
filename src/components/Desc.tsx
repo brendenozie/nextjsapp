@@ -48,14 +48,14 @@ const Desc = ({
               <div className="justify-center items-center">
                 <form action="" className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
                   
-                <div className="sm:w-full p-2 border-[1px] justify-center flex items-center rounded-md shadow-md">
+                <div className="sm:w-full p-2 border-[1px] justify-center flex items-center rounded-md shadow-md ">
                     <div >
                           <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
                     </div>
 
                     <div className="w-full">
                             <select id="country"  name="country" 
-                            className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm  focus:outline-none">
+                            className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none">
                               {getInspiredCities.map((city) => (
                                 <option>{city.shortName}</option>
                               ))}
@@ -76,7 +76,7 @@ const Desc = ({
 
                     <div className="w-full">
                         <input type="search" x-model="input1"
-                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none"
+                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
                             placeholder="Pick A Date" />
                     </div>
                 </div> 
@@ -88,7 +88,7 @@ const Desc = ({
 
                     <div className="w-full">
                         <input type="search" x-model="input1"
-                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none"
+                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
                             placeholder="Guests" />
                     </div>
                 </div>     
