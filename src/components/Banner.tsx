@@ -67,7 +67,7 @@ const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) =
               tenetur fuga ducimus numquam ea! */}
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10">
+            <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10 ">
               <a className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
                 href="/get-started" >
                 Make An Enquiry

@@ -32,7 +32,7 @@ const Nav = () => {
   return (
     <div className="order-3 lg:px-0 lg:order-2 w-1/4 lg:w-fit">
       <div className=" flex justify-end pr-6 lmd:pr-14 w-full">
-        <button className={`lg:hidden rounded-full ${ dark ? "text-white" : "text-white" }`} onClick={handleClick}>
+        <button className={`lg:hidden rounded-full ${ dark ? "text-black" : "text-white" }`} onClick={handleClick}>
           <Bars4Icon color={`${
                 dark ? "text-white" : "text-white "
               }`}   className="h-6"/>
