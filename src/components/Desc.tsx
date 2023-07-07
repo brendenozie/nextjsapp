@@ -41,6 +41,66 @@ const Desc = ({
   isOpen,
   setIsOpen,
 }: Props) => {
+
+    const { data: session, status } = useSession();
+  // const [searchInput, setSearchInput] = useState("");
+  const debouncedSearchInput = useDebounce(searchInput, 300);
+  const [citySuggestions, setCitySuggestions] = useState<
+    ISuggestionFormatted[] | null
+  >(null);
+  // const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
+  //   null
+  // );
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [numOfGuests, setNumOfGuests] = useState("1");
+  const router = useRouter();
+
+  useEffect(() => {
+    setCitySuggestions(null);
+    searchInput?.length > 3 &&
+      getCitySuggestions(debouncedSearchInput, setCitySuggestions).then((value)=> console.log(value)).catch(
+        console.error
+      );
+  }, [debouncedSearchInput]);
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+
+  const handleSelect = (ranges: any) => {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+  };
+
+  const resetInput = () => {
+    setCitySuggestions(null);
+    setSelectedCity(null);
+    setSearchInput("");
+  };
+
+  const setSearchInputAndSelectedCity = (cityData : ISuggestionFormatted) => {
+    setSearchInput(cityData.displayName);
+    setSelectedCity(cityData);
+  }
+
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: selectedCity?.shortName,
+        id: selectedCity?.id,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numOfGuests,
+      },
+    });
+
+    resetInput();
+  };
+
   return (
     <>
           <div className="min-h-[6rem] w-full justify-center items-center  box-border text-slate-100 backdrop-blur bg-[#65324b] ">
@@ -55,9 +115,9 @@ const Desc = ({
 
                       <div className="w-full">
                               <select id="country"  name="country" 
-                              className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none">
+                              className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" >
                                 {getInspiredCities.map((city) => (
-                                  <option>{city.shortName}</option>
+                                  <option onSelect={() => setSearchInputAndSelectedCity(city)}>{city.shortName}</option>
                                 ))}
                                 {/* <option>Nairobi</option>
                                 <option>Mombasa</option>
@@ -162,6 +222,61 @@ const Desc = ({
             </div>
           
           </div>     
+
+          {/* Date Range Picker, Bottom */}
+          {selectedCity && (
+            <motion.div
+              initial={{
+                y: -25,
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3 mt-[68px] bg-transparent"
+            >
+              <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-white pb-5 rounded-b-lg shadow-md">
+                <DateRangePicker
+                  ranges={[selectionRange]}
+                  minDate={new Date()}
+                  rangeColors={["#EA640E"]}
+                  onChange={handleSelect}
+                />
+                <div />
+                <div className="self-end flex w-fit gap-4 items-center mb-4 pl-5">
+                  <h2 className="text-l flex-grow font-semibold">
+                    Number of Guests
+                  </h2>
+                  <div className="flex">
+                    <UsersIcon className="h-5" />
+                    <input
+                      value={numOfGuests}
+                      onChange={(e) => setNumOfGuests(e.target.value)}
+                      className="w-12 pl-2 text-l outline-none text-orange-500"
+                      type="number"
+                      min={1}
+                    />
+                  </div>
+                </div>
+                <div className="flex w-full justify-between px-6 pt-2">
+                  <button
+                    onClick={resetInput}
+                    className="bg-white self-start px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150"
+                  >
+                    Close
+                  </button>
+                  <button
+                    onClick={search}
+                    className="bg-white px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
     </>
   );
 };
