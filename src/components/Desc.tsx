@@ -44,54 +44,54 @@ const Desc = ({
   return (
     <>
           <div className="min-h-[6rem] w-full justify-center items-center  box-border text-slate-100 backdrop-blur bg-[#65324b] ">
-            <div className="bg-white  text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-10 sm:max-w-[64%] mx-auto">
-              <div className="justify-center items-center">
-                <form action="" className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
+            <div className=" text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-10 sm:max-w-[64%] mx-auto">
+              <div className="justify-center items-center mx-8 bg-white rounded-md ">
+                <form action=""  className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
                   
-                <div className="sm:w-full p-2 border-[1px] justify-center flex items-center rounded-md shadow-md ">
-                    <div >
-                          <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
-                    </div>
+                  <div className="sm:w-full p-2 border-[1px] justify-center flex items-center rounded-md shadow-md ">
+                      <div >
+                            <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
+                      </div>
 
-                    <div className="w-full">
-                            <select id="country"  name="country" 
-                            className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none">
-                              {getInspiredCities.map((city) => (
-                                <option>{city.shortName}</option>
-                              ))}
-                              {/* <option>Nairobi</option>
-                              <option>Mombasa</option>
-                              <option>Kisumu</option>
-                              <option>Eldoret</option>
-                              <option>Kajiado</option> */}
-                    
-                            </select>
-                    </div>
-                </div>
+                      <div className="w-full">
+                              <select id="country"  name="country" 
+                              className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none">
+                                {getInspiredCities.map((city) => (
+                                  <option>{city.shortName}</option>
+                                ))}
+                                {/* <option>Nairobi</option>
+                                <option>Mombasa</option>
+                                <option>Kisumu</option>
+                                <option>Eldoret</option>
+                                <option>Kajiado</option> */}
+                      
+                              </select>
+                      </div>
+                  </div>
 
-                <div className="p-2 w-full border-[1px]  justify-center flex items-center rounded-md shadow-md">
-                    <div>
-                          <CalendarIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
-                    </div>
+                  <div className="p-2 w-full border-[1px]  justify-center flex items-center rounded-md shadow-md">
+                      <div>
+                            <CalendarIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
+                      </div>
 
-                    <div className="w-full">
-                        <input type="search" x-model="input1"
-                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
-                            placeholder="Pick A Date" />
-                    </div>
-                </div> 
-          
-                <div className="p-2 w-full border-[1px] justify-center flex items-center rounded-md shadow-md">
-                    <div>
-                          <UsersIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
-                    </div>
+                      <div className="w-full">
+                          <input type="search" x-model="input1"
+                              className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
+                              placeholder="Pick A Date" />
+                      </div>
+                  </div> 
+            
+                  <div className="p-2 w-full border-[1px] justify-center flex items-center rounded-md shadow-md">
+                      <div>
+                            <UsersIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900"/>
+                      </div>
 
-                    <div className="w-full">
-                        <input type="search" x-model="input1"
-                            className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
-                            placeholder="Guests" />
-                    </div>
-                </div>     
+                      <div className="w-full">
+                          <input type="search" x-model="input1"
+                              className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none  h-12"
+                              placeholder="Guests" />
+                      </div>
+                  </div>     
 
                   <button className="px-5 rounded-r-md bg-gray-800 text-white py-8 px-10 font-bold p-4 uppercase border-gray-500 border-t border-b border-r">Enquire</button>
                 
