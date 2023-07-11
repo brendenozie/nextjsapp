@@ -29,9 +29,9 @@ const Pic = () => {
     <section
       id="destinations"
       data-testid="destinations"
-      className="flex flex-col py-8"
+      className="flex flex-col"
     >
-      <div className="min-h-[7.5rem]"></div>
+      <div className="min-h-[4.5rem]"></div>
       <div className="relative">
         <div
           className="px-8 grid grid-flow-col auto-cols-[100%] md:auto-cols-[50%] lg:auto-cols-[30%] overflow-hidden overscroll-y-contain snap-x snap-mandatory scroll-pl-2 scrollbar-hide"

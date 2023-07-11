@@ -33,9 +33,9 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
   }
 
   return (
-    <div onClick={setSearchInputAndSelectedCity} className="flex items-center m-2 space-x-4 rounded-xl cursor-pointer hover:bg-gray-100 hover:scale-105 transition transform duration-200 ease-out">
+    <div onClick={setSearchInputAndSelectedCity} className="justify-items-center items-center m-2 space-x-4 rounded-xl cursor-pointer hover:bg-gray-100 hover:scale-105 transition transform duration-200 ease-out ">
       {/* Left side */}
-      <div className="relative h-16 w-16">
+      <div className="relative min-h-[5rem] min-w-[5rem]">
         <Image
           className="rounded-lg"
           src={cityData.img!}
@@ -45,7 +45,7 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
       </div>
       {/* Right side */}
       <div>
-        <h2 className="min-w-[5rem] ">{cityData.shortName}</h2>
+        <h2 className="min-w-[5rem]">{cityData.shortName}</h2>
         {/* <h3 className="text-gray-500">{cityData.province!}</h3> */}
       </div>
     </div>

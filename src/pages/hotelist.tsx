@@ -45,8 +45,11 @@ const Hotels = ({ searchResults, session }: Props) => {
         // setIsOpen={setIsOpen}
         // placeholder={`${location} - ${range} - ${numOfGuests}`}
       />
+      <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black">
+
+      </div>
       <main
-        className={`flex ${!searchResults && "flex-col max-w-4xl mx-auto"}`}
+        className={`flex ${!searchResults && "flex-col max-w-4xl mx-auto"} `}
       >
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">
