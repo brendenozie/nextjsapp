@@ -70,6 +70,11 @@ const Desc = ({
     key: "selection",
   };
 
+  const handleSelectedCity = () => {
+    console.log("Fruit Selected!!");
+    // this.setState({ fruit: e.target.value });
+  }
+
   const handleSelect = (ranges: any) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
@@ -121,9 +126,9 @@ const Desc = ({
                 </div>
 
                 <div className="w-full">
-                  <select id="country" name="country" className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" >
+                  <select id="country" name="country" className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" onChange={handleSelectedCity}>
                     {getInspiredCities.map((city) => (
-                      <option onSelect={() => setSearchInputAndSelectedCity(city)}>{city.shortName}</option>
+                      <option value={city.shortName} >{city.shortName}</option>
                     ))}
                   </select>
                 </div>
@@ -188,7 +193,7 @@ const Desc = ({
                       transition={{  duration: 0.3, }}
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: true }}
-                      className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3 mt-[24px] text-black bg-white rounded-md">
+                      className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3 mt-[24px] text-black bg-white rounded-md ">
                       <div className=" gap-4 items-center m-4 pl-5">
                         <h2 className="text-l flex-grow font-semibold">
                           Number of Guests

@@ -76,7 +76,7 @@ const Hotels = ({ searchResults, session }: Props) => {
               searchResults?.map((item) => (
                 <InfoCard
                   key={item.img}
-                  cityId={id as string}
+                  cityId={item.hotelId as string}
                   item={item}
                   startDate={startDate as string}
                   endDate={endDate as string}

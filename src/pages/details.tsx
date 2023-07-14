@@ -153,6 +153,7 @@ const Details = ({ detailsResult, session }: Props) => {
         //     : ``
         // }
       />
+      <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black"></div>
       <main className="flex flex-col max-w-4xl mx-auto">
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">
@@ -193,8 +194,8 @@ const Details = ({ detailsResult, session }: Props) => {
             </p>
           </div>
           {/* Photo Gallery */}
-          <CarouselCard images={detailsResult.images.slice(0, 25)} />
-          {/* Accommodation Price Details */}
+          {/* <CarouselCard images={detailsResult.img} /> */}
+          {/* Accommodation Price Details detailsResult.images.slice(0, 25*/}
           {fromFavPage === "false" && (
             <>
               <p className="text-right pb-1 text-sm md:text-base">{range}</p>
@@ -214,7 +215,7 @@ const Details = ({ detailsResult, session }: Props) => {
             <div className="w-full flex justify-end">
               <button
                 role="link"
-                onClick={createCheckoutSession}
+                // onClick={createCheckoutSession}
                 disabled={!session}
                 className="text-md px-3 py-1 italic text-white cursor-pointer bg-orange-500  rounded-xl mt-3 hover:bg-orange-600 active:scale-95 transition duration-250"
               >
@@ -266,9 +267,10 @@ const Details = ({ detailsResult, session }: Props) => {
           )}
           <h3 className="text-2xl font-semibold pb-7">Amenities</h3>
           <ul className="list-disc pl-5">
-            {detailsResult.amenities.map((item) => (
+            {/* {detailsResult.amenities.map((item) => (
               <li key={item}>{item}</li>
-            ))}
+            ))} */}
+            <li>No Amenities</li>
           </ul>
           {/* MapBox, Bottom Section */}
           <h3 className="text-2xl font-semibold py-7">Location</h3>
@@ -312,7 +314,7 @@ export const getServerSideProps = async (
   //   };
   // }
 
-  const detailsResult = await getHotelDetails(hotelId).catch(console.error);
+  const detailsResult = hotelId;//await getHotelDetails(hotelId).catch(console.error);
 
   return {
     props: {
