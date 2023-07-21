@@ -121,3 +121,27 @@ export interface IReservation {
   };
   quantity: number;
 }
+
+export interface ILocation{
+  lat:any;
+  lng:any;
+}
+export interface uploadImage {
+  publicId: string;
+  url: string;
+  status: string;
+}
+
+export interface ICity {
+  cityName : string;
+  publicId : string;
+  url      : string;
+  status   : string;
+}
+
+export interface ITravelStyle {
+  styleName : string;
+  publicId : string;
+  url      : string;
+  status   : string;
+}

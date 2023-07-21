@@ -103,7 +103,7 @@ const Desc = ({
     router.push({
       pathname: "/hotelist",
       query: {
-        location: selectedCity?.shortName,
+        location: "Mombasa",//selectedCity?.shortName,
         id: selectedCity?.id,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),

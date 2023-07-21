@@ -26,14 +26,15 @@ const SignIn = ({ providers }: Props) => {
       </Head>
       {/* Header */}
       <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
+      // searchInput={searchInput}
+      // setSearchInput={setSearchInput}
+      // selectedCity={selectedCity}
+      // setSelectedCity={setSelectedCity}
+      // isOpen={isOpen}
+      // setIsOpen={setIsOpen}
       />
       {/* Main */}
+      <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black"></div>
       <main className="h-[80%]">
         <div className="relative h-[80%]">
           <Image
@@ -42,6 +43,7 @@ const SignIn = ({ providers }: Props) => {
             fill
             alt="Travel"
           />
+
           {Object.values(providers).map((provider) => (
             <div
               className="absolute top-[78%] w-full text-center"

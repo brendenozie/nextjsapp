@@ -14,6 +14,12 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/signin",
   },
+  callbacks: {
+    async jwt({ token }) {
+      token.userRole = "admin"
+      return token
+    },
+  },
 };
 
 export default NextAuth(authOptions);
