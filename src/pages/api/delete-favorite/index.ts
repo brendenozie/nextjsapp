@@ -7,10 +7,10 @@ export default async function handle(
 ) {
   const {hotelId, userEmail} = req.body;
   if (req.method === "DELETE") {
-    const hotel = await prisma.hotel.delete({
-      where: { hotelId_userEmail: { hotelId: hotelId as string, userEmail: userEmail as string } },
-    });
-    res.json(hotel);
+    // const hotel = await prisma.hotel.delete({
+    //   where: { hotelId_userEmail: { hotelId: hotelId as string, userEmail: userEmail as string } },
+    // });
+    res.json(`The HTTP ${req.method} method is not supported at this route.`);
   } else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`

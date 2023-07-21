@@ -21,21 +21,19 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   } = req.body;
 
   const session = await getSession({ req });
-  const result = await prisma.hotel.create({
-    data: {
-      hotelId,
-      description,
-      img,
-      lat,
-      location,
-      long,
-      price,
-      star,
-      title,
-      total,
-      userEmail: session?.user?.email!,
-      cityId,
-    },
-  });
-  res.json(result);
+  // const result = await prisma.hotel.create({
+  //   data: {
+  //     description,
+  //     img,
+  //     lat,
+  //     location,
+  //     long,
+  //     price,
+  //     star,
+  //     title,
+  //     userEmail: session?.user?.email!,
+  //     cityId,
+  //   },
+  // });
+  res.json("result");
 }

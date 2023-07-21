@@ -13,13 +13,13 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         } = req.body;
 
   const session = await getSession({ req });
-  const result = await prisma.TravelStyle.create({
-    data: {
-          styleName,
-          publicId,
-          url,
-          status,
-    },
-  });
-  res.json(result);
+  // const result = await prisma.TravelStyle.create({
+  //   data: {
+  //         styleName,
+  //         publicId,
+  //         url,
+  //         status,
+  //   },
+  // });
+  res.json("result");
 }

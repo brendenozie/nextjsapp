@@ -15,7 +15,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         } = req.body;
 
   const session = await getSession({ req });
-  const result = await prisma.City.create({
+  const result = await prisma.city.create({
     data: {
           cityName,
           publicId,
