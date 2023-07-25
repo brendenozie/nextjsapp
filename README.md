@@ -9,7 +9,7 @@ Travel Booking is a case study of a hotel reservation platform using Next.js and
 
 ![smartmockups_lb4dtxsx](https://)
 
-🔗 [Open live Demo](https:///)
+🔗 [Open live Demo](https://hobbyhorsetours.com)
 
 ## Tech Stack
 
@@ -125,8 +125,3 @@ The current Stripe Checkout implementation simulates payments in test mode.
 
 ![Testing form with test card number 4242 4242 4242 4242](https://b.stripecdn.com/docs-statics-srv/assets/test-card.c3f9b3d1a3e8caca3c9f4c9c481fd49c.jpg)
 
-## Deployment details
-
-Travel Bookings deployed using Vercel: 
-
-[Deployment Activity Log](https://github.com/javigong/travel-nextjs-typescript-tailwind-mapbox-calendar-date-picker/deployments/activity_log?environment=Production)

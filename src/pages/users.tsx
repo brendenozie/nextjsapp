@@ -6,7 +6,7 @@ type Props = {
   usersData: IUser[];
 };
 
-const Admin = (props: Props) => {
+const Users = (props: Props) => {
 
   return (
     // <!-- ===== Page Wrapper Start ===== -->
@@ -173,7 +173,7 @@ const Admin = (props: Props) => {
   );
 };
 
-export default Admin;
+export default Users;
 
 export const getStaticProps = async () => {
  

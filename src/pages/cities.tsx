@@ -15,7 +15,7 @@ type Props = {
   citiesData: ICity[];
 };
 
-const Admin = (props: Props) => {
+const Cities = (props: Props) => {
 
   return (
     // <!-- ===== Page Wrapper Start ===== -->
@@ -196,7 +196,7 @@ const Admin = (props: Props) => {
   );
 };
 
-export default Admin;
+export default Cities;
 
 export const getStaticProps = async () => {
  

@@ -7,7 +7,7 @@ type Props = {
   destinationsData: Destination[];
 };
 
-const Admin = (props: Props) => {
+const Destinations = (props: Props) => {
 
   return (
     // <!-- ===== Page Wrapper Start ===== -->
@@ -161,7 +161,7 @@ const Admin = (props: Props) => {
   );
 };
 
-export default Admin;
+export default Destinations;
 
 export const getStaticProps = async () => {
  
