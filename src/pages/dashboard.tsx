@@ -24,7 +24,6 @@ const Dash = (props: Props) => {
       {/* <!-- ===== Content Area Start ===== --> */}
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         {/* <!-- ===== Header Start ===== --> */}
-        {/* <include src="./partials/header.html" /> */}
         {/* <!-- ===== Header End ===== --> */}
   
         {/* <!-- ===== Main Content Start ===== --> */}
@@ -183,25 +182,10 @@ const Dash = (props: Props) => {
             </div>
           
             <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-              {/* <!-- ====== Chart One Start --> */}
-              {/* <include src="./partials/chart-01.html" /> */}
-              {/* <!-- ====== Chart One End --> */}
-          
-              {/* <!-- ====== Chart Two Start --> */}
-              {/* <include src="./partials/chart-02.html" /> */}
-              {/* <!-- ====== Chart Two End --> */}
-          
-              {/* <!-- ====== Chart Three Start --> */}
-              {/* <include src="./partials/chart-03.html" /> */}
-              {/* <!-- ====== Chart Three End --> */}
-          
-              {/* <!-- ====== Map One Start --> */}
-              {/* <include src="./partials/map-01.html" /> */}
-              {/* <!-- ====== Map One End --> */}
           
               {/* <!-- ====== Table One Start --> */}
               <div className="col-span-12 xl:col-span-8">
-                {/* <include src="./partials/table-01.html" /> */}
+                
               </div>
               {/* <!-- ====== Table One End --> */}
           
