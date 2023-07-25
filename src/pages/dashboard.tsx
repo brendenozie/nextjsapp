@@ -11,7 +11,7 @@ import Sidebar from "@/components/sidebar";
 
 type Props = {};
 
-const Admin = (props: Props) => {
+const Dash = (props: Props) => {
 
   return (
     // <!-- ===== Page Wrapper Start ===== -->
@@ -333,4 +333,4 @@ const Admin = (props: Props) => {
   );
 };
 
-export default Admin;
+export default Dash;
