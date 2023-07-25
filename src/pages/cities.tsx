@@ -1,6 +1,15 @@
-import { ICity } from "../types/typings";
+import { GetServerSidePropsContext } from "next";
+import { getProviders, getSession, signIn, signOut } from "next-auth/react";
+import Head from "next/head";
+import Image from "next/image";
+import { useState } from "react";
+import Drawer from "../components/Drawer";
+import Header from "../components/Header";
+import { ICity, ISuggestionFormatted, IUser, provider } from "../types/typings";
 import Sidebar from "@/components/sidebar";
+import Picard from "@/components/Picard";
 import Link from "next/link";
+
 
 type Props = {
   citiesData: ICity[];
@@ -189,7 +198,9 @@ const Cities = (props: Props) => {
 
 export default Cities;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
  
   const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then(
                         (res) => res.json()

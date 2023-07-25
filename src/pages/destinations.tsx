@@ -1,5 +1,7 @@
 import Sidebar from "@/components/sidebar";
 import { IDestination } from "@/types/typings";
+import getDestinations from "@/utils/getDestinations";
+import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 
 
@@ -163,11 +165,11 @@ const Destinations = (props: Props) => {
 
 export default Destinations;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
  
-  const destinationsData =  await fetch(`${process.env.NEXT_API_URL}/get-destinations`).then(
-                        (res) => res.json()
-                      );
+  const destinationsData =  await getDestinations();
 
   return {
     props: {

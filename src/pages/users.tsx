@@ -1,6 +1,7 @@
 import Picard from "@/components/Picard";
 import Sidebar from "@/components/sidebar";
 import { IUser } from "@/types/typings";
+import { GetServerSidePropsContext } from "next";
 
 type Props = {
   usersData: IUser[];
@@ -174,8 +175,9 @@ const Users = (props: Props) => {
 };
 
 export default Users;
-
-export const getStaticProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
  
   const usersData =  await fetch(`${process.env.NEXT_API_URL}/get-user`).then(
                         (res) => res.json()

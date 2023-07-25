@@ -21,7 +21,7 @@ const getCitySuggestions = async (word: string, setData: any) => {
     type: suggestion.type,
   }));
 
-  // const suggestionsFormatted = {"shortName":"Nairobi","displayName":"Nairobi, Kenya","type":"CITY","img":"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTEVtdbOMit1j3E07KaBvNuY5hfGmJRCV1P9uBB-s5LgPJMlVuEVviSSmZTWh3on8zG","location":"Vancouver","province":"British Columbia","id":"4106"};
+
   setData(suggestionsFormatted);
 };
 

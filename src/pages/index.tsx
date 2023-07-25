@@ -14,6 +14,7 @@ import Desc from "@/components/Desc";
 import Second from "@/components/Second";
 import Testi from "@/components/Testi";
 import Pic from "@/components/Pic";
+import { GetServerSidePropsContext } from "next";
 
 type Props = {
   citiesData: ICity[];
@@ -230,7 +231,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   
   const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then( (res) => res.json() );
 

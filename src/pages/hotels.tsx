@@ -1,6 +1,7 @@
 import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 import { Hotel } from "@prisma/client";
+import { GetServerSidePropsContext } from "next";
 
 
 type Props = {
@@ -178,7 +179,9 @@ const Hotels = (props: Props) => {
 
 export default Hotels;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
  
   const hotelsData =  await fetch(`${process.env.NEXT_API_URL}/get-hotels`).then(
                         (res) => res.json()
