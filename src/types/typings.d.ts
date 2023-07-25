@@ -170,3 +170,20 @@ id: string
   cityId: string
   createdAt: Date
 }
+
+export type IHotel = {
+  id: string
+  title: string
+  description: string
+  star: number
+  lat: number
+  location: string
+  long: number
+  price: number
+  offer: boolean
+  offerPrice: number
+  userEmail: string
+  cityId: string
+  createdAt: Date
+  travelStyleId: string
+}

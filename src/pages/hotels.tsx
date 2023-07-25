@@ -1,11 +1,11 @@
 import Sidebar from "@/components/sidebar";
 import Link from "next/link";
-import { Hotel } from "@prisma/client";
 import { GetServerSidePropsContext } from "next";
+import { IHotel } from "@/types/typings";
 
 
 type Props = {
-  hotelsData: Hotel[];
+  hotelsData: IHotel[];
 };
 
 const Hotels = (props: Props) => {
