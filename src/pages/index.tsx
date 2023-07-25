@@ -237,7 +237,7 @@ export const getStaticProps = async () => {
 
   const stylesData = await fetch(`${process.env.NEXT_API_URL}/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch(`${process.env.NEXT_API_URL}/api/get-city`).then((res) => res.json());
+  const getInspiredCities = await fetch(`${process.env.NEXT_API_URL}/get-city`).then((res) => res.json());
 
   return {
     props: {
