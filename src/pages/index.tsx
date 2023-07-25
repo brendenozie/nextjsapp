@@ -36,14 +36,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
-      <Header
-      // searchInput={searchInput}
-      // setSearchInput={setSearchInput}
-      // selectedCity={selectedCity}
-      // setSelectedCity={setSelectedCity}
-      // isOpen={isOpen}
-      // setIsOpen={setIsOpen}
-      />
+      <Header  />
       {/* Banner */}
       <Banner
         getInspiredCities={getInspiredCities}
