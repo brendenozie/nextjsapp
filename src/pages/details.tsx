@@ -12,13 +12,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import CarouselCard from "../components/CarouselCard";
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MapCard from "../components/MapCard";
 import { IDetails, IResult, ISuggestionFormatted } from "../types/typings";
-import getHotelDetails from "../utils/getHotelDetails";
 
 let stripePromise: Promise<Stripe | null>;
 

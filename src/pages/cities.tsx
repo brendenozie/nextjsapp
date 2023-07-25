@@ -2,7 +2,6 @@ import { ICity } from "../types/typings";
 import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 
-
 type Props = {
   citiesData: ICity[];
 };

@@ -1,5 +1,4 @@
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
-import { format } from "date-fns";
 import { GetServerSidePropsContext } from "next";
 import { Session } from "next-auth";
 import { getSession, signOut } from "next-auth/react";
@@ -12,7 +11,6 @@ import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
 import MapCard from "../components/MapCard";
 import { IResult, ISuggestionFormatted } from "../types/typings";
-import getHotelList from "../utils/getHotelList";
 
 type Props = {
   searchResults: IResult[];

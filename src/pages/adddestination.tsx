@@ -9,14 +9,13 @@ import { useRouter } from "next/navigation";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
-import { uploadImage } from "@/types/typings";
-import { City } from "@prisma/client";
+import { ICity, uploadImage } from "@/types/typings";
 
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 type Props = {
     session: Session;
-    cities: City[];
+    cities: ICity[];
 };
 
 const addDestination = ({ session, cities }: Props) => {

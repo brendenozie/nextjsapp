@@ -29,7 +29,8 @@ const addCity = ({ session }: Props)  => {
     const [message, setMessage] = useState("");
 
     //City Details
-    const [city, setCity] = useState<ICity>({   cityName : "",
+    const [city, setCity] = useState<ICity>({   id : "",
+                                                cityName : "",
                                                 publicId : "",
                                                 url      : "",
                                                 status   : "",

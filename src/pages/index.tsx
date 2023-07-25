@@ -9,23 +9,22 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import SmallCard from "../components/SmallCard";
-import { IStyleData, ISuggestionFormatted } from "../types/typings";
+import { ICity, ITravelStyle } from "../types/typings";
 import Desc from "@/components/Desc";
 import Second from "@/components/Second";
 import Testi from "@/components/Testi";
 import Pic from "@/components/Pic";
-import { City, TravelStyle } from "@prisma/client";
 
 type Props = {
-  citiesData: City[];
-  stylesData: TravelStyle[];
-  getInspiredCities: City[];
+  citiesData: ICity[];
+  stylesData: ITravelStyle[];
+  getInspiredCities: ICity[];
 };
 
 const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [selectedCity, setSelectedCity] = useState<City | null>(
+  const [selectedCity, setSelectedCity] = useState<ICity | null>(
     null
   );
 

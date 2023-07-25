@@ -1,10 +1,10 @@
 import Sidebar from "@/components/sidebar";
+import { IDestination } from "@/types/typings";
 import Link from "next/link";
-import { Destination } from "@prisma/client";
 
 
 type Props = {
-  destinationsData: Destination[];
+  destinationsData: IDestination[];
 };
 
 const Destinations = (props: Props) => {

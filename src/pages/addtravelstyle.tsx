@@ -29,7 +29,7 @@ const addTravelStyle = ({ session }: Props)  => {
     const [message, setMessage] = useState("");
 
     //City Details
-    const [travelStyle, setTravelStyle] = useState<ITravelStyle>({   styleName : "",
+    const [travelStyle, setTravelStyle] = useState<ITravelStyle>({   id : "",styleName : "",
                                                 publicId : "",
                                                 url      : "",
                                                 status   : "",

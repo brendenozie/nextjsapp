@@ -133,6 +133,7 @@ export interface uploadImage {
 }
 
 export interface ICity {
+  id:string;
   cityName : string;
   publicId : string;
   url      : string;
@@ -147,8 +148,25 @@ export interface IUser {
 }
 
 export interface ITravelStyle {
+  id: string;
   styleName : string;
   publicId : string;
   url      : string;
   status   : string;
+}
+
+export interface IDestination {
+id: string
+  title: string
+  description: string
+  star: number
+  lat: number
+  location: string
+  long: number
+  price: number
+  offer: boolean
+  offerPrice: number
+  userEmail: string
+  cityId: string
+  createdAt: Date
 }
