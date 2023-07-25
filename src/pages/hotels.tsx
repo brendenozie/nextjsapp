@@ -189,7 +189,7 @@ export default Hotels;
 
 export const getStaticProps = async () => {
  
-  const hotelsData =  await fetch("http://127.0.0.1:3000/api/get-hotels").then(
+  const hotelsData =  await fetch(`${process.env.NEXT_API_URL}/get-hotels`).then(
                         (res) => res.json()
                       );
 

@@ -165,7 +165,7 @@ export default Destinations;
 
 export const getStaticProps = async () => {
  
-  const destinationsData =  await fetch("http://127.0.0.1:3000/api/get-destinations").then(
+  const destinationsData =  await fetch(`${process.env.NEXT_API_URL}/get-destinations`).then(
                         (res) => res.json()
                       );
 

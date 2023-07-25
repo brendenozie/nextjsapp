@@ -177,7 +177,7 @@ export default Users;
 
 export const getStaticProps = async () => {
  
-  const usersData =  await fetch("http://127.0.0.1:3000/api/get-user").then(
+  const usersData =  await fetch(`${process.env.NEXT_API_URL}/get-user`).then(
                         (res) => res.json()
                       );
 

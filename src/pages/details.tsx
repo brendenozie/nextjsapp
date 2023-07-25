@@ -84,7 +84,7 @@ const Details = ({ detailsResult, session }: Props) => {
       stripePromise = loadStripe(process.env.stripe_public_key!);
     }
     // Call the Backend API to create a Checkout session
-    const checkoutSession = await axios.post("/api/create-checkout-session", {
+    const checkoutSession = await axios.post(`${process.env.NEXT_API_URL}/create-checkout-session`, {
       hotelId: hotelId,
       title: title,
       description: description,
@@ -114,7 +114,7 @@ const Details = ({ detailsResult, session }: Props) => {
   const submitFavorite = async () => {
     try {
       const body = { ...searchResults[0], location, cityId };
-      await fetch("/api/post-favorite", {
+      await fetch(`${process.env.NEXT_API_URL}/post-favorite`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -127,7 +127,7 @@ const Details = ({ detailsResult, session }: Props) => {
   const deleteFavorite = async () => {
     try {
       const body = { hotelId: hotelId, userEmail: userEmail };
-      await fetch("/api/delete-favorite", {
+      await fetch(`${process.env.NEXT_API_URL}/delete-favorite`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

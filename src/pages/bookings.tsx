@@ -63,7 +63,7 @@ const Bookings = ({ bookings, session }: Props) => {
       {/* Drawer */}
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <p className="drawer-item">
-          <Link href={"/favorites"}>List of Favorites</Link>
+          <Link href={`${process.env.NEXT_API_URL}/favorites`}>List of Favorites</Link>
         </p>
         <p className="drawer-current-item">Your Bookings</p>
         <p onClick={() => signOut()} className="drawer-item">
@@ -92,7 +92,7 @@ export const getServerSideProps = async (
   }
 
   const response = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/get-bookings?userEmail=${userEmail}`
+    `${process.env.NEXTAUTH_URL}/get-bookings?userEmail=${userEmail}`
   );
   const json = await response.json();
   const bookings = json.bookings;

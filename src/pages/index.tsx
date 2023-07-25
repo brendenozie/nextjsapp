@@ -233,11 +233,11 @@ export default Home;
 
 export const getStaticProps = async () => {
   
-  const citiesData =  await fetch("http://127.0.0.1:3000/api/get-city").then( (res) => res.json() );
+  const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then( (res) => res.json() );
 
-  const stylesData = await fetch("http://127.0.0.1:3000/api/get-travel-style").then((res) => res.json());
+  const stylesData = await fetch(`${process.env.NEXT_API_URL}/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch("http://127.0.0.1:3000/api/get-city").then((res) => res.json());
+  const getInspiredCities = await fetch(`${process.env.NEXT_API_URL}/api/get-city`).then((res) => res.json());
 
   return {
     props: {

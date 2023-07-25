@@ -200,7 +200,7 @@ export default Cities;
 
 export const getStaticProps = async () => {
  
-  const citiesData =  await fetch("http://127.0.0.1:3000/api/get-city").then(
+  const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then(
                         (res) => res.json()
                       );
 

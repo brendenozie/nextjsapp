@@ -144,7 +144,7 @@ const addTravelStyle = ({ session }: Props)  => {
                     travelStyle.url      = list[0].url;
                     travelStyle.status   = list[0].status;
 
-        await axios.post(`/api/post-travel-style`, travelStyle).then(() => {
+        await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, travelStyle).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
@@ -260,7 +260,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    const response = await fetch("/api/sign");
+    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

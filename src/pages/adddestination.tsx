@@ -160,7 +160,7 @@ const addDestination = ({ session, cities }: Props) => {
                             cityId : cityId,
                         };
 
-        await axios.post(`/api/post-destinations`, hotelDetails).then(() => {
+        await axios.post(`${process.env.NEXT_API_URL}/api/post-destinations`, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
@@ -364,7 +364,7 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    const response = await fetch("/api/sign");
+    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

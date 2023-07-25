@@ -96,7 +96,7 @@ export const getServerSideProps = async (
   }
 
   const response = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/get-favorites?userEmail=${userEmail}`
+    `${process.env.NEXT_API_URL}/get-favorites?userEmail=${userEmail}`
   );
   const json = await response.json();
   const favorites = json.favorites;
