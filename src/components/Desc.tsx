@@ -1,34 +1,27 @@
 import React from "react";
-// import { MdLocationOn } from "react-icons/md";
 import {
   CalendarIcon,
   UsersIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
-// import {
-//   UserCircleIcon,
-//   XMarkIcon,
-// } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import useDebounce from "../hooks/useDebounce";
-import { ISuggestionFormatted } from "../types/typings";
+import { ICity, ISuggestionFormatted } from "../types/typings";
 import getCitySuggestions from "../utils/getCitySuggestions";
-import { City } from "@prisma/client";
 
 type Props = {
-  getInspiredCities: City[];
+  getInspiredCities: ICity[];
   placeholder?: string;
   searchInput: string;
   setSearchInput: Dispatch<SetStateAction<string>>;
-  selectedCity: City | null;
-  setSelectedCity: Dispatch<SetStateAction<City | null>>;
+  selectedCity: ICity | null;
+  setSelectedCity: Dispatch<SetStateAction<ICity | null>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
@@ -95,7 +88,7 @@ const Desc = ({
     setselectedGuest(false);
   };
 
-  const setSearchInputAndSelectedCity = (cityData: City) => {
+  const setSearchInputAndSelectedCity = (cityData: ICity) => {
     setSearchInput(cityData.id);
     setSelectedCity(cityData);
   }

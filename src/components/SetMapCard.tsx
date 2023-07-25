@@ -1,10 +1,6 @@
-import { StarIcon } from "@heroicons/react/24/solid";
-import { getCenter } from "geolib";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl";
-import { ILocation, IResult } from "../types/typings";
+import Map, { Marker } from "react-map-gl";
 
 type Props = {
   marker: any;

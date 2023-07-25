@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Revcard from "@/components/Revcard";
 import myImage from "@/../public/21.jpg";
 

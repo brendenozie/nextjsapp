@@ -1,19 +1,18 @@
+import { ICity } from "@/types/typings";
 import { addDays } from "date-fns";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
-import search from "../pages/search";
-import { IInspiredCity, ISuggestionFormatted } from "../types/typings";
-import { City } from "@prisma/client";
+
 
 type Props = {
   img: string;
   title: string;
   description: string;
   buttonText: string;
-  getInspiredCities: City[];
+  getInspiredCities: ICity[];
   setSearchInput: Dispatch<SetStateAction<string>>;
-  setSelectedCity: Dispatch<SetStateAction<City | null>>;
+  setSelectedCity: Dispatch<SetStateAction<ICity | null>>;
 };
 
 const LargeCard = ({ img, title, description, buttonText, getInspiredCities, setSearchInput, setSelectedCity }: Props) => {
