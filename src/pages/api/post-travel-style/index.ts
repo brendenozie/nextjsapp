@@ -12,14 +12,14 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
           status,
         } = req.body;
 
-  const session = await getSession({ req });
-  // const result = await prisma.TravelStyle.create({
-  //   data: {
-  //         styleName,
-  //         publicId,
-  //         url,
-  //         status,
-  //   },
-  // });
-  res.json("result");
+  // const session = await getSession({ req });
+  const result = await prisma.travelStyle.create({
+    data: {
+          styleName,
+          publicId,
+          url,
+          status,
+    },
+  });
+  res.json(result);
 }

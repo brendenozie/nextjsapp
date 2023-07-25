@@ -4,15 +4,16 @@ import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 import search from "../pages/search";
 import { IInspiredCity, ISuggestionFormatted } from "../types/typings";
+import { City } from "@prisma/client";
 
 type Props = {
   img: string;
   title: string;
   description: string;
   buttonText: string;
-  getInspiredCities: ISuggestionFormatted[];
+  getInspiredCities: City[];
   setSearchInput: Dispatch<SetStateAction<string>>;
-  setSelectedCity: Dispatch<SetStateAction<ISuggestionFormatted | null>>;
+  setSelectedCity: Dispatch<SetStateAction<City | null>>;
 };
 
 const LargeCard = ({ img, title, description, buttonText, getInspiredCities, setSearchInput, setSelectedCity }: Props) => {
@@ -37,7 +38,7 @@ const LargeCard = ({ img, title, description, buttonText, getInspiredCities, set
   // };
 
   const setSearchInputAndSelectedCity = () => {
-    setSearchInput(getInspiredCity.displayName);
+    setSearchInput(getInspiredCity.cityName);
     setSelectedCity(getInspiredCity);
   }
 

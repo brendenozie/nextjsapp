@@ -139,6 +139,13 @@ export interface ICity {
   status   : string;
 }
 
+export interface IUser {
+  id: string;
+	name : string;
+	email : string;
+	image : string;
+}
+
 export interface ITravelStyle {
   styleName : string;
   publicId : string;

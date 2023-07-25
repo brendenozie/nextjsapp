@@ -4,11 +4,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 import { IInspiredCity, ISuggestionFormatted } from "../types/typings";
+import { City } from "@prisma/client";
 
 type Props = {
-  getInspiredCities: ISuggestionFormatted[];
+  getInspiredCities: City[];
   setSearchInput: Dispatch<SetStateAction<string>>;
-  setSelectedCity: Dispatch<SetStateAction<ISuggestionFormatted | null>>;
+  setSelectedCity: Dispatch<SetStateAction<City | null>>;
 };
 
 const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) => {
@@ -35,7 +36,7 @@ const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) =
   // };
 
   const setSearchInputAndSelectedCity = () => {
-    setSearchInput(luckyCity.displayName);
+    setSearchInput(luckyCity.cityName);
     setSelectedCity(luckyCity);
   }
 

@@ -20,14 +20,15 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import useDebounce from "../hooks/useDebounce";
 import { ISuggestionFormatted } from "../types/typings";
 import getCitySuggestions from "../utils/getCitySuggestions";
+import { City } from "@prisma/client";
 
 type Props = {
-  getInspiredCities: ISuggestionFormatted[];
+  getInspiredCities: City[];
   placeholder?: string;
   searchInput: string;
   setSearchInput: Dispatch<SetStateAction<string>>;
-  selectedCity: ISuggestionFormatted | null;
-  setSelectedCity: Dispatch<SetStateAction<ISuggestionFormatted | null>>;
+  selectedCity: City | null;
+  setSelectedCity: Dispatch<SetStateAction<City | null>>;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
@@ -94,8 +95,8 @@ const Desc = ({
     setselectedGuest(false);
   };
 
-  const setSearchInputAndSelectedCity = (cityData: ISuggestionFormatted) => {
-    setSearchInput(cityData.displayName);
+  const setSearchInputAndSelectedCity = (cityData: City) => {
+    setSearchInput(cityData.id);
     setSelectedCity(cityData);
   }
 
@@ -126,9 +127,10 @@ const Desc = ({
                 </div>
 
                 <div className="w-full">
-                  <select id="country" name="country" className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" onChange={handleSelectedCity}>
-                    {getInspiredCities.map((city) => (
-                      <option value={city.shortName} >{city.shortName}</option>
+                  <select id="country" name="country" defaultValue={"Pick A City"} className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" onChange={(e) => setSearchInput(e.target.value)}>
+                  <option value="Pick A City" >Pick A City</option>
+                  {getInspiredCities.map((city) => (
+                      <option value={city.id} >{city.cityName}</option>
                     ))}
                   </select>
                 </div>

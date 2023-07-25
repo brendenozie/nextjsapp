@@ -3,11 +3,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 import { ISuggestionFormatted } from "../types/typings";
+import { City } from "@prisma/client";
 
 type Props = {
-  cityData: ISuggestionFormatted;
+  cityData: City;
   setSearchInput: Dispatch<SetStateAction<string>>;
-  setSelectedCity: Dispatch<SetStateAction<ISuggestionFormatted | null>>;
+  setSelectedCity: Dispatch<SetStateAction<City | null>>;
 };
 
 const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
@@ -28,7 +29,7 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
   //   });
   // };
   const setSearchInputAndSelectedCity = () => {
-    setSearchInput(cityData.displayName);
+    setSearchInput(cityData.cityName);
     setSelectedCity(cityData);
   }
 
@@ -38,14 +39,14 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
       <div className="relative min-h-[5rem] min-w-[5rem]">
         <Image
           className="rounded-lg"
-          src={cityData.img!}
-          alt={cityData.location!}
+          src={cityData.url!}
+          alt={cityData.cityName!}
           fill
         />
       </div>
       {/* Right side */}
       <div>
-        <h2 className="min-w-[5rem]">{cityData.shortName}</h2>
+        <h2 className="min-w-[5rem]">{cityData.cityName}</h2>
         {/* <h3 className="text-gray-500">{cityData.province!}</h3> */}
       </div>
     </div>

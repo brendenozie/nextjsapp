@@ -9,18 +9,17 @@ import { useRouter } from "next/navigation";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
-import {uploadImage } from "@/types/typings";
-import { City, TravelStyle } from "@prisma/client";
+import { uploadImage } from "@/types/typings";
+import { City } from "@prisma/client";
 
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 type Props = {
-    session: Session;    
-    travelStyles: TravelStyle[];
+    session: Session;
     cities: City[];
 };
 
-const addHotel = ({ session,travelStyles,cities }: Props) => {
+const addDestination = ({ session, cities }: Props) => {
 
     const [files, setFile] = useState<any[]>([]);
     const [imageFiles, setImageFiles] = useState<any[]>([]);
@@ -35,13 +34,11 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
     const [description, setDescription] = useState("");
     const [star, setStar] = useState(0);
     const [location, setLocation] = useState("");
-    const [room, setRoom] = useState("1");
     const [price, setPrice] = useState("");
     const [offer, setOffer] = useState(false);
     const [offerPrice, setOfferPrice] = useState("");
     const [userEmail, setUserEmail] = useState("");
-    const [cityId, setCityId] = useState("");    
-    const [travelStyleId, setTravelStyleId] = useState("");
+    const [cityId, setCityId] = useState("1");
     const [marker, setMarker] = useState<{ lat: any, long: any }>({ lat: -1.292066, long: 36.821946 });
 
     const router = useRouter();
@@ -110,7 +107,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
     };
 
 
-    const onCreateHotel = useCallback(async () => {
+    const onCreateDestination = useCallback(async () => {
 
         if (!session) {
             return {
@@ -161,10 +158,9 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                             offer : offer,
                             offerPrice : offerPrice ? parseFloat(offerPrice) : 0.00,
                             cityId : cityId,
-                            travelStyleId : travelStyleId,
                         };
 
-        await axios.post(`/api/post-hotel`, hotelDetails).then(() => {
+        await axios.post(`/api/post-destinations`, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
@@ -198,7 +194,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
 
                     <div className="space-y-12">
                         <div className="border-b border-gray-900/10 pb-12">
-                            <h2 className="text-base font-semibold leading-7 text-gray-900">Hotel Details</h2>
+                            <h2 className="text-base font-semibold leading-7 text-gray-900">Destination Details</h2>
                             <p className="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
                         </div>
                     </div>
@@ -235,15 +231,6 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="room">
-                                Room Count
-                            </label>
-                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="room" type="text" placeholder="Room Count" onChange={(e) => { setRoom(e.target.value) }} />
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap -mx-3 mb-6">
-                        <div className="w-full px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="price">
                                 Price
                             </label>
@@ -260,7 +247,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                                     </div>
                                     <div className="text-sm leading-6">
                                         <label htmlFor="offers" className="font-medium text-gray-900">Offers</label>
-                                        <p className="text-gray-500">Select this option if the hotel is on/and has an offer.</p>
+                                        <p className="text-gray-500">Select this option if the Destination is on/and has an offer.</p>
                                     </div>
                                 </div>
                             </div>
@@ -286,24 +273,6 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                                 <option value="Pick The City">Pick The City</option>
                                 {cities.map((city) => (
                                         <option value={city.id} >{city.cityName}</option>
-                                    ))}
-                                </select>
-                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap -mx-3 mb-6">
-                        <div className="w-full px-3 ">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
-                                Travel Style
-                            </label>
-                            <div className="relative">
-                                <select defaultValue="Pick Travel Style" onChange={(e) => setTravelStyleId(e.target.value )} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                                <option value="Pick Travel Style">Pick Your Travel Style</option>
-                                    {travelStyles.map((travelStyle) => (
-                                        <option value={travelStyle.id}>{travelStyle.styleName}</option>
                                     ))}
                                 </select>
                                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -352,7 +321,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                         </div>
                     </div>
                     <div className="mt-6 flex items-center justify-end gap-x-6">
-                        <button type="submit" onClick={onCreateHotel} disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
+                        <button type="submit" onClick={onCreateDestination} disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
                     </div>
                 </section>
             </main>
@@ -362,7 +331,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
     );
 };
 
-export default addHotel;
+export default addDestination;
 
 
 export const getServerSideProps = async (
@@ -381,19 +350,14 @@ export const getServerSideProps = async (
     }
 
     const responseCities = await fetch(
-      `${process.env.NEXT_API_URL}/get-city`
-    );
-    const cities = await responseCities.json();
-
-    const responseTravelStyle = await fetch(
-        `${process.env.NEXT_API_URL}/get-travel-style`
+        `${process.env.NEXT_API_URL}/get-city`
       );
-      const travelStyles = await responseTravelStyle.json();
+    
+      const cities = await responseCities.json();
 
     return {
         props: {
             session,
-            travelStyles,
             cities
         },
     };

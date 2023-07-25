@@ -49,13 +49,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     price,
     offer,
     offerPrice,
-    cityId,
-    travelStyleId,
+    cityId
   } = req.body;
 
-
   const session = await getSession({ req });
-  const result = await prisma.hotel.create({
+  const result = await prisma.destination.create({
     data: {
       title,
       description,
@@ -72,7 +70,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
       offerPrice,
       userEmail: session?.user?.email!,
       cityId,
-      travelStyleId
     },
   });
   res.json(result);

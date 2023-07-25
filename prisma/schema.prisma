@@ -39,6 +39,23 @@ model Session {
   userId       String   @db.ObjectId
 }
 
+model Destination {
+  id            String       @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  star          Float        @default(0.00)
+  img           DestinationImage[]
+  lat           Float
+  location      String
+  long          Float
+  price         Float        @default(0.00)
+  offer         Boolean      @default(false)
+  offerPrice    Float        @default(0.00)
+  userEmail     String
+  cityId        String       @db.ObjectId
+  createdAt     DateTime     @default(now())
+}
+
 model Hotel {
   id            String       @id @default(auto()) @map("_id") @db.ObjectId
   title         String
@@ -55,11 +72,8 @@ model Hotel {
   cityId        String       @db.ObjectId
   user          User         @relation(fields: [userEmail], references: [email], onDelete: Cascade)
   createdAt     DateTime     @default(now())
-  City          City         @relation(fields: [cityId], references: [id], onDelete: Cascade)
   travelStyleId String       @db.ObjectId
   TravelStyle   TravelStyle  @relation(fields: [travelStyleId], references: [id], onDelete: Cascade)
-
-  @@unique([id, userEmail])
 }
 
 model Booking {
@@ -113,13 +127,21 @@ model HotelImage {
   hotel    Hotel  @relation(fields: [hotelId], references: [id], onDelete: Cascade)
 }
 
+model DestinationImage {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  destinationId  String @db.ObjectId
+  publicId String
+  url      String
+  status   String
+  destination    Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+}
+
 model City {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   cityName String
   publicId String
   url      String
   status   String
-  Hotel    Hotel[]
 }
 
 model TravelStyle {

@@ -14,17 +14,18 @@ import Desc from "@/components/Desc";
 import Second from "@/components/Second";
 import Testi from "@/components/Testi";
 import Pic from "@/components/Pic";
+import { City, TravelStyle } from "@prisma/client";
 
 type Props = {
-  citiesData: ISuggestionFormatted[];
-  stylesData: IStyleData[];
-  getInspiredCities: ISuggestionFormatted[];
+  citiesData: City[];
+  stylesData: TravelStyle[];
+  getInspiredCities: City[];
 };
 
 const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
+  const [selectedCity, setSelectedCity] = useState<City | null>(
     null
   );
 
@@ -72,7 +73,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           <div className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {citiesData.map((city) => (
               <SmallCard
-                key={city.img}
+                key={city.url}
                 cityData={city}
                 setSearchInput={setSearchInput}
                 setSelectedCity={setSelectedCity}
@@ -92,7 +93,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
             Find your travel style
           </h2> */}
           {/* Map styles data from api */}
-          <CarouselTitlesCard images={stylesData} />
+          <CarouselTitlesCard travelStyles={stylesData} />
           {/* Travel Styles Carousel */}
         </section>
 
@@ -231,38 +232,12 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  // previous citiesDataUrl = "https://www.jsonkeeper.com/b/AU5N";
-  // const citiesDataUrl = "https://www.jsonkeeper.com/b/DXQ2";
-  const citiesData = [{ "shortName": "Nairobi", "displayName": "Nairobi, Kenya", "type": "CITY", "img": "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTEVtdbOMit1j3E07KaBvNuY5hfGmJRCV1P9uBB-s5LgPJMlVuEVviSSmZTWh3on8zG", "location": "Vancouver", "province": "British Columbia", "id": "4106" },
-  { "shortName": "Nakuru", "displayName": "Nakuru, Kenya", "type": "CITY", "img": "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSUygdKonRfsr-wRABrO1EM9BRBZp2nEwfSdL5_nWKRNrVGJKactEZcVT9xnhSBYO7D", "location": "Quebec City", "province": "Quebec", "id": "4043" },
-  { "shortName": "Mombasa", "displayName": "Mombasa, Kenya", "type": "CITY", "img": "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRqg-YyG0fmZl83eGS7Acls-_b6w-7kq8hJXm_jme_MZXlf5T37xOQJTNEM7hnvOL7L", "location": "Calgary", "province": "Alberta", "id": "4132" },
-  { "shortName": "Kisumu", "displayName": "Kisumu, Kenya", "type": "CITY", "img": "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTYplW--mqkIarCZJI5lbBS2t2tv55HuKLDgrWwsqnQeuxXEN9jOliSpPvcxrpA5uz1", "location": "Montreal", "province": "Quebec", "id": "4005" },
-  { "shortName": "Eldoret", "displayName": "Eldoret, Kenya", "type": "CITY", "img": "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcQ2SxF4aj35DVC6e3B3oZZS1_nYaAQ5n1-Swu4DB53BFowbiii_vaRxI0FabfPci8yu", "location": "Whistler", "province": "British Columbia", "id": "4115" },
-  { "shortName": "Kajiado", "displayName": "Kajiado, Kenya", "type": "CITY", "img": "https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTzPJtyZdWRLE0--fRs897hS16wYnFpxctNMIOFkNYexhylZL9BO20LACVGmAPgAnWV", "location": "Toronto", "province": "Ontario", "id": "4089" },
-  { "shortName": "Mumias", "displayName": "Mumias, Kenya", "type": "CITY", "img": "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRxZ6KX3Nz6YjqjlhiHlLLVDcF4eHD2NkDrU3xmIq8cxJfPUe3YrFmA6V3-opMTOBuv", "location": "Ottawa", "province": "Ontario", "id": "4025" },
-  { "shortName": "Bungoma", "displayName": "Bungoma, Kenya", "type": "CITY", "img": "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcS4jOqkQMndNE2Ua1qnscBc_wai9ZPMAqUjem5-XBGWXTz8-SAXASKx1wGy6jE29FIh", "location": "Victoria", "province": "British Columbia", "id": "4138" }];
+  
+  const citiesData =  await fetch("http://127.0.0.1:3000/api/get-city").then( (res) => res.json() );
 
+  const stylesData = await fetch("http://127.0.0.1:3000/api/get-travel-style").then((res) => res.json());
 
-  //[{"shortName":"Nairobi","displayName":"Nairobi, Kenya","type":"CITY","img":"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcTEVtdbOMit1j3E07KaBvNuY5hfGmJRCV1P9uBB-s5LgPJMlVuEVviSSmZTWh3on8zG","location":"Vancouver","province":"British Columbia","id":"4106"},{"shortName":"Quebec City","displayName":"Quebec City, Quebec, Canada","type":"CITY","img":"https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcSUygdKonRfsr-wRABrO1EM9BRBZp2nEwfSdL5_nWKRNrVGJKactEZcVT9xnhSBYO7D","location":"Quebec City","province":"Quebec","id":"4043"},{"shortName":"Calgary","displayName":"Calgary, Alberta, Canada","type":"CITY","img":"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRqg-YyG0fmZl83eGS7Acls-_b6w-7kq8hJXm_jme_MZXlf5T37xOQJTNEM7hnvOL7L","location":"Calgary","province":"Alberta","id":"4132"},{"shortName":"Montreal","displayName":"Montreal, Quebec, Canada","type":"CITY","img":"https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTYplW--mqkIarCZJI5lbBS2t2tv55HuKLDgrWwsqnQeuxXEN9jOliSpPvcxrpA5uz1","location":"Montreal","province":"Quebec","id":"4005"},{"shortName":"Whistler","displayName":"Whistler, British Columbia, Canada","type":"CITY","img":"https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcQ2SxF4aj35DVC6e3B3oZZS1_nYaAQ5n1-Swu4DB53BFowbiii_vaRxI0FabfPci8yu","location":"Whistler","province":"British Columbia","id":"4115"},{"shortName":"Toronto","displayName":"Toronto, Ontario, Canada","type":"CITY","img":"https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTzPJtyZdWRLE0--fRs897hS16wYnFpxctNMIOFkNYexhylZL9BO20LACVGmAPgAnWV","location":"Toronto","province":"Ontario","id":"4089"},{"shortName":"Ottawa","displayName":"Ottawa, Ontario, Canada","type":"CITY","img":"https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcRxZ6KX3Nz6YjqjlhiHlLLVDcF4eHD2NkDrU3xmIq8cxJfPUe3YrFmA6V3-opMTOBuv","location":"Ottawa","province":"Ontario","id":"4025"},{"shortName":"Victoria","displayName":"Victoria, British Columbia, Canada","type":"CITY","img":"https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcS4jOqkQMndNE2Ua1qnscBc_wai9ZPMAqUjem5-XBGWXTz8-SAXASKx1wGy6jE29FIh","location":"Victoria","province":"British Columbia","id":"4138"}];//await fetch(citiesDataUrl).then((res) => res.json());
-
-  const stylesData = [{ "img": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Muo_Boutique_Hotel.jpg", "title": "Hotel" },
-  { "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Day173abfastg.JPG/1200px-Day173abfastg.JPG", "title": "Bed & Breakfast" },
-  { "img": "https://upload.wikimedia.org/wikipedia/commons/2/26/Southmoor_Apartment_Hotel.jpg", "title": "Apart-hotel" },
-  { "img": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Gosau_Pension_Kirchenwirt_1.jpg", "title": "Budget Hostal" },
-  { "img": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Hostel_Dormitory.jpg", "title": "Backpacker Hostel" }];
-  // await fetch("https://www.jsonkeeper.com/b/RWNY").then(
-  //   (res) => res.json()
-  // );
-
-  const getInspiredCities = [{ "shortName": "Barcelona", "displayName": "Barcelona, Catalonia, Spain", "type": "CITY", "id": "513" },
-  { "shortName": "Lisbon", "displayName": "Lisbon, Lisbon District, Portugal", "type": "CITY", "id": "2080" },
-  { "shortName": "London", "displayName": "London, England, United Kingdom", "type": "CITY", "id": "2114" },
-  { "shortName": "Paris", "displayName": "Paris, France", "type": "CITY", "id": "2734" },
-  { "shortName": "Rome", "displayName": "Rome, Lazio, Italy", "type": "CITY", "id": "3023" }];
-  // await fetch(
-  //   // "https://www.jsonkeeper.com/b/AU5N"
-  //   "https://www.jsonkeeper.com/b/SNPG"
-  // ).then((res) => res.json());
+  const getInspiredCities = await fetch("http://127.0.0.1:3000/api/get-city").then((res) => res.json());
 
   return {
     props: {
