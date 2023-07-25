@@ -1,6 +1,5 @@
 import Picard from "@/components/Picard";
 import React, { useRef } from "react";
-// import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { picardData } from "@/constant/Data";
 
 import {ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
