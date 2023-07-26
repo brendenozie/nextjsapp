@@ -15,16 +15,12 @@ const Destinations = (props: Props) => {
     // <!-- ===== Page Wrapper Start ===== -->
     <div className="flex h-screen overflow-hidden">
       {/* <!-- ===== Sidebar Start ===== --> */}
-      {/* <include src="./partials/sidebar.html"></include> */}
+      
       <Sidebar/>
       {/* <!-- ===== Sidebar End ===== --> */}
   
       {/* <!-- ===== Content Area Start ===== --> */}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-        {/* <!-- ===== Header Start ===== --> */}
-        {/* <include src="./partials/header.html" /> */}
-        {/* <!-- ===== Header End ===== --> */}
-  
+      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">  
         {/* <!-- ===== Main Content Start ===== --> */}
         <main>
           {/* <!-- component --> */}

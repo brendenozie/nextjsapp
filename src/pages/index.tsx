@@ -59,9 +59,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
             <span className="font-bold tracking-wider uppercase dark:text-violet-400  items-center justify-items-center "></span>
             <h2 className="text-4xl font-bold lg:text-5xl  items-center justify-items-center ">Popular Cities</h2>
           </div>
-          {/* <h2 className="text-4xl font-semibold pb-5">
-            Most visited Canadian cities
-          </h2> */}
           {/* Map Canadian cities */}
           <div className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {citiesData.map((city) => (
@@ -82,9 +79,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
             <h2 className="text-4xl font-bold lg:text-5xl">Find your travel style</h2>
           </div>
-          {/* <h2 className="text-4xl font-semibold py-8">
-            Find your travel style
-          </h2> */}
           {/* Map styles data from api */}
           <CarouselTitlesCard travelStyles={stylesData} />
           {/* Travel Styles Carousel */}

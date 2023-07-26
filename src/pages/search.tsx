@@ -36,15 +36,8 @@ const Search = ({ searchResults, session }: Props) => {
 
   return (
     <div>
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-        // placeholder={`${location} - ${range} - ${numOfGuests}`}
-      />
+      <Header />
+      
       <main
         className={`flex ${!searchResults && "flex-col max-w-4xl mx-auto"}`}
       >

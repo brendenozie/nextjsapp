@@ -25,14 +25,7 @@ const SignIn = ({ providers }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
-      <Header
-      // searchInput={searchInput}
-      // setSearchInput={setSearchInput}
-      // selectedCity={selectedCity}
-      // setSelectedCity={setSelectedCity}
-      // isOpen={isOpen}
-      // setIsOpen={setIsOpen}
-      />
+      <Header />
       {/* Main */}
       <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black"></div>
       <main className="h-[80%]">

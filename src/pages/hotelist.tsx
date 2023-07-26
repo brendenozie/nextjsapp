@@ -34,15 +34,7 @@ const Hotels = ({ searchResults, session }: Props) => {
 
   return (
     <div>
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-        // placeholder={`${location} - ${range} - ${numOfGuests}`}
-      />
+      <Header />
       <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black">
 
       </div>

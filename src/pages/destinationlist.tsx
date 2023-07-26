@@ -25,24 +25,10 @@ const Hotels = ({ searchResults, session }: Props) => {
   );
   const router = useRouter();
   const { id, location, startDate, endDate, numOfGuests } = router.query;
-  // const formattedStartDate = format(
-  //   new Date(startDate as string),
-  //   "dd MMMM yy"
-  // );
-  // const formattedEndDate = format(new Date(endDate as string), "dd MMMM yy");
-  // const range = `from ${startDate} to ${endDate}`;
 
   return (
     <div>
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-        // placeholder={`${location} - ${range} - ${numOfGuests}`}
-      />
+      <Header />
       <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black">
 
       </div>

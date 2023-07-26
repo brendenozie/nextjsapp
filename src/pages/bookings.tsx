@@ -24,14 +24,7 @@ const Bookings = ({ bookings, session }: Props) => {
 
   return (
     <div>
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-      />
+      <Header/>
       <main className="flex">
         {/* left section */}
         <section className="flex-grow pt-14 px-6">

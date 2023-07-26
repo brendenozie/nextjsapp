@@ -26,14 +26,7 @@ const Success = ({ session }: Props) => {
   return (
     <div>
       {/* No Placeholder for Hotels from Favorite List */}
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-      />
+      <Header  />
       <main className="flex flex-col max-w-4xl mx-auto">
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">

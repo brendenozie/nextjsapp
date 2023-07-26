@@ -21,28 +21,15 @@ const Cities = (props: Props) => {
     // <!-- ===== Page Wrapper Start ===== -->
     <div className="flex h-screen overflow-hidden">
       {/* <!-- ===== Sidebar Start ===== --> */}
-      {/* <include src="./partials/sidebar.html"></include> */}
+      
       <Sidebar/>
       {/* <!-- ===== Sidebar End ===== --> */}
   
       {/* <!-- ===== Content Area Start ===== --> */}
       <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-        {/* <!-- ===== Header Start ===== --> */}
-        {/* <include src="./partials/header.html" /> */}
-        {/* <!-- ===== Header End ===== --> */}
   
         {/* <!-- ===== Main Content Start ===== --> */}
         <main>
-          {/* <div className="px-8 grid grid-flow-col auto-cols-[100%] md:auto-cols-[50%] lg:auto-cols-[30%] overflow-hidden overscroll-y-contain snap-x snap-mandatory">
-            {props.usersData.map((user) => (
-              <Picard
-                key={user.id}
-                src={user.url}
-                title={user.cityName}
-                desc={user.status}
-              />
-            ))}
-          </div> */}
 
           {/* <!-- component --> */}
           <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">

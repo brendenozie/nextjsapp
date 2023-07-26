@@ -24,14 +24,7 @@ const Favorites = ({ favorites, session }: Props) => {
 
   return (
     <div>
-      <Header
-        // searchInput={searchInput}
-        // setSearchInput={setSearchInput}
-        // selectedCity={selectedCity}
-        // setSelectedCity={setSelectedCity}
-        // isOpen={isOpen}
-        // setIsOpen={setIsOpen}
-      />
+      <Header />
       <main className="flex">
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">
