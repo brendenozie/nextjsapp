@@ -1,3 +1,4 @@
+import { Role } from './../../../../nextauth.d';
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -16,9 +17,17 @@ export const authOptions: NextAuthOptions = {
     signIn: "/signin",
   },
   callbacks: {
-    async jwt({ token }) {
-      token.userRole = "admin"
+    async jwt({ token, user }) {
+      if(user){
+        token.role = user.role;
+      }
       return token
+    },
+  session({ session, token }) {
+      if(token && session.user){
+        session.user.role = token.role;
+      }
+      return session;
     },
   },
 };
