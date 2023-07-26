@@ -64,11 +64,6 @@ const Desc = ({
     key: "selection",
   };
 
-  const handleSelectedCity = () => {
-    console.log("Fruit Selected!!");
-    // this.setState({ fruit: e.target.value });
-  }
-
   const handleSelect = (ranges: any) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
