@@ -23,7 +23,7 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
 
     const [files, setFile] = useState<any[]>([]);
     const [imageFiles, setImageFiles] = useState<any[]>([]);
-    const [images, setImages] = useState<uploadImage[]>([detailsResult.img]);
+    const [images, setImages] = useState<uploadImage[]>(detailsResult.img);
     const [isLoading, setIsLoading] = useState(false);
 
     //Message incase an error is encountered when selecting the images
