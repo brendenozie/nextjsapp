@@ -2,7 +2,7 @@
 
 Travel Booking is a case study of a hotel reservation platform using Next.js and TypeScript on the front-end, with a SQL database and Prisma for the back-end. 
 
-- Implemented OAuth for user authentication and Hotels API for retrieving hotel data. 
+- Implemented OAuth for user authentication and Backend API for retrieving hotel data. 
 - Utilized Stripe Payments and Webhooks for handling payment transactions and keep a customer booking history. 
 - Styled the application with Tailwind CSS and integrated MapBox for displaying hotel locations. 
 - This project allowed me to gain experience with modern web development technologies and practices such as serverless architecture and third-party API integration.
@@ -18,7 +18,7 @@ Travel Booking is a case study of a hotel reservation platform using Next.js and
 - TypeScript
 - Tailwind CSS
 - Prisma
-- CockroachDB (Uses PostgreSQL wire protocol 3.0)
+- MongoDB
 - NextAuth
 - Google OAuth
 - Hotels API
@@ -29,7 +29,7 @@ Travel Booking is a case study of a hotel reservation platform using Next.js and
 ## Features
 
 - Responsive UI with Tailwind CSS.
-- Hotels search via Hotels API
+- Hotels search via the Next API
 - Hotel map location with MapBox.
 - Payment Checkout flow with Stripe
 - Customer Booking History
@@ -57,9 +57,6 @@ Then, create a .env.local file in the root of the project and configure the foll
 ```
 # Mapbox
 NEXT_PUBLIC_MAPBOX_TOKEN=
-
-# Rapidapi, Hotels API
-NEXT_PUBLIC_RAPIDAPI_KEY=
 
 # Firebase client
 FIREBASE_CLIENT_API_KEY=
