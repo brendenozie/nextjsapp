@@ -55,25 +55,28 @@ async function deleteTravelStyle(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function updateTravelStyle(req: NextApiRequest, res: NextApiResponse) {
-  const amaId = req.query.id as string
-  const { question } = JSON.parse(req.body)
-  try {
-    // const ama = await prisma.booking.update({
-    //   where: {
-    //     id: amaId,
-    //   },
-    //   data: {
-    //     question: question.question,
-    //     answer: question.answer,
-    //     status: question.status,
-    //     audioUrl: question.audioUrl ?? null,
-    //     audioWaveform: Array.isArray(question.audioWaveform)
-    //       ? question.audioWaveform
-    //       : Prisma.DbNull,
-    //   },
-    // })
+  const {
+    id,
+    styleName,
+    publicId,
+    url,
+    status,
+  } = req.body;
 
-    return res.status(200).json("ama")
+  try {
+    const result = await prisma.travelStyle.update({
+      where: {
+        id: id,
+      },
+    data: {
+          styleName,
+          publicId,
+          url,
+          status,
+    },
+    });
+
+    return res.status(200).json(result);
   } catch (e) {
     console.log(e)
     res.status(500).end()

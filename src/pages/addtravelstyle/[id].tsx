@@ -62,9 +62,12 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                             if (result) {
                                 update.push({publicId: "-1", url: result, status: 'local' });
                             }
-                            if (update.length < 5) {
+                            if (update.length < 2) {
                                 setImages(update);
                                 setImageFiles([]);
+                            }
+                            else{
+                                setMessage("Only One image is required");
                             }
                         }
                         fileReader.readAsDataURL(compressedResult);
@@ -152,15 +155,21 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                             
         };
 
-        await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, travelStyle).then(() => {
+        if(travelStyle.id === "" || travelStyle.id === undefined || travelStyle.publicId === "" || travelStyle.publicId === undefined || travelStyle.url === "" || travelStyle.url === undefined ) {
+            alert("Cannot update the travel style at this moment, please check your details");
+            setIsLoading(false);
+            return;
+        }
+
+        await axios.put(`/api/get-travel-style/${travelStyle.id}`, travelStyle).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
+                router.push("/travelstyle");
             })
         },
         [
@@ -168,7 +177,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
             images,
         ]);
 
-    const onDeleteImage = useCallback(async (publicId : string) => {
+        const onDeleteImage = async () => {
 
             if (!session) {
                 return {
@@ -179,28 +188,18 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                 };
             }
 
-            await axios.post(`/api/destroy/${publicId}`).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
-                // router.push('/');
-            }).catch(() => {
-                //   toast.error('Something went wrong.');
+            await axios.post(`/api/destroy/${travelStyle.publicId}`,{public_id:travelStyle.publicId}).then(() => {
+                setImages([]);
+                setTravelStyle({...travelStyle, publicId : "", url:""});
+            }).catch((err) => {
+                alert(`Something went wrong.${err.message}`);
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
-                setImages([]);
-                const imp= images.filter(image => image.publicId !== publicId);
-                setImages(imp);
-                travelStyle.publicId = "";
-                travelStyle.url      = "";
-                travelStyle.status   = "";
+                // setImages([]);
+                // setCity({...city, publicId : "", url:""});
             })
 
-        },
-        [
-            travelStyle,
-            setImages,
-        ]);
+        };
 
     return (
         <div>
@@ -224,7 +223,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                             </label>
                             <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-title" value={travelStyle.styleName} type="text" placeholder="title" 
-                             onChange={(e) => { travelStyle.styleName = e.target.value }}/>
+                             onChange={(e) => { setTravelStyle({...travelStyle, styleName : e.target.value}); }}/>
 
                         </div>
                     </div>
@@ -250,7 +249,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                                                 <div
                                                     className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
                                                     <h1 className="text-2xl text-white"></h1>
-                                                    <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={(e) => onDeleteImage}>Delete</button>
+                                                    <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={onDeleteImage}>Delete</button>
                                                 </div>
                                             </div>
                                         )
@@ -307,7 +306,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
+    const response = await fetch(`/api/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

@@ -63,9 +63,11 @@ const addCity = ({ session, detailsResult }: Props)  => {
                             if (result) {
                                 update.push({publicId: "-1", url: result, status: 'local' });
                             }
-                            if (update.length < 5) {
+                            if (update.length < 2) {
                                 setImages(update);
                                 setImageFiles([]);
+                            }else{
+                                setMessage("Only One image is required");
                             }
                         }
                         fileReader.readAsDataURL(compressedResult);
@@ -105,7 +107,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
         setMessage("Selected images are not of valid type\nOr\nImage Count is above allowed limit!");
     };
 
-    const onCreateCity = useCallback(async () => {
+    const onUpdateCity = useCallback(async () => {
 
         if (!session) {
             return {
@@ -116,48 +118,57 @@ const addCity = ({ session, detailsResult }: Props)  => {
             };
         }
 
+
         setIsLoading(true);
 
         const url = `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/upload`;
 
         let notUploadedImages = images.filter(itm => itm.status !== 'uploaded');
 
-        let list = await Promise.all(            
-                        notUploadedImages.map(async (imge) => {            
-                            const { signature, timestamp } = await getSignature();
-                            const formData = new FormData();
-                            formData.append("file", imge.url);
-                            formData.append("signature", signature);
-                            formData.append("timestamp", timestamp);
-                            formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
+        if(notUploadedImages.length > 0) {
+            let list = await Promise.all(            
+                            notUploadedImages.map(async (imge) => {            
+                                const { signature, timestamp } = await getSignature();
+                                const formData = new FormData();
+                                formData.append("file", imge.url);
+                                formData.append("signature", signature);
+                                formData.append("timestamp", timestamp);
+                                formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
 
-                            const response = await fetch(url, {
-                                method: "post",
-                                body: formData,
-                            });
+                                const response = await fetch(url, {
+                                    method: "post",
+                                    body: formData,
+                                });
 
-                            const data = await response.json();
+                                const data = await response.json();
 
-                            return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
-                        })
-                    ).then((response) =>{
-                        const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
-                        return filteredData;
-                    });
+                                return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
+                            })
+                        ).then((response) =>{
+                            const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
+                            return filteredData;
+                        });
 
-        city.publicId = list[0].publicId;
-        city.url      = list[0].url;
-        city.status   = list[0].status;
+            city.publicId = list[0].publicId;
+            city.url      = list[0].url;
+            city.status   = list[0].status;
+        }
 
-        await axios.post(`/api/post-city`, city).then(() => {
+        if(city.id === "" || city.id === undefined || city.publicId === "" || city.publicId === undefined || city.url === "" || city.url === undefined ) {
+            alert("Cannot update the city at this moment, please check your details");
+            setIsLoading(false);
+            return;
+        }
+
+        await axios.put(`/api/get-city/${city.id}`, city).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
+                router.push("/cities");
             })
         },
         [
@@ -166,7 +177,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
         ]);
 
 
-    const onDeleteImage = useCallback(async () => {
+    const onDeleteImage = async () => {
 
             if (!session) {
                 return {
@@ -177,25 +188,18 @@ const addCity = ({ session, detailsResult }: Props)  => {
                 };
             }
 
-            await axios.post(`/api/destroy/${city.publicId}`).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
-                // router.push('/');
-            }).catch(() => {
-                //   toast.error('Something went wrong.');
+            await axios.post(`/api/destroy/${city.publicId}`,{public_id:city.publicId}).then(() => {
+                setImages([]);
+                setCity({...city, publicId : "", url:""});
+            }).catch((err) => {
+                alert(`Something went wrong.${err.message}`);
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
-                setImages([]);
-                city.publicId="";
-                city.url="";
+                // setImages([]);
+                // setCity({...city, publicId : "", url:""});
             })
 
-        },
-        [
-            city,
-            setImages,
-        ]);
+        };
 
     return (
         <div>
@@ -220,7 +224,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
                             </label>
                             <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
                             id="grid-title" value={city.cityName} type="text" placeholder="title" 
-                             onChange={(e) => { city.cityName = e.target.value }}/>
+                             onChange={(e) => { setCity({...city, cityName : e.target.value}); }}/>
 
                         </div>
                     </div>
@@ -245,8 +249,8 @@ const addCity = ({ session, detailsResult }: Props)  => {
                                                 src={file.url} />
                                             <div
                                                 className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
-                                                <h1 className="text-2xl text-white"></h1>
-                                                <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={(e) => onDeleteImage}>Delete</button>
+                                                <h1 className="text-xs text-white"></h1>
+                                                <button className="m-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={onDeleteImage}>Delete</button>
                                             </div>
                                         </div>
                                     )
@@ -256,7 +260,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
                         </div>
                     </div>
                     <div className="mt-6 flex items-center justify-end gap-x-6">
-                        <button type="submit" onClick={onCreateCity} disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
+                        <button type="submit" onClick={onUpdateCity} disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
                     </div>
                 </section>
             </main>
@@ -267,15 +271,8 @@ const addCity = ({ session, detailsResult }: Props)  => {
 };
 
 export default addCity;
-
-async function getSignature() {
-    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
-    const data = await response.json();
-    const { signature, timestamp } = data;
-    return { signature, timestamp };
-  }
   
-  export const getServerSideProps = async (
+export const getServerSideProps = async (
     context: GetServerSidePropsContext
   ) => {
     const { id, } = context.query;
@@ -307,3 +304,11 @@ async function getSignature() {
       },
     };
   };
+
+
+  async function getSignature() {
+    const response = await fetch(`/api/sign`);
+    const data = await response.json();
+    const { signature, timestamp } = data;
+    return { signature, timestamp };
+  }
