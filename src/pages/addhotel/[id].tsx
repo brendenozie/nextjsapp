@@ -42,7 +42,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
     const [userEmail, setUserEmail] = useState("");
     const [cityId, setCityId] = useState(detailsResult.cityId);    
     const [travelStyleId, setTravelStyleId] = useState(detailsResult.travelStyleId);
-    const [marker, setMarker] = useState<{ lat: any, long: any }>();//{ lat: detailsResult.lat, long: detailsResult.long }
+    const [marker, setMarker] = useState<{ lat: any, long: any }>({ lat: detailsResult.lat, long: detailsResult.long });
 
     const router = useRouter();
 
@@ -126,6 +126,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
 
         let notUploadedImages = images.filter(itm => itm.status !== 'uploaded');
 
+        if(notUploadedImages.length > 0) {
         let list = await Promise.all(            
                         notUploadedImages.map(async (imge) => {            
                             const { signature, timestamp } = await getSignature();
@@ -149,10 +150,14 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                         return filteredData;
                     });
 
+                    setImages(list);
+                }
+
         var hotelDetails ={
+                            id : detailsResult.id,
                             title : title,
                             description : description,
-                            img : list,
+                            img : images,
                             lat : marker?.lat,
                             location : location,
                             long : marker?.long,
@@ -163,7 +168,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                             travelStyleId : travelStyleId,
                         };
 
-        await axios.post(`/api/post-hotel`, hotelDetails).then(() => {
+        await axios.put(`/api/get-hotels/${hotelDetails.id}`, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
@@ -171,7 +176,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                 //   toast.error('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
+                router.push("/hotels");
             })
         },
         [
@@ -197,17 +202,23 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
             };
         }
 
-        await axios.post(`/api/destroy/${publicId}`).then(() => {
-            //   toast.success('Listing reserved!');
-            //   setDateRange(initialDateRange);
-            // router.push('/');
-        }).catch(() => {
-            //   toast.error('Something went wrong.');
+        await axios.delete(`/api/destroy/${publicId}`).then(async () => {
+            await axios.post(`/api/delete-hotel-image`,{id:publicId}).then(() => {
+                const img = images.filter(img => img.publicId !== publicId);
+                setImages(img);
+            }).catch((err) => {
+                alert(`Something went wrong.${err.message}`);
+                setIsLoading(false);
+            }).finally(() => {
+                // const img = images.filter(img => img.publicId !== publicId);
+                // setImages(img);
+            })
+        }).catch((err) => {
+            alert(`Something went wrong.${err.message}`);
             setIsLoading(false);
         }).finally(() => {
-            // router.push("/");
-            const img = images.filter(img => img.publicId !== publicId);
-            setImages(img);
+            // const img = images.filter(img => img.publicId !== publicId);
+            // setImages(img);
         })
 
     };
@@ -308,7 +319,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                                 City
                             </label>
                             <div className="relative">
-                                <select defaultValue="Pick A City" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" onChange={(e) => setCityId(e.target.value )}>
+                                <select defaultValue="Pick A City" value={cityId} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" onChange={(e) => setCityId(e.target.value )}>
                                 <option value="Pick The City">Pick The City</option>
                                 {cities.map((city) => (
                                         <option value={city.id} >{city.cityName}</option>
@@ -326,7 +337,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                                 Travel Style
                             </label>
                             <div className="relative">
-                                <select defaultValue="Pick Travel Style" onChange={(e) => setTravelStyleId(e.target.value )} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                                <select defaultValue="Pick Travel Style" value={travelStyleId} onChange={(e) => setTravelStyleId(e.target.value )} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                                 <option value="Pick Travel Style">Pick Your Travel Style</option>
                                     {travelStyles.map((travelStyle) => (
                                         <option value={travelStyle.id}>{travelStyle.styleName}</option>

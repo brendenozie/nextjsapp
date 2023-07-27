@@ -122,7 +122,7 @@ model VerificationToken {
 model HotelImage {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   hotelId  String @db.ObjectId
-  publicId String
+  publicId String @unique
   url      String
   status   String
   hotel    Hotel  @relation(fields: [hotelId], references: [id], onDelete: Cascade)
@@ -131,7 +131,7 @@ model HotelImage {
 model DestinationImage {
   id            String      @id @default(auto()) @map("_id") @db.ObjectId
   destinationId String      @db.ObjectId
-  publicId      String
+  publicId      String      @unique
   url           String
   status        String
   destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
@@ -140,7 +140,7 @@ model DestinationImage {
 model City {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   cityName String
-  publicId String
+  publicId String @unique
   url      String
   status   String
 }
@@ -148,7 +148,7 @@ model City {
 model TravelStyle {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   styleName String
-  publicId  String
+  publicId  String @unique
   url       String
   status    String
   Hotel     Hotel[]

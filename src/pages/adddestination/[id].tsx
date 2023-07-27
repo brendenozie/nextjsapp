@@ -124,33 +124,38 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
 
         let notUploadedImages = images.filter(itm => itm.status !== 'uploaded');
 
-        let list = await Promise.all(            
-                        notUploadedImages.map(async (imge) => {            
-                            const { signature, timestamp } = await getSignature();
-                            const formData = new FormData();
-                            formData.append("file", imge.url);
-                            formData.append("signature", signature);
-                            formData.append("timestamp", timestamp);
-                            formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
+        if(notUploadedImages.length > 0) {
+            let list = await Promise.all(            
+                            notUploadedImages.map(async (imge) => {            
+                                const { signature, timestamp } = await getSignature();
+                                const formData = new FormData();
+                                formData.append("file", imge.url);
+                                formData.append("signature", signature);
+                                formData.append("timestamp", timestamp);
+                                formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
 
-                            const response = await fetch(url, {
-                                method: "post",
-                                body: formData,
-                            });
+                                const response = await fetch(url, {
+                                    method: "post",
+                                    body: formData,
+                                });
 
-                            const data = await response.json();
+                                const data = await response.json();
 
-                            return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
-                        })
-                    ).then((response) =>{
-                        const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
-                        return filteredData;
-                    });
+                                return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
+                            })
+                        ).then((response) =>{
+                            const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
+                            return filteredData;
+                        });
+
+                        setImages(list);
+                }
 
         var hotelDetails ={
+                            id : detailsResult.id,
                             title : title,
                             description : description,
-                            img : list,
+                            img : images,
                             lat : marker?.lat,
                             location : location,
                             long : marker?.long,
@@ -160,15 +165,22 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                             cityId : cityId,
                         };
 
-        await axios.post(`${process.env.NEXT_API_URL}/api/post-destinations`, hotelDetails).then(() => {
+        if(hotelDetails.id === "" || hotelDetails.id === undefined || hotelDetails.title === "" || hotelDetails.title === undefined ||
+            hotelDetails.cityId === "" || hotelDetails.cityId === undefined || hotelDetails.img.length < 0 ) {
+                alert("Cannot update the city at this moment, please check your details");
+                setIsLoading(false);
+                return;
+        }
+                        
+        await axios.put(`/api/get-destinations/${hotelDetails.id}`, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
+                router.push("/destinations");
             })
         },
         [
@@ -194,16 +206,23 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                 };
             }
 
-            await axios.post(`/api/destroy/${publicId}`).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
-                // router.push('/');
-            }).catch(() => {
-                //   toast.error('Something went wrong.');
+            await axios.delete(`/api/destroy/${publicId}`).then(async () => {
+                await axios.post(`/api/delete-destination-image`,{id:publicId}).then(() => {
+                    const img = images.filter(img => img.publicId !== publicId);
+                    setImages(img);
+                }).catch((err) => {
+                    alert(`Something went wrong.${err.message}`);
+                    setIsLoading(false);
+                }).finally(() => {
+                    // const img = images.filter(img => img.publicId !== publicId);
+                    // setImages(img);
+                })
+            }).catch((err) => {
+                alert(`Something went wrong.${err.message}`);
                 setIsLoading(false);
             }).finally(() => {
-                const img = images.filter(img => img.publicId !== publicId);
-                setImages(img);
+                // const img = images.filter(img => img.publicId !== publicId);
+                // setImages(img);
             })
 
         };
@@ -251,7 +270,7 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                             </label>
                             <input
                                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                id="description" type="text" placeholder="description" onChange={(e) => { setLocation(e.target.value) }} />
+                                id="description" value={location} type="text" placeholder="description" onChange={(e) => { setLocation(e.target.value) }} />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
@@ -294,7 +313,8 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                                 City
                             </label>
                             <div className="relative">
-                                <select defaultValue="Pick A City" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" onChange={(e) => setCityId(e.target.value )}>
+                                <select defaultValue="Pick A City" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state" 
+                                    value={cityId} onChange={(e) => setCityId(e.target.value )}>
                                 <option value="Pick The City">Pick The City</option>
                                 {cities.map((city) => (
                                         <option value={city.id} >{city.cityName}</option>
@@ -344,7 +364,7 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                                             <div
                                                 className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
                                                 <h1 className="text-2xl text-white"></h1>
-                                                <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={(e) => onDeleteImage(file.publicId)}>Delete</button>
+                                                <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={() => onDeleteImage(file.publicId)}>Delete</button>
                                             </div>
                                         </div>
                                     )
