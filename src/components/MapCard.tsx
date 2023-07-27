@@ -4,15 +4,15 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import { useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
-import { IResult } from "../types/typings";
+import { IDestination, IResult } from "../types/typings";
 
 type Props = {
-  searchResults: IResult[];
+  searchResults: any[];
   favorites?: Boolean;
 };
 
 const MapCard = ({ searchResults, favorites=false }: Props) => {
-  const [selectedLocation, setSelectedLocation] = useState<IResult | null>(
+  const [selectedLocation, setSelectedLocation] = useState<IDestination | null>(
     null
   );
   const coordinates = searchResults.map((result) => ({
@@ -70,7 +70,7 @@ const MapCard = ({ searchResults, favorites=false }: Props) => {
                   <div className="relative h-[100px] w-[150px]">
                     <Image
                       className="object-cover"
-                      src={result.img}
+                      src={result.img[0].url}
                       alt={result.title}
                       fill
                     />

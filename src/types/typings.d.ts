@@ -157,6 +157,10 @@ export interface ITravelStyle {
 }
 
 export interface IDestination {
+  startDate: string;
+  endDate: string;
+  hotelId: string | number | boolean | readonly string[] | readonly number[] | readonly boolean[] | null | undefined;
+  total: string | number | boolean | readonly string[] | readonly number[] | readonly boolean[] | null | undefined;
   img: uploadImage[];
   id: string
   title: string
@@ -174,6 +178,7 @@ export interface IDestination {
 }
 
 export type IHotel = {
+  [x: string]: any;
   img: uploadImage[];
   id: string
   title: string

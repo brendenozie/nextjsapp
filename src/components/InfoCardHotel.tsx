@@ -9,11 +9,11 @@ import { Session } from "next-auth";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { IDestination, IResult } from "../types/typings";
+import { IDestination, IHotel, IResult } from "../types/typings";
 
 type Props = {
   cityId?: string;
-  item: IDestination;
+  item: IHotel;
   session: Session;
   favorite?: boolean;
   fromFavPage?: boolean;
@@ -23,7 +23,7 @@ type Props = {
   booking?: boolean;
 };
 
-const InfoCard = ({
+const InfoCardHotel = ({
   cityId,
   item,
   session,
@@ -181,4 +181,4 @@ const InfoCard = ({
   );
 };
 
-export default InfoCard;
+export default InfoCardHotel;

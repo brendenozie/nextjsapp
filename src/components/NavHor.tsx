@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 
 type linkProps = {
   title?: string;
+  href?: string;
   reference: string;
 };
 
-const NavHor = ({ title, reference }: linkProps) => {
+const NavHor = ({ title, href, reference }: linkProps) => {
   const [dark, setDark] = useState(false);
   const navbarDark = () => {
     if (window.scrollY > 10 && window.scrollY < window.innerHeight - 80) {
@@ -27,10 +28,8 @@ const NavHor = ({ title, reference }: linkProps) => {
   return (
     <li className="group">
       <Link
-        href={`#${reference}`}
-        className={`px-3 mx-2 py-1 xl:mx-3 hover:text-opacity-80 ${
-          dark ? "text-gray-700" : "text-white"
-        }`}
+        href={`${href}`}
+        className={`px-3 mx-2 py-1 xl:mx-3 hover:text-opacity-80 ${ dark ? "text-gray-700" : "text-white"  }`}
       >
         {title}
       </Link>

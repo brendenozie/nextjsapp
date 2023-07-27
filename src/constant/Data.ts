@@ -6,18 +6,22 @@ export const Navdata = [
   //   reference: "home",
   // },
   {
+    href: "#about",
     title: "About",
     reference: "about",
   },
   {
+    href: "/destinationlist",
     title: "Destinations",
     reference: "destinations",
   },
   {
+    href: "#review",
     title: "Review",
     reference: "review",
   },
   {
+    href: "#contact",
     title: "Contact",
     reference: "contact",
   },

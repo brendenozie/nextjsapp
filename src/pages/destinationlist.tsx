@@ -10,10 +10,11 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
 import MapCard from "../components/MapCard";
-import { IResult, ISuggestionFormatted } from "../types/typings";
+import { IDestination, IResult, ISuggestionFormatted } from "../types/typings";
+import getHotelList from "@/utils/getHotelList";
 
 type Props = {
-  searchResults: IResult[];
+  searchResults: IDestination[];
   session: Session;
 };
 
@@ -43,7 +44,7 @@ const Hotels = ({ searchResults, session }: Props) => {
               : `No accommodations available 2 days, 4 guests`}
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
-            Stays in {location}
+            Destinations 
           </h1>
 
           {searchResults && (
@@ -59,8 +60,8 @@ const Hotels = ({ searchResults, session }: Props) => {
             {searchResults &&
               searchResults?.map((item) => (
                 <InfoCard
-                  key={item.img}
-                  cityId={item.hotelId as string}
+                  key={item.img[0].url}
+                  cityId={item.id as string}
                   item={item}
                   startDate={startDate as string}
                   endDate={endDate as string}
@@ -111,187 +112,21 @@ export const getServerSideProps = async (
   const { id, location, startDate, endDate, numOfGuests } = context.query;
   const session = await getSession(context);
 
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: "/signin",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  const searchResults =  await fetch(`${process.env.NEXT_API_URL}/get-destinations`).then( (res) => res.json() );
 
-  const searchResults =  [{cityId:"3023",
-                            favorite: false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3024",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3025",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3026",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3027",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3028",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3029",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3030",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269},
-                            {cityId:"3031",
-                            favorite:false,
-                            fromFavPage:false,
-                            booking:false,
-                            startDate:"19 December 22",
-                            endDate:"23 December 22",
-                            numOfGuests:1,
-                            hotelId:1680767,
-                            img:"https://images.trvl-media.com/lodging/2000000/1690000/1680800/1680767/w2997h1998x0y0-9442fb93.jpg?impolicy=resizecrop&rw=455&ra=fit",
-                            location:"Private room 5.83 km from Rome",
-                            title:"Barceló Aran Mantegna",
-                            description:"Rome",
-                            star:7.8,
-                            price:219,
-                            total:908,
-                            long:12.4955,
-                            lat:41.85269}];
-  
-  
-  
-  
-//   await getHotelList(
-//     id,
-//     location,
-//     startDate,
-//     endDate,
-//     numOfGuests
-//   ).catch(console.error);
+  searchResults.id=id;
+  searchResults.location=location;
+  searchResults.startDate=startDate;
+  searchResults.endDate=endDate;
+  searchResults.numOfGuests=numOfGuests;
 
-//   if (!searchResults) {
-//     return {
-//       props: {
-//         session,
-//       },
-//     };
-//   }
+  if (!searchResults) {
+    return {
+      props: {
+        session,
+      },
+    };
+  }
 
   return {
     props: {

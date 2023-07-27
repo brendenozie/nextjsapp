@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Banner from "../components/Banner";
 import CarouselTitlesCard from "../components/CarouselTitlesCard";
 import Drawer from "../components/Drawer";
@@ -15,6 +15,7 @@ import Second from "@/components/Second";
 import Testi from "@/components/Testi";
 import Pic from "@/components/Pic";
 import { GetServerSidePropsContext } from "next";
+import axios from "axios";
 
 type Props = {
   citiesData: ICity[];
@@ -25,9 +26,41 @@ type Props = {
 const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [selectedCity, setSelectedCity] = useState<ICity | null>(
-    null
-  );
+  const [selectedCity, setSelectedCity] = useState<ICity | null>(null);
+
+  
+  const [fname, setFname] = useState("");  
+  const [lname, setLname] = useState("");  
+  const [email, setEmail] = useState("");  
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [message, setMessage] = useState("");
+  const [mail, setMail] = useState(false);
+
+
+  const sendMail = async () => {
+
+    setMail(true)
+
+    await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, {fname:fname,lname:lname,email:email,phone:phone,company:company,message:message,}).then(() => {
+            //   toast.success('Listing reserved!');
+            //   setDateRange(initialDateRange);
+            // router.push('/');
+            setFname("");
+            setLname("");
+            setEmail("");
+            setPhone("");
+            setCompany("");
+            setMessage("");
+            setMail(false)
+        }).catch(() => {
+            //   toast.error('Something went wrong.');
+            setMail(false);
+        }).finally(() => {
+          setMail(false);
+            // router.push("/");
+        })
+  };
 
   return (
     <div className="">
@@ -156,36 +189,36 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 <form className="flex flex-wrap -m-3" action="#">
                   <div className="w-full md:w-1/2 p-3">
                     <label className="block">
-                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="contactInput1-1" type="text" placeholder="First Name" />
+                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="fname" type="text" placeholder="First Name" />
                     </label>
                   </div>
                   <div className="w-full md:w-1/2 p-3">
                     <label className="block">
-                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="contactInput1-2" type="text" placeholder="Last Name" />
+                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="lname" type="text" placeholder="Last Name" />
                     </label>
                   </div>
                   <div className="w-full md:w-1/2 p-3">
                     <label className="block">
-                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="contactInput1-3" type="text" placeholder="Email Address" />
+                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="email" type="text" placeholder="Email Address" />
                     </label>
                   </div>
                   <div className="w-full md:w-1/2 p-3">
                     <label className="block">
-                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="contactInput1-4" type="text" placeholder="Phone Number" />
+                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="phone" type="text" placeholder="Phone Number" />
                     </label>
                   </div>
                   <div className="w-full p-3">
                     <label className="block">
-                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="contactInput1-5" type="text" placeholder="Company (Optional)" />
+                      <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="company" type="text" placeholder="Company (Optional)" />
                     </label>
                   </div>
                   <div className="w-full p-3">
                     <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-                      <textarea id="message" className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" placeholder="Leave a message..."></textarea>
+                      <textarea className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="message"  placeholder="Leave a message..."></textarea>
                     </label>
                   </div>
                   <div className="w-full p-3">
-                    <Link className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" href="#">Send Enquiry</Link>
+                    <button className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" onClick={sendMail}>Send Enquiry</button>
                     <span className="text-sm text-gray-600 tracking-tight">* We never share user details with third parties, period.</span>
                   </div>
                 </form>

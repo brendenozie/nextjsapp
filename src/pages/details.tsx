@@ -17,6 +17,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MapCard from "../components/MapCard";
 import { IDetails, IResult, ISuggestionFormatted } from "../types/typings";
+import getHotelDetails from "@/utils/getHotelDetails";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -312,7 +313,7 @@ export const getServerSideProps = async (
   //   };
   // }
 
-  const detailsResult = hotelId;//await getHotelDetails(hotelId).catch(console.error);
+  const detailsResult = await getHotelDetails(hotelId).catch(console.error);
 
   return {
     props: {

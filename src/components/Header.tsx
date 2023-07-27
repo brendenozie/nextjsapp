@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Nav from "./Nav";
 import Link from "next/link";
-// import { FaPlaneDeparture } from "react-icons/fa";
+
 import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";

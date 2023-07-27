@@ -48,7 +48,7 @@ const Nav = () => {
           <ul className="flex flex-col gap-2 pr-2 text-gray-800">
             {Navdata.map((item) => (
               <div key={item.reference}>
-                <NavVer title={item.title} reference={item.reference} />
+                <NavVer title={item.title} href={item.href} reference={item.reference} />
               </div>
             ))}
           </ul>
@@ -59,7 +59,7 @@ const Nav = () => {
         <ul className="flex text-black  font-bold">
           {Navdata.map((item) => (
             <div key={item.reference}>
-              <NavHor title={item.title} reference={item.reference} />
+              <NavHor title={item.title} href={item.href} reference={item.reference} />
             </div>
           ))}
         </ul>
