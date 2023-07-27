@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../server/db/prismadb";
+import { getSession } from "next-auth/react";
 
 export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {
-    userEmail,
     sessionId,
     hotelId,
     description,
@@ -23,6 +23,7 @@ export default async function handle(
     endDate,
   } = req.body;
 
+  const session = await getSession({ req });
   const result = await prisma.booking.create({
     data: {
       sessionId,
@@ -38,7 +39,7 @@ export default async function handle(
       star: Number(star),
       title,
       total: Number(total),
-      userEmail,
+      userEmail : session!.user!.email!,
       cityId,
     },
   });

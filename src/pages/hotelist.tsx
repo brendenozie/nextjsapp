@@ -67,7 +67,7 @@ const Hotels = ({ searchResults, session }: Props) => {
               searchResults?.map((item) => (
                 <InfoCardHotel
                   key={item.img[0].url}
-                  cityId={item.hotelId as string}
+                  cityId={item.cityId as string}
                   item={item}
                   startDate={startDate as string}
                   endDate={endDate as string}
@@ -121,6 +121,7 @@ export const getServerSideProps = async (
   const searchResults =  await fetch(`${process.env.NEXT_API_URL}/get-hotels/${id}`).then( (res) => res.json() );
 
   searchResults.id=id;
+  searchResults.hotelId=id;
   searchResults.location=location;
   searchResults.startDate=startDate;
   searchResults.endDate=endDate;

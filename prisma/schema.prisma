@@ -79,7 +79,7 @@ model Hotel {
 model Booking {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime @default(now())
-  sessionId   String   @unique
+  sessionId   String?   
   hotelId     String
   description String
   startDate   String
@@ -91,7 +91,7 @@ model Booking {
   price       String
   star        Float
   title       String
-  total       Float
+  total       Float?
   userEmail   String
   cityId      String
   user        User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)

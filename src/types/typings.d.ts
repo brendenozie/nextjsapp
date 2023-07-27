@@ -56,7 +56,7 @@ export interface IProperty {
 export interface IResult {
   hotelId: string;
   description: string;
-  img: string;
+  img: uploadImage[];
   lat: number;
   location?: number;
   long: number;

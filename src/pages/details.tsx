@@ -16,17 +16,18 @@ import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MapCard from "../components/MapCard";
-import { IDetails, IResult, ISuggestionFormatted } from "../types/typings";
+import { IDetails, IResult, ISuggestionFormatted, uploadImage } from "../types/typings";
 import getHotelDetails from "@/utils/getHotelDetails";
+import CarouselCard from "@/components/CarouselCard";
 
 let stripePromise: Promise<Stripe | null>;
 
 type Props = {
-  detailsResult: IDetails;
+  // detailsResult: IDetails;
   session: Session;
 };
 
-const Details = ({ detailsResult, session }: Props) => {
+const Details = ({ session }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
@@ -57,7 +58,7 @@ const Details = ({ detailsResult, session }: Props) => {
   const searchResults: IResult[] = [
     {
       hotelId: hotelId as string,
-      img: img as string,
+      img: img as any[],
       title: title as string,
       description: description as string,
       star: parseFloat(star as string),
@@ -68,10 +69,13 @@ const Details = ({ detailsResult, session }: Props) => {
       userEmail: userEmail as string,
     },
   ];
-  console.log({ startDate, endDate });
+  // console.log({ startDate, endDate });
   const formattedStartDate = startDate;
   const formattedEndDate = endDate;
   const range = `from ${formattedStartDate} to ${formattedEndDate}`;
+  // const allimages :uploadImage[] = img;
+
+  const [allImages, setAllImages] =useState<any>(img? img : [])
   // Update Fav State from Query Value
   useEffect(() => {
     if (favorite === "true") setIsFav(true);
@@ -83,7 +87,7 @@ const Details = ({ detailsResult, session }: Props) => {
       stripePromise = loadStripe(process.env.stripe_public_key!);
     }
     // Call the Backend API to create a Checkout session
-    const checkoutSession = await axios.post(`${process.env.NEXT_API_URL}/create-checkout-session`, {
+    const checkoutSession = await axios.post(`${process.env.NEXT_API_URL}/post-booking`, {
       hotelId: hotelId,
       title: title,
       description: description,
@@ -108,6 +112,32 @@ const Details = ({ detailsResult, session }: Props) => {
     if (result.error) {
       alert(result.error.message);
     }
+  };
+
+  // Create New Stripe Checkout Session
+  const createBooking = async () => {
+    
+    await axios.post(`/api/post-booking`, {
+        hotelId: hotelId,
+        title: title,
+        description: description,
+        img: JSON.stringify(img),
+        location: location,
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+        price: price,
+        total: total,
+        long: long,
+        lat: lat,
+        star: star,
+        cityId: cityId,
+      }).then(() => {
+        router.back();
+    }).catch(() => {
+        alert('Something went wrong.');
+    }).finally(() => {
+        
+    });
   };
   // Add Fav Hotel to DB
   const submitFavorite = async () => {
@@ -193,7 +223,10 @@ const Details = ({ detailsResult, session }: Props) => {
             </p>
           </div>
           {/* Photo Gallery */}
-          {/* <CarouselCard images={detailsResult.img} /> */}
+          <CarouselCard images={allImages} />
+
+          {/* {JSON.parse(allImages).map((image: any) => {console.log(image);})} */}
+
           {/* Accommodation Price Details detailsResult.images.slice(0, 25*/}
           {fromFavPage === "false" && (
             <>
@@ -213,12 +246,11 @@ const Details = ({ detailsResult, session }: Props) => {
           {fromFavPage === "false" && (
             <div className="w-full flex justify-end">
               <button
-                role="link"
-                // onClick={createCheckoutSession}
-                disabled={!session}
+                onClick={createBooking}
                 className="text-md px-3 py-1 italic text-white cursor-pointer bg-orange-500  rounded-xl mt-3 hover:bg-orange-600 active:scale-95 transition duration-250"
               >
-                {!session ? "Sign in to express booking" : "Express Booking"}
+                {/* {!session ? "Sign in to express booking" : "Express Booking"} */}
+                Book
               </button>
             </div>
           )}
@@ -273,7 +305,7 @@ const Details = ({ detailsResult, session }: Props) => {
           </ul>
           {/* MapBox, Bottom Section */}
           <h3 className="text-2xl font-semibold py-7">Location</h3>
-          <p className="pb-7">{detailsResult.address}</p>
+          <p className="pb-7">{location}</p>
           <div className="w-full h-[500px]">
             <MapCard searchResults={searchResults} />
           </div>
@@ -304,20 +336,20 @@ export const getServerSideProps = async (
   const { hotelId } = context.query;
   const session = await getSession(context);
 
-  // if (!session) {
-  //   return {
-  //     redirect: {
-  //       destination: "/signin",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/signin",
+        permanent: false,
+      },
+    };
+  }
 
-  const detailsResult = await getHotelDetails(hotelId).catch(console.error);
+  // const detailsResult = await getHotelDetails(hotelId).catch(console.error);
 
   return {
     props: {
-      detailsResult,
+      // detailsResult,
       session,
     },
   };
