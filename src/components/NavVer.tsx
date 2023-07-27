@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 // import { IoCaretUpOutline } from "react-icons/io5";
 
@@ -9,12 +10,12 @@ type linkProps = {
 const NavHor = ({ title, reference }: linkProps) => {
   return (
     <li className="group">
-      <a
+      <Link
         href={`#${reference}`}
         className={`px-2 text-[.95rem] hover:text-opacity-60 text-gray-100`}
       >
         {title}
-      </a>
+      </Link>
     </li>
   );
 };

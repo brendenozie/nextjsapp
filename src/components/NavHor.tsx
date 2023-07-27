@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 type linkProps = {
@@ -25,14 +26,14 @@ const NavHor = ({ title, reference }: linkProps) => {
   }, []);
   return (
     <li className="group">
-      <a
+      <Link
         href={`#${reference}`}
         className={`px-3 mx-2 py-1 xl:mx-3 hover:text-opacity-80 ${
           dark ? "text-gray-700" : "text-white"
         }`}
       >
         {title}
-      </a>
+      </Link>
     </li>
   );
 };

@@ -122,9 +122,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
               </p>
 
               <div className="mt-4 md:mt-8">
-                <a href="#" className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400" >
+                <Link href="#" className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400" >
                   Book Today
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                     </label>
                   </div>
                   <div className="w-full p-3">
-                    <a className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" href="#">Send Enquiry</a>
+                    <Link className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" href="#">Send Enquiry</Link>
                     <span className="text-sm text-gray-600 tracking-tight">* We never share user details with third parties, period.</span>
                   </div>
                 </form>

@@ -377,7 +377,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                                             <div
                                                 className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
                                                 <h1 className="text-2xl text-white"></h1>
-                                                <a className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" href="#">Delete</a>
+                                                <button className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" onClick={(e) => onDeleteImage}>Delete</button>
                                             </div>
                                         </div>
                                     )

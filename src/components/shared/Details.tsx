@@ -3,6 +3,7 @@ import Image from "next/image";
 import {
   UsersIcon,HeartIcon,BookmarkIcon
 } from "@heroicons/react/24/solid";
+import Link from "next/link";
 // import { GoPerson } from "react-icons/go";
 // import { HiOutlineHeart } from "react-icons/hi";
 // import { IoBookmarksOutline } from "react-icons/io5";
@@ -29,9 +30,9 @@ const Details = ({
           </div>
           <div className="flex flex-col justify-end">
             <p className="text-lg font-semibold">{photographer}</p>
-            <a href={photographer_url} className="font-light">
+            <Link href={photographer_url} className="font-light">
               Follow
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex items-center gap-x-2">

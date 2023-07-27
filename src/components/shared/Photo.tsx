@@ -6,6 +6,7 @@ import Image from "next/image";
 import {
   UsersIcon,ArrowDownIcon
 } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 interface Props {
   photo: {
@@ -28,12 +29,12 @@ function Photo({ photo }: Props) {
           <div className="p-2 rounded-full shadow-lg ">
             <UsersIcon color="#d1d5db" className="h-6" />
           </div>
-          <a
+          <Link
             href={photo.photographerUrl}
             className="text-gray-100 text-[.95rem]"
           >
             {photo.photographer}
-          </a>
+          </Link>
         </div>
         <div className="flex items-center gap-x-2 pr-4 group/download">
           <ArrowDownIcon color="#d1d5db" className="h-6" />

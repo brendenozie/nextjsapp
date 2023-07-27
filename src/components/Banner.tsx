@@ -2,6 +2,7 @@ import { ICity } from "@/types/typings";
 import { addDays } from "date-fns";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
@@ -68,12 +69,12 @@ const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) =
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10 ">
-            <a className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+            <Link className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
               href="#contact" >
               Make An Enquiry
-            </a>
+            </Link>
 
-            {/* <a className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-gray-100 shadow hover:text-gray-900 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
+            {/* <Link className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-gray-100 shadow hover:text-gray-900 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
                 href="/about">
                 Learn More
               </a> */}

@@ -44,9 +44,9 @@ const Second = () => {
                 <p>
                   Interested in Travel to be your travel companion on your special
                   moment? Get in touch with our team at{" "}
-                  <a href="" className="text-emerald-800 underline">
-                    tripteam@travel.com
-                  </a>
+                  <Link href="$contact" className="text-emerald-800 underline">
+                    akinyisafiris@gmail.com
+                  </Link>
                 </p>
               </div>
             </div>
