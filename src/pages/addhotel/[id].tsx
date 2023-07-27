@@ -24,7 +24,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
 
     const [files, setFile] = useState<any[]>([]);
     const [imageFiles, setImageFiles] = useState<any[]>([]);
-    const [images, setImages] = useState<uploadImage[]>([]);
+    const [images, setImages] = useState<uploadImage[]>([detailsResult.img]);
     const [isLoading, setIsLoading] = useState(false);
 
     //Message incase an error is encountered when selecting the images
@@ -42,7 +42,7 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
     const [userEmail, setUserEmail] = useState("");
     const [cityId, setCityId] = useState(detailsResult.cityId);    
     const [travelStyleId, setTravelStyleId] = useState(detailsResult.travelStyleId);
-    const [marker, setMarker] = useState<{ lat: any, long: any }>({ lat: detailsResult.lat, long: detailsResult.long });
+    const [marker, setMarker] = useState<{ lat: any, long: any }>();//{ lat: detailsResult.lat, long: detailsResult.long }
 
     const router = useRouter();
 
@@ -108,7 +108,6 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
         }
         setMessage("Selected images are not of valid type\nOr\nImage Count is above allowed limit!");
     };
-
 
     const onCreateHotel = useCallback(async () => {
 
@@ -185,7 +184,34 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
             offer,
             offerPrice,
             cityId,
-        ]);
+    ]);
+
+    const onDeleteImage = async (publicId: string) => {
+
+        if (!session) {
+            return {
+                redirect: {
+                    destination: "/signin",
+                    permanent: false,
+                },
+            };
+        }
+
+        await axios.post(`/api/destroy/${publicId}`).then(() => {
+            //   toast.success('Listing reserved!');
+            //   setDateRange(initialDateRange);
+            // router.push('/');
+        }).catch(() => {
+            //   toast.error('Something went wrong.');
+            setIsLoading(false);
+        }).finally(() => {
+            // router.push("/");
+            const img = images.filter(img => img.publicId !== publicId);
+            setImages(img);
+        })
+
+    };
+
 
     return (
         <div>
@@ -339,14 +365,24 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                             </div>
                             <div className="flex flex-wrap gap-2 mt-2">
 
-                                {images.map((file, key) => {
+                            {images.map((file, key) => {
                                     return (
-                                        <div key={key} className="overflow-hidden relative">
-                                            <img className="h-20 w-20 rounded-md" src={file.url} />
-                                            <i onClick={() => { removeImage(file) }} className="mdi mdi-close absolute right-1 hover:text-white cursor-pointer h-10"></i>
+                                        // <div key={key} className="overflow-hidden relative">
+                                        //     <img className="h-20 w-20 rounded-md" src={file.url} />
+                                        //     <i onClick={() => { removeImage(file) }} className="mdi mdi-close absolute right-1 hover:text-white cursor-pointer h-10"></i>
+                                        // </div>
+                                        <div key={key} className="overflow-hidden group relative h-20 w-20">
+                                            <img className="w-full object-cover"
+                                                src={file.url} />
+                                            <div
+                                                className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
+                                                <h1 className="text-2xl text-white"></h1>
+                                                <a className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" href="#">Delete</a>
+                                            </div>
                                         </div>
                                     )
-                                })}
+                                })
+                            }
 
                             </div>
                         </div>

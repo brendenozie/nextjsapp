@@ -32,6 +32,9 @@ async function getDestinations(req: NextApiRequest, res: NextApiResponse) {
       where: {
         id: destinationId,
       },
+      include: {
+        img: { select: { id: true, publicId:true, url: true, status: true, } },
+      },
     })
     return res.status(200).json(destination)
   } catch (e) {

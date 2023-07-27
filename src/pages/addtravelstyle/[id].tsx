@@ -23,7 +23,9 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
     
     const [files, setFile] = useState<any[]>([]);
     const [imageFiles, setImageFiles] = useState<any[]>([]);
-    const [images, setImages] = useState<uploadImage[]>([]);
+    const [images, setImages] = useState<uploadImage[]>([{publicId : detailsResult.publicId,
+                                                            url      : detailsResult.url,
+                                                            status   : detailsResult.status,}]);
     const [isLoading, setIsLoading] = useState(false);
 
     //Message incase an error is encountered when selecting the images
@@ -119,32 +121,36 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
 
         let notUploadedImages = images.filter(itm => itm.status !== 'uploaded');
 
-        let list = await Promise.all(            
-                        notUploadedImages.map(async (imge) => {            
-                            const { signature, timestamp } = await getSignature();
-                            const formData = new FormData();
-                            formData.append("file", imge.url);
-                            formData.append("signature", signature);
-                            formData.append("timestamp", timestamp);
-                            formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
+        if(notUploadedImages.length > 0){
 
-                            const response = await fetch(url, {
-                                method: "post",
-                                body: formData,
-                            });
+            let list = await Promise.all(            
+                                    notUploadedImages.map(async (imge) => {            
+                                        const { signature, timestamp } = await getSignature();
+                                        const formData = new FormData();
+                                        formData.append("file", imge.url);
+                                        formData.append("signature", signature);
+                                        formData.append("timestamp", timestamp);
+                                        formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
 
-                            const data = await response.json();
+                                        const response = await fetch(url, {
+                                            method: "post",
+                                            body: formData,
+                                        });
 
-                            return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
-                        })
-                    ).then((response) =>{
-                        const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
-                        return filteredData;
-                    });
+                                        const data = await response.json();
 
-                    travelStyle.publicId = list[0].publicId;
-                    travelStyle.url      = list[0].url;
-                    travelStyle.status   = list[0].status;
+                                        return [...images, {publicId: data.public_id, url: data.secure_url, status: "uploaded"}];
+                                    })
+                                ).then((response) =>{
+                                    const filteredData = response[0].filter((cat: any) => cat.status === "uploaded");
+                                    return filteredData;
+                                });
+
+            travelStyle.publicId = list[0].publicId;
+            travelStyle.url      = list[0].url;
+            travelStyle.status   = list[0].status;
+                            
+        };
 
         await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, travelStyle).then(() => {
                 //   toast.success('Listing reserved!');
@@ -160,6 +166,40 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
         [
             travelStyle,
             images,
+        ]);
+
+    const onDeleteImage = useCallback(async (publicId : string) => {
+
+            if (!session) {
+                return {
+                    redirect: {
+                        destination: "/signin",
+                        permanent: false,
+                    },
+                };
+            }
+
+            await axios.post(`/api/destroy/${publicId}`).then(() => {
+                //   toast.success('Listing reserved!');
+                //   setDateRange(initialDateRange);
+                // router.push('/');
+            }).catch(() => {
+                //   toast.error('Something went wrong.');
+                setIsLoading(false);
+            }).finally(() => {
+                // router.push("/");
+                setImages([]);
+                const imp= images.filter(image => image.publicId !== publicId);
+                setImages(imp);
+                travelStyle.publicId = "";
+                travelStyle.url      = "";
+                travelStyle.status   = "";
+            })
+
+        },
+        [
+            travelStyle,
+            setImages,
         ]);
 
     return (
@@ -203,15 +243,20 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                             <div className="flex flex-wrap gap-2 mt-2">
 
                                 {images.map((file, key) => {
-                                    return (
-                                        <div key={key} className="overflow-hidden relative">
-                                            <img className="h-20 w-20 rounded-md" src={file.url} />
-                                            <i onClick={() => { removeImage(file) }} className="mdi mdi-close absolute right-1 hover:text-white cursor-pointer h-10"></i>
-                                        </div>
-                                    )
-                                })}
+                                        return (
+                                            <div key={key} className="overflow-hidden group relative h-20 w-20">
+                                                <img className="w-full object-cover"
+                                                    src={file.url} />
+                                                <div
+                                                    className="absolute top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-gray-700 opacity-0 group-hover:h-full group-hover:opacity-70 duration-500">
+                                                    <h1 className="text-2xl text-white"></h1>
+                                                    <a className="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-red-600 duration-300" href="#">Delete</a>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
 
-                            </div>
+                                </div>
                         </div>
                     </div>
                     <div className="mt-6 flex items-center justify-end gap-x-6">

@@ -31,9 +31,8 @@ async function GetHotel(req: NextApiRequest, res: NextApiResponse) {
       where: {
         id: hotelId,
       },
-      select: {
-        id: true,
-        img: { select: { id: true, publicId:true, url: true, } },
+      include: {
+        img: { select: { id: true, publicId:true, url: true, status: true, } },
       },
     })
     return res.status(200).json(hotel);

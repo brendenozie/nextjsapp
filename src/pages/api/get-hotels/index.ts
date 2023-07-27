@@ -7,7 +7,11 @@ export default async function handle(
 ) {
   const { userEmail } = req.query;
   if (req.method === "GET") {
-    const user = await prisma.hotel.findMany();
+    const user = await prisma.hotel.findMany({
+      include: {
+        img: { select: { id: true, publicId:true, url: true, status: true, } },
+      }
+    });
     res.json(user);
   } else {
     throw new Error(

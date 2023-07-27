@@ -157,7 +157,8 @@ export interface ITravelStyle {
 }
 
 export interface IDestination {
-id: string
+  img: uploadImage[];
+  id: string
   title: string
   description: string
   star: number
@@ -173,6 +174,7 @@ id: string
 }
 
 export type IHotel = {
+  img: uploadImage[];
   id: string
   title: string
   description: string

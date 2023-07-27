@@ -107,7 +107,7 @@ const Hotels = (props: Props) => {
                           <td className="px-16 py-2 flex flex-row items-center">
                             <img
                               className="h-8 w-8 rounded-full object-cover "
-                              src={"https://randomuser.me/api/portraits/men/30.jpg"}
+                              src={hotel.img[0].url} 
                               alt=""
                             />
                           </td>
