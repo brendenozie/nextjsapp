@@ -11,7 +11,7 @@ import MapCard from "../components/MapCard";
 import { IResult, ISuggestionFormatted } from "../types/typings";
 
 type Props = {
-  bookings: IResult[];
+  bookings: any[];
   session: Session;
 };
 

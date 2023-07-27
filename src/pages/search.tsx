@@ -15,7 +15,7 @@ import { IResult, ISuggestionFormatted } from "../types/typings";
 import getHotelList from "../utils/getHotelList";
 
 type Props = {
-  searchResults: IResult[];
+  searchResults: any[];
   session: Session;
 };
 
