@@ -110,14 +110,14 @@ const Cities = (props: Props) => {
                           <span className="text-gray-300">Name</span>
                         </th>
                         <th className="px-16 py-2">
-                          <span className="text-gray-300">Invitation</span>
+                          <span className="text-gray-300"></span>
                         </th>
                         <th className="px-16 py-2">
-                          <span className="text-gray-300">Date</span>
+                          <span className="text-gray-300"></span>
                         </th>
 
                         <th className="px-16 py-2">
-                          <span className="text-gray-300">Time</span>
+                          <span className="text-gray-300"></span>
                         </th>
 
                         <th className="px-16 py-2">
@@ -139,9 +139,11 @@ const Cities = (props: Props) => {
                             <span className="text-center ml-2 font-semibold">{city.cityName}</span>
                           </td>
                           <td className="px-16 py-2">
+                          <Link href={`/addcity/${city.id}`} >
                             <button className="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">
                               Edit
                             </button>
+                            </Link>
                           </td>
                           <td className="px-16 py-2">
                             <button className="bg-red-800 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">

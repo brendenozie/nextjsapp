@@ -1,7 +1,7 @@
 import { Key, useCallback, useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import SetLocationCard from "@/components/SetMapCard";
 import Compressor from 'compressorjs';
 import axios from "axios";

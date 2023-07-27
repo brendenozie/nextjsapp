@@ -1,4 +1,3 @@
-import { Role } from './../../../../nextauth.d';
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";

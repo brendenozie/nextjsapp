@@ -145,6 +145,7 @@ export interface IUser {
 	name : string;
 	email : string;
 	image : string;
+	role : string;
 }
 
 export interface ITravelStyle {
@@ -163,9 +164,9 @@ id: string
   lat: number
   location: string
   long: number
-  price: number
+  price: float
   offer: boolean
-  offerPrice: number
+  offerPrice: float
   userEmail: string
   cityId: string
   createdAt: Date
@@ -179,9 +180,9 @@ export type IHotel = {
   lat: number
   location: string
   long: number
-  price: number
+  price: float
   offer: boolean
-  offerPrice: number
+  offerPrice: float
   userEmail: string
   cityId: string
   createdAt: Date

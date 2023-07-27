@@ -6,7 +6,7 @@ const Sidebar = (props: Props) => {
           >
         {/* <!-- SIDEBAR HEADER  */}
         <div className="flex items-center justify-between gap-6 px-6 py-5.5 lg:py-6.5 ">
-          <a href="/admin">
+          <a href="/XDH4U3IJKE20">
           <h3 className="m-4 ml-4 text-sm font-bold text-base">HobbyHorseTours Admin</h3>
           </a>
 

@@ -1,8 +1,10 @@
 // middleware.ts
 import { getToken } from "next-auth/jwt";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
-export async function middleware(request: NextRequest, _next: NextFetchEvent) {
 
+export default async function middleware(request: NextRequest) {
+
+  console.log("middleware");
   const { pathname } = request.nextUrl;
   const protectedPaths = ["/XDH4U3IJKE20","/addcity","/adddestination","/addhotel","/addtravelstyle"];
   const matchesProtectedPath = protectedPaths.some((path) =>
@@ -17,6 +19,10 @@ export async function middleware(request: NextRequest, _next: NextFetchEvent) {
     }
     if (token.role !== "admin") {
       const url = new URL(`/403`, request.url);
+      return NextResponse.rewrite(url);
+    }
+    if (token.role === "admin") {
+      const url = new URL(`/XDH4U3IJKE20`, request.url);
       return NextResponse.rewrite(url);
     }
   }

@@ -1,7 +1,7 @@
 import { Key, useCallback, useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import SetLocationCard from "@/components/SetMapCard";
 import Compressor from 'compressorjs';
 import axios from "axios";
@@ -14,10 +14,11 @@ import { ITravelStyle, uploadImage } from "@/types/typings";
 const imageTypeRegex = /image\/(png|jpg|jpeg)/gm;
 
 type Props = {
+    detailsResult: ITravelStyle;
     session: Session;
 };
 
-const addTravelStyle = ({ session }: Props)  => {
+const addTravelStyle = ({ session, detailsResult }: Props)  => {
 
     
     const [files, setFile] = useState<any[]>([]);
@@ -29,11 +30,12 @@ const addTravelStyle = ({ session }: Props)  => {
     const [message, setMessage] = useState("");
 
     //City Details
-    const [travelStyle, setTravelStyle] = useState<ITravelStyle>({   id : "",styleName : "",
-                                                publicId : "",
-                                                url      : "",
-                                                status   : "",
-                                            });
+    const [travelStyle, setTravelStyle] = useState<ITravelStyle>({   id : detailsResult.id,
+                                                                        styleName : detailsResult.styleName,
+                                                                        publicId : detailsResult.publicId,
+                                                                        url      : detailsResult.url,
+                                                                        status   : detailsResult.status,
+                                                                    });
 
     const router = useRouter();
 
@@ -163,19 +165,7 @@ const addTravelStyle = ({ session }: Props)  => {
     return (
         <div>
             {/* No Placeholder htmlFor Hotels from Favorite List */}
-            <Header
-            // searchInput={searchInput}
-            // setSearchInput={setSearchInput}
-            // selectedCity={selectedCity}
-            // setSelectedCity={setSelectedCity}
-            // isOpen={isOpen}
-            // setIsOpen={setIsOpen}
-            // placeholder={
-            //   fromFavPage === "false"
-            //     ? `${location} - ${range} - ${numOfGuests}`
-            //     : ``
-            // }
-            />
+            <Header/>
             <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black"></div>
             <main className="flex flex-col max-w-4xl mx-auto">
                 {/* Left Section */}
@@ -192,7 +182,8 @@ const addTravelStyle = ({ session }: Props)  => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
                                 Style Name
                             </label>
-                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="title" 
+                            <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                            id="grid-title" value={travelStyle.styleName} type="text" placeholder="title" 
                              onChange={(e) => { travelStyle.styleName = e.target.value }}/>
 
                         </div>
@@ -238,25 +229,36 @@ export default addTravelStyle;
 
 export const getServerSideProps = async (
     context: GetServerSidePropsContext
-) => {
+  ) => {
+    const { id, } = context.query;
     const session = await getSession(context);
-    // const userEmail = session?.user?.email;
-
+  
     if (!session) {
-        return {
-            redirect: {
-                destination: "/signin",
-                permanent: false,
-            },
-        };
-    }
-
-    return {
-        props: {
-            session,
+      return {
+        redirect: {
+          destination: "/signin",
+          permanent: false,
         },
+      };
+    }
+    
+    const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-travel-style/${id}`).then( (res) => res.json() );
+  
+    if (!detailsResult) {
+      return {
+        props: {
+          session,
+        },
+      };
+    }
+  
+    return {
+      props: {
+        detailsResult,
+        session,
+      },
     };
-};
+  };
 
 
 async function getSignature() {

@@ -40,20 +40,20 @@ model Session {
 }
 
 model Destination {
-  id            String       @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  description   String
-  star          Float        @default(0.00)
-  img           DestinationImage[]
-  lat           Float
-  location      String
-  long          Float
-  price         Float        @default(0.00)
-  offer         Boolean      @default(false)
-  offerPrice    Float        @default(0.00)
-  userEmail     String
-  cityId        String       @db.ObjectId
-  createdAt     DateTime     @default(now())
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  star        Float              @default(0.00)
+  img         DestinationImage[]
+  lat         Float
+  location    String
+  long        Float
+  price       Float              @default(0.00)
+  offer       Boolean            @default(false)
+  offerPrice  Float              @default(0.00)
+  userEmail   String
+  cityId      String             @db.ObjectId
+  createdAt   DateTime           @default(now())
 }
 
 model Hotel {
@@ -103,6 +103,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          String    @default("user")
   accounts      Account[]
   sessions      Session[]
   favorites     Hotel[]
@@ -128,16 +129,16 @@ model HotelImage {
 }
 
 model DestinationImage {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  destinationId  String @db.ObjectId
-  publicId String
-  url      String
-  status   String
-  destination    Destination  @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  destinationId String      @db.ObjectId
+  publicId      String
+  url           String
+  status        String
+  destination   Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
 }
 
 model City {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   cityName String
   publicId String
   url      String
