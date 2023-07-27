@@ -39,9 +39,10 @@ const Hotels = ({ searchResults, session }: Props) => {
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">
-            {searchResults
+            {/* {searchResults
               ? `Accommodations available 2 days, 4 guests`
-              : `No accommodations available 2 days, 4 guests`}
+              : `No accommodations available 2 days, 4 guests`} */}
+              Accomodations Available
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
             Destinations 

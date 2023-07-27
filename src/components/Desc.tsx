@@ -116,15 +116,15 @@ const Desc = ({
 
                 <div className="w-full">
                   <select id="country" name="country" defaultValue={"Pick A City"} className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" 
-                  onChange={(e) => {setSelectedCity({id:e.target.accessKey,
-                                                                                      cityName : e.target.value? e.target.value : "",
+                  onChange={(e) => {setSelectedCity({id:JSON.parse(e.target.value).id,
+                                                                                      cityName : JSON.parse(e.target.value).cityName,
                                                                                       publicId : "",
                                                                                       url      : "",
                                                                                       status   : ""});
                                                                                 }}>
                   <option value="Pick A City" >Pick A City</option>
                   {getInspiredCities.map((city) => (
-                      <option key={city.id} value={city.cityName} >{city.cityName}</option>
+                      <option value={JSON.stringify(city)} >{city.cityName}</option>
                     ))}
                   </select>
                 </div>

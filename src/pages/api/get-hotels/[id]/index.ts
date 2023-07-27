@@ -25,11 +25,11 @@ export default async function handle(
 }
 
 async function GetHotel(req: NextApiRequest, res: NextApiResponse) {
-  const hotelId = req.query.id as string
+  const citylId = req.query.id as string
   try {
-    const hotel = await prisma.hotel.findFirst({
+    const hotel = await prisma.hotel.findMany({
       where: {
-        id: hotelId,
+        cityId: citylId,
       },
       include: {
         img: { select: { id: true, publicId:true, url: true, status: true, } },
