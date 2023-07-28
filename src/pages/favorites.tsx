@@ -88,9 +88,8 @@ export const getServerSideProps = async (
     };
   }
 
-  const response = await fetch(
-    `/api/get-favorites?userEmail=${userEmail}`
-  );
+  let url = process.env.NEXT_API_URL;
+  const response = await fetch(url+"/get-favorites?userEmail=${userEmail}");
   const json = await response.json();
   const favorites = json.favorites;
 

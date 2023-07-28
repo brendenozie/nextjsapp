@@ -41,8 +41,8 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   const sendMail = async () => {
 
     setMail(true)
-
-    await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, {fname:fname,lname:lname,email:email,phone:phone,company:company,message:message,}).then(() => {
+    let url = process.env.NEXT_API_URL;
+    await axios.post(url+`/post-travel-style`, {fname:fname,lname:lname,email:email,phone:phone,company:company,message:message,}).then(() => {
             setFname("");
             setLname("");
             setEmail("");
@@ -249,12 +249,12 @@ export default Home;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  
-  const citiesData =  await fetch(`/api/get-city`).then( (res) => res.json() );
+  let url = process.env.NEXT_API_URL;
+  const citiesData =  await fetch(url+`/get-city`).then( (res) => res.json() );
 
-  const stylesData = await fetch(`/api/get-travel-style`).then((res) => res.json());
+  const stylesData = await fetch(url+`/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch(`/api/get-city`).then((res) => res.json());
+  const getInspiredCities = await fetch(url+`/get-city`).then((res) => res.json());
 
   return {
     props: {

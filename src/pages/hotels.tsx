@@ -2,6 +2,7 @@ import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 import { GetServerSidePropsContext } from "next";
 import { IHotel } from "@/types/typings";
+import Layout from "@/components/AdminLayout";
 
 
 type Props = {
@@ -11,17 +12,7 @@ type Props = {
 const Hotels = (props: Props) => {
 
   return (
-    // <!-- ===== Page Wrapper Start ===== -->
-    <div className="flex h-screen overflow-hidden">
-      {/* <!-- ===== Sidebar Start ===== --> */}
-      
-      <Sidebar/>
-      {/* <!-- ===== Sidebar End ===== --> */}
-  
-      {/* <!-- ===== Content Area Start ===== --> */}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-  
-        {/* <!-- ===== Main Content Start ===== --> */}
+    <Layout>
         <main>
           {/* <!-- component --> */}
           <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
@@ -154,11 +145,7 @@ const Hotels = (props: Props) => {
             </div>
           </div>
         </main>
-        {/* <!-- ===== Main Content End ===== --> */}
-      </div>
-      {/* <!-- ===== Content Area End ===== --> */}
-    </div>
-    // <!-- ===== Page Wrapper End ===== -->
+     </Layout>
   );
 };
 
@@ -168,7 +155,8 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const hotelsData =  await fetch(`/api/get-hotels`).then(
+  let url = process.env.NEXT_API_URL;
+  const hotelsData =  await fetch(url+`/get-hotels`).then(
                         (res) => res.json()
                       );
 

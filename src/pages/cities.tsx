@@ -9,6 +9,7 @@ import { ICity, ISuggestionFormatted, IUser, provider } from "../types/typings";
 import Sidebar from "@/components/sidebar";
 import Picard from "@/components/Picard";
 import Link from "next/link";
+import Layout from "@/components/AdminLayout";
 
 
 type Props = {
@@ -18,17 +19,7 @@ type Props = {
 const Cities = (props: Props) => {
 
   return (
-    // <!-- ===== Page Wrapper Start ===== -->
-    <div className="flex h-screen overflow-hidden">
-      {/* <!-- ===== Sidebar Start ===== --> */}
-      
-      <Sidebar/>
-      {/* <!-- ===== Sidebar End ===== --> */}
-  
-      {/* <!-- ===== Content Area Start ===== --> */}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-  
-        {/* <!-- ===== Main Content Start ===== --> */}
+    <Layout>
         <main>
 
           {/* <!-- component --> */}
@@ -178,10 +169,7 @@ const Cities = (props: Props) => {
             </div>
           </div>
         </main>
-        {/* <!-- ===== Main Content End ===== --> */}
-      </div>
-      {/* <!-- ===== Content Area End ===== --> */}
-    </div>
+    </Layout>
   );
 };
 
@@ -191,7 +179,8 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const citiesData =  await fetch(`/api/get-city`).then(
+  let url = process.env.NEXT_API_URL;
+  const citiesData =  await fetch(url+"/get-city").then(
                         (res) => res.json()
                       );
 

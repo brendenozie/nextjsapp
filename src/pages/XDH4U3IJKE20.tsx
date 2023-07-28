@@ -10,7 +10,7 @@ const Admin = (props: Props) => {
     <div className="flex h-screen overflow-hidden">
       {/* <!-- ===== Sidebar Start ===== --> */}
       {/* <include src="./partials/sidebar.html"></include> */}
-      <Sidebar/>
+      {/* <Sidebar/> */}
       {/* <!-- ===== Sidebar End ===== --> */}
   
       {/* <!-- ===== Content Area Start ===== --> */}

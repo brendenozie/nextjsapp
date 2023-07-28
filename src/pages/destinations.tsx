@@ -1,3 +1,4 @@
+import Layout from "@/components/AdminLayout";
 import Sidebar from "@/components/sidebar";
 import { IDestination } from "@/types/typings";
 import getDestinations from "@/utils/getDestinations";
@@ -12,16 +13,7 @@ type Props = {
 const Destinations = (props: Props) => {
 
   return (
-    // <!-- ===== Page Wrapper Start ===== -->
-    <div className="flex h-screen overflow-hidden">
-      {/* <!-- ===== Sidebar Start ===== --> */}
-      
-      <Sidebar/>
-      {/* <!-- ===== Sidebar End ===== --> */}
-  
-      {/* <!-- ===== Content Area Start ===== --> */}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">  
-        {/* <!-- ===== Main Content Start ===== --> */}
+    <Layout>
         <main>
           {/* <!-- component --> */}
           <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
@@ -153,11 +145,7 @@ const Destinations = (props: Props) => {
             </div>
           </div>
         </main>
-        {/* <!-- ===== Main Content End ===== --> */}
-      </div>
-      {/* <!-- ===== Content Area End ===== --> */}
-    </div>
-    // <!-- ===== Page Wrapper End ===== -->
+    </Layout>
   );
 };
 

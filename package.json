@@ -10,6 +10,7 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
+    "usehooks-ts": "2.6.0",
     "@alpinejs/persist": "^3.12.0",
     "@badrap/bar-of-progress": "^0.2.2",
     "@heroicons/react": "^2.0.13",

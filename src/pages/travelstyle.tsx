@@ -2,6 +2,7 @@ import { GetServerSidePropsContext } from "next";
 import { ITravelStyle } from "../types/typings";
 import Sidebar from "@/components/sidebar";
 import Link from "next/link";
+import Layout from "@/components/AdminLayout";
 
 
 type Props = {
@@ -11,17 +12,7 @@ type Props = {
 const Cities = (props: Props) => {
 
   return (
-    // <!-- ===== Page Wrapper Start ===== -->
-    <div className="flex h-screen overflow-hidden">
-      {/* <!-- ===== Sidebar Start ===== --> */}
-      
-      <Sidebar/>
-      {/* <!-- ===== Sidebar End ===== --> */}
-  
-      {/* <!-- ===== Content Area Start ===== --> */}
-      <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-  
-        {/* <!-- ===== Main Content Start ===== --> */}
+    <Layout>
         <main>
 
           {/* <!-- component --> */}
@@ -171,10 +162,7 @@ const Cities = (props: Props) => {
             </div>
           </div>
         </main>
-        {/* <!-- ===== Main Content End ===== --> */}
-      </div>
-      {/* <!-- ===== Content Area End ===== --> */}
-    </div>
+    </Layout>
   );
 };
 
@@ -184,7 +172,8 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const travelStyles =  await fetch(`/api/get-travel-style`).then(
+  let url = process.env.NEXT_API_URL;
+  const travelStyles =  await fetch(url+`/get-travel-style`).then(
                         (res) => res.json()
                       );
 
