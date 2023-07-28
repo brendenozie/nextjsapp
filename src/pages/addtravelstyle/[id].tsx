@@ -135,10 +135,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                                         formData.append("timestamp", timestamp);
                                         formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
 
-                                        const response = await fetch(url, {
-                                            method: "post",
-                                            body: formData,
-                                        });
+                                        const response = await fetch(url, { method: "post",  body: formData,  });
 
                                         const data = await response.json();
 
@@ -162,8 +159,6 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
         }
 
         await axios.put(`/api/get-travel-style/${travelStyle.id}`, travelStyle).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -192,11 +187,10 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                 setImages([]);
                 setTravelStyle({...travelStyle, publicId : "", url:""});
             }).catch((err) => {
-                alert(`Something went wrong.${err.message}`);
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // setImages([]);
-                // setCity({...city, publicId : "", url:""});
+                router.push("/travelstyle");
             })
 
         };

@@ -333,7 +333,7 @@ const HTML_TEMPLATE = (fname,lname,email,phone,company,message) => {
           <!-- BEGIN BODY -->
           <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
             <tr>
-              <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
+              <td valign="top" class="bg_white" style="padding: 1em 1.5em 0 1.5em;">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
                     <td class="logo" style="text-align: center;">
@@ -344,13 +344,15 @@ const HTML_TEMPLATE = (fname,lname,email,phone,company,message) => {
               </td>
             </tr><!-- end tr -->
             <tr>
-              <td valign="middle" class="hero bg_white" style="padding: 2em 0 4em 0;">
+              <td valign="middle" class="hero bg_white" style="padding: 1em 0 4em 0;">
                 <table>
                   <tr>
                     <td>
-                      <div class="text" style="padding: 0 2.5em; text-align: center;">
-                        <h2>${subject}</h2>
-                        <h3>${text}</h3>
+                      <div class="text" style="padding: 0 0.5em; text-align: center;">
+                        <h2>${fname} ${lname}</h2>
+                        <h2>${email} ${phone}</h2>
+                        <h2>${company}</h2>
+                        <h3>${message}</h2>
                       </div>
                     </td>
                   </tr>
@@ -364,12 +366,12 @@ const HTML_TEMPLATE = (fname,lname,email,phone,company,message) => {
               <td valign="middle" class="bg_light footer email-section">
                 <table>
                   <tr>
-                    <td valign="top" width="33.333%" style="padding-top: 20px;">
+                    <td valign="top" width="33.333%" style="padding-top: 10px;">
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td style="text-align: left; padding-right: 10px;">
                             <h3 class="heading">About</h3>
-                            <p>TRADE~CAFE</p>
+                            <p>HobbyHorse Tours</p>
                           </td>
                         </tr>
                       </table>
@@ -393,8 +395,8 @@ const HTML_TEMPLATE = (fname,lname,email,phone,company,message) => {
                           <td style="text-align: left; padding-left: 10px;">
                             <h3 class="heading">Useful Links</h3>
                             <ul>
-                              <li><a href="trade-cafe.com">Home</a></li>
-                              <li><a href="trade-cafe.com/about">About</a></li>
+                              <li><a href="www.hobbyhorsetours.com">Home</a></li>
+                              <li><a href="www.hobbyhorsetours.com">About</a></li>
                             </ul>
                           </td>
                         </tr>
@@ -418,44 +420,47 @@ const HTML_TEMPLATE = (fname,lname,email,phone,company,message) => {
     `;
   }
 //Email function for when we want to send stuff
-export function email(params = { to: 'email', subject: 'cmpe165', text: 'some text here', html: 'some html here', fname: 'some html here',lname: 'some html here',email: 'some html here',phone: 'some html here',company: 'some html here',message: 'some html here' }) {
+export default function SendMail(params = { to: 'email', subject: 'cmpe165', text: 'some text here', html: 'some html here', 
+                                            fname: 'some html here',lname: 'some html here',email: 'some html here',
+                                            phone: 'some html here',company: 'some html here',message: 'some html here' }) {
 
 
-  const output = HTML_TEMPLATE(`${params.fname}`,`${params.lname}`,`${params.email}`,`${params.phone}`,`${params.company}`,`${params.message}`);
+          const output = HTML_TEMPLATE(`${params.fname}`,`${params.lname}`,`${params.email}`,
+                                        `${params.phone}`,`${params.company}`,`${params.message}`);
 
-  let transporter = createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      type: "OAuth2",
-      clientId: "892462548153-vlq75gb6doda6jft8lftih6tuvnb10db.apps.googleusercontent.com",
-      clientSecret: "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", // this will be obtained in part 2  
-    }
-  });
+          let transporter = createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            auth: {
+              type: "OAuth2",
+              clientId: "892462548153-vlq75gb6doda6jft8lftih6tuvnb10db.apps.googleusercontent.com",
+              clientSecret: "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", // this will be obtained in part 2  
+            }
+          });
 
-  let mailOptions = {
-    from: "akinyisafiris@gmail.com",
-    to: `${params.to}`,
-    subject: params.subject,
-    html: output,
-    auth: {
-      user: "akinyisafiris@gmail.com",
-      refreshToken: "1//04RUUAAup23dcCgYIARAAGAQSNwF-L9Ir1IdZ5DEmvckfZj0iVDnSXKGu3xCzEWgiv3ym_1OTsrUEYmxrAcFBUqTM5Ass1MawfGE",
-      accessToken: "ya29.a0Ael9sCPFVYgEqghPYz0Pj1EL4DMGbhvQBHcliVtfHNJdK3_R0vS9s9VTGPoOoN4w_uAESFSKIN8I0ngkz2EinrznSV_poV_8cL6JxZPg8bOP_Nm6wS0nxAzZGdrFp40cxIY7JVvbgqs7oQhf99v1MErFJ1sRaCgYKAaQSARASFQF4udJh1ogFmlznc2CUyJRK8RmwWA0163",
-      expires: new Date().getTime(), // this will request a new token each time so that it never expires. google allows up to 10,000 requests per day for free.
-    },
-  };
+          let mailOptions = {
+            from: "akinyisafiris@gmail.com",
+            to: `${params.to}`,
+            subject: params.subject,
+            html: output,
+            auth: {
+              user: "akinyisafiris@gmail.com",
+              refreshToken: "1//04RUUAAup23dcCgYIARAAGAQSNwF-L9Ir1IdZ5DEmvckfZj0iVDnSXKGu3xCzEWgiv3ym_1OTsrUEYmxrAcFBUqTM5Ass1MawfGE",
+              accessToken: "ya29.a0Ael9sCPFVYgEqghPYz0Pj1EL4DMGbhvQBHcliVtfHNJdK3_R0vS9s9VTGPoOoN4w_uAESFSKIN8I0ngkz2EinrznSV_poV_8cL6JxZPg8bOP_Nm6wS0nxAzZGdrFp40cxIY7JVvbgqs7oQhf99v1MErFJ1sRaCgYKAaQSARASFQF4udJh1ogFmlznc2CUyJRK8RmwWA0163",
+              expires: new Date().getTime(), // this will request a new token each time so that it never expires. google allows up to 10,000 requests per day for free.
+            },
+          };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      console.log(params.to);
-      console.log(params.subject);
-      console.log(params.text);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+              console.log(params.to);
+              console.log(params.subject);
+              console.log(params.text);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
 
 }

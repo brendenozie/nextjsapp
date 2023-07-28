@@ -1,9 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-// import { MdOutlineTravelExplore } from "react-icons/md";
-// import { SlPeople } from "react-icons/sl";
-// import { IoMdPhotos } from "react-icons/io";
+
 import {GlobeAsiaAustraliaIcon,UserGroupIcon,WindowIcon } from "@heroicons/react/24/solid";
 
 const Second = () => {

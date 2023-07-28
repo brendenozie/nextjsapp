@@ -43,9 +43,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
     setMail(true)
 
     await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, {fname:fname,lname:lname,email:email,phone:phone,company:company,message:message,}).then(() => {
-            //   toast.success('Listing reserved!');
-            //   setDateRange(initialDateRange);
-            // router.push('/');
             setFname("");
             setLname("");
             setEmail("");
@@ -54,11 +51,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
             setMessage("");
             setMail(false)
         }).catch(() => {
-            //   toast.error('Something went wrong.');
             setMail(false);
         }).finally(() => {
           setMail(false);
-            // router.push("/");
         })
   };
 
@@ -180,13 +175,13 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                       <path d="M21 16C21 18.7614 18.7614 21 16 21C13.2386 21 11 18.7614 11 16C11 13.2386 13.2386 11 16 11C18.7614 11 21 13.2386 21 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At HobbyHorse we'll help you plan your trip effectively&amp; productivly. Ensuring that you have a seemless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
+                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At HobbyHorse we'll help you plan your trip effectively&amp; productively. Ensuring that you have a seamless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
                   <h4 className="font-semibold tracking-tight mb-1">Sharon Akinyi</h4>
                   <span>Founder, HobbyHorse.</span>
                 </div>
               </div>
               <div className="w-full md:w-1/2 p-8">
-                <form className="flex flex-wrap -m-3" action="#">
+                <div className="flex flex-wrap -m-3">
                   <div className="w-full md:w-1/2 p-3">
                     <label className="block">
                       <input className="px-4 py-4 w-full text-gray-700 tracking-tight placeholder-gray-700 outline-none border border-gray-700 focus:border-gray-400 rounded-lg transition duration-200" id="fname" type="text" placeholder="First Name" />
@@ -218,10 +213,10 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                     </label>
                   </div>
                   <div className="w-full p-3">
-                    <button className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" onClick={sendMail}>Send Enquiry</button>
+                    <button className="inline-block mb-4 px-5 py-4 w-full text-white text-center font-semibold tracking-tight bg-indigo-500 hover:bg-indigo-600 rounded-lg focus:ring-4 focus:ring-indigo-300 transition duration-200" disabled={mail} onClick={sendMail}>Send Enquiry</button>
                     <span className="text-sm text-gray-600 tracking-tight">* We never share user details with third parties, period.</span>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>

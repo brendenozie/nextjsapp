@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-// import { GoPerson } from "react-icons/go";
-// import { AiOutlineDownload } from "react-icons/ai";
 
 import {
   UsersIcon,ArrowDownIcon

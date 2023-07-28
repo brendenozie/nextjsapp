@@ -159,16 +159,14 @@ const addDestination = ({ session, cities }: Props) => {
                             cityId : cityId,
                         };
 
-        await axios.post(`${process.env.NEXT_API_URL}/api/post-destinations`, hotelDetails).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
+        await axios.post(`${process.env.NEXT_API_URL}/post-destinations`, hotelDetails).then(() => {
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
-            })
+                router.push("/destinations");
+            });
         },
         [
             title,
@@ -348,9 +346,7 @@ export const getServerSideProps = async (
         };
     }
 
-    const responseCities = await fetch(
-        `${process.env.NEXT_API_URL}/get-city`
-      );
+    const responseCities = await fetch(`${process.env.NEXT_API_URL}/get-city`);
     
       const cities = await responseCities.json();
 

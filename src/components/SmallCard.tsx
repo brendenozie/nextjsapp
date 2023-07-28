@@ -16,18 +16,6 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
   const startDate = addDays(new Date(), 4);
   const endDate = addDays(new Date(), 7);
   const numOfGuests = 1;
-  // const search = () => {
-  //   router.push({
-  //     pathname: "/search",
-  //     query: {
-  //       location: cityData.location,
-  //       id: cityData.id,
-  //       startDate: startDate.toISOString(),
-  //       endDate: endDate.toISOString(),
-  //       numOfGuests,
-  //     },
-  //   });
-  // };
   const setSearchInputAndSelectedCity = () => {
     setSearchInput(cityData.cityName);
     setSelectedCity(cityData);
@@ -47,7 +35,6 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
       {/* Right side */}
       <div>
         <h2 className="min-w-[5rem]">{cityData.cityName}</h2>
-        {/* <h3 className="text-gray-500">{cityData.province!}</h3> */}
       </div>
     </div>
   );

@@ -146,14 +146,12 @@ const addCity = ({ session }: Props)  => {
         city.status   = list[0].status;
 
         await axios.post(`/api/post-city`, city).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
+                router.push("/cities");
             })
         },
         [
@@ -249,7 +247,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
+    const response = await fetch(`/api/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

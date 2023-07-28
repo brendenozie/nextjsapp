@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-// import { MdFolder } from "react-icons/md";
-// import { BsBookmarkFill } from "react-icons/bs";
 
 import {FolderIcon, BookmarkIcon } from "@heroicons/react/24/solid";
 

@@ -23,19 +23,6 @@ const LargeCard = ({ img, title, description, buttonText, getInspiredCities, set
 
   const getInspiredCity = getInspiredCities[Math.floor(Math.random() * getInspiredCities.length)];
 
-  // const search = () => {
-  //   router.push({
-  //     pathname: "/search",
-  //     query: {
-  //       location: getInspiredCity.location,
-  //       id: getInspiredCity.id,
-  //       startDate: startDate.toISOString(),
-  //       endDate: endDate.toISOString(),
-  //       numOfGuests,
-  //     },
-  //   });
-  // };
-
   const setSearchInputAndSelectedCity = () => {
     setSearchInput(getInspiredCity.cityName);
     setSelectedCity(getInspiredCity);

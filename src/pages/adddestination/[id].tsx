@@ -173,8 +173,6 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
         }
                         
         await axios.put(`/api/get-destinations/${hotelDetails.id}`, hotelDetails).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -213,17 +211,11 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                 }).catch((err) => {
                     alert(`Something went wrong.${err.message}`);
                     setIsLoading(false);
-                }).finally(() => {
-                    // const img = images.filter(img => img.publicId !== publicId);
-                    // setImages(img);
-                })
+                });
             }).catch((err) => {
                 alert(`Something went wrong.${err.message}`);
                 setIsLoading(false);
-            }).finally(() => {
-                // const img = images.filter(img => img.publicId !== publicId);
-                // setImages(img);
-            })
+            });
 
         };
 
@@ -406,9 +398,7 @@ export const getServerSideProps = async (
 
     const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-destinations/${id}`).then( (res) => res.json() );
 
-    const responseCities = await fetch(
-        `${process.env.NEXT_API_URL}/get-city`
-      );
+    const responseCities = await fetch(`${process.env.NEXT_API_URL}/get-city`);
     
       const cities = await responseCities.json();
 

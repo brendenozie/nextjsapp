@@ -21,12 +21,7 @@ const SetLocationCard = ({setMarker , marker}: Props) => {
     },
   });
 
-  // const [marker, setMarker] = useState<{lat:any,long:any}>();
-
   function handleMapClick(e:any) {
-      //  var lngLat = e.lngLat;
-      //  console.log(lngLat.lng);
-      //  console.log(lngLat.lat);
        setMarker({lat:e.lngLat.lat,long:e.lngLat.lng});
   }
 

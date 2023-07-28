@@ -22,19 +22,6 @@ const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) =
   const luckyCity =
     getInspiredCities[Math.floor(Math.random() * getInspiredCities.length)];
 
-  // const search = () => {
-  //   router.push({
-  //     pathname: "/search",
-  //     query: {
-  //       location: luckyCity.location,
-  //       id: luckyCity.id,
-  //       startDate: startDate.toISOString(),
-  //       endDate: endDate.toISOString(),
-  //       numOfGuests,
-  //     },
-  //   });
-  // };
-
   const setSearchInputAndSelectedCity = () => {
     setSearchInput(luckyCity.cityName);
     setSelectedCity(luckyCity);
@@ -63,21 +50,11 @@ const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) =
             </strong>
           </h1>
 
-          <p className="mt-4 sm:text-xl/relaxed text-gray-100">
-            {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-              tenetur fuga ducimus numquam ea! */}
-          </p>
-
           <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10 ">
             <Link className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
               href="#contact" >
               Make An Enquiry
             </Link>
-
-            {/* <Link className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-gray-100 shadow hover:text-gray-900 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
-                href="/about">
-                Learn More
-              </a> */}
           </div>
         </div>
       </div>

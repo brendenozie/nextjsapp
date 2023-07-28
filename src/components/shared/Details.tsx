@@ -4,9 +4,6 @@ import {
   UsersIcon,HeartIcon,BookmarkIcon
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
-// import { GoPerson } from "react-icons/go";
-// import { HiOutlineHeart } from "react-icons/hi";
-// import { IoBookmarksOutline } from "react-icons/io5";
 
 type PhotoDetails = {
   src: string;

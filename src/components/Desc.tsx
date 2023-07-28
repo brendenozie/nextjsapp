@@ -38,12 +38,8 @@ const Desc = ({
 }: Props) => {
 
   const { data: session, status } = useSession();
-  // const [searchInput, setSearchInput] = useState("");
   const debouncedSearchInput = useDebounce(searchInput, 300);
   const [citySuggestions, setCitySuggestions] = useState<ISuggestionFormatted[] | null>(null);
-  // const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
-  //   null
-  // );
   const [startDate, setStartDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(false);
   const [triggerDate, setTriggerDate] = useState(false);
@@ -109,7 +105,7 @@ const Desc = ({
         <div className=" text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-10 sm:max-w-[64%] mx-auto">
           <div className="justify-center items-center mx-8 bg-white rounded-md ">
             <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
-              <div className="sm:w-full p-2 border-[1px] justify-center flex items-center rounded-md shadow-md ">
+              <div className="p-2 sm:w-1/4 w-full  border-[1px] justify-center flex items-center rounded-md shadow-md ">
                 <div >
                   <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
                 </div>
@@ -117,11 +113,11 @@ const Desc = ({
                 <div className="w-full">
                   <select id="country" name="country" defaultValue={"Pick A City"} className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" 
                   onChange={(e) => {setSelectedCity({id:JSON.parse(e.target.value).id,
-                                                                                      cityName : JSON.parse(e.target.value).cityName,
-                                                                                      publicId : "",
-                                                                                      url      : "",
-                                                                                      status   : ""});
-                                                                                }}>
+                                                      cityName : JSON.parse(e.target.value).cityName,
+                                                      publicId : "",
+                                                      url      : "",
+                                                      status   : ""});
+                                                    }}>
                   <option value="Pick A City" >Pick A City</option>
                   {getInspiredCities.map((city) => (
                       <option value={JSON.stringify(city)} >{city.cityName}</option>
@@ -130,7 +126,7 @@ const Desc = ({
                 </div>
               </div>
 
-              <div className="p-2 w-full border-[1px]  justify-center flex items-center rounded-md shadow-md">
+              <div className="p-2 w-full sm:w-1/4  border-[1px]  justify-center flex items-center rounded-md shadow-md">
                 <div>
                   <CalendarIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
                 </div>
@@ -173,7 +169,7 @@ const Desc = ({
                 </div>
               </div>
 
-              <div className="p-2 w-full border-[1px] justify-center flex items-center rounded-md shadow-md">
+              <div className="p-2 w-full sm:w-1/4  border-[1px] justify-center flex items-center rounded-md shadow-md">
                 <div>
                   <UsersIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
                 </div>
@@ -189,7 +185,7 @@ const Desc = ({
                       transition={{  duration: 0.3, }}
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: true }}
-                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-white rounded-md w-1/4">
+                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-white rounded-md md:w-1/4 sm:w-1/2">
                       <div className=" gap-4 items-center m-4 pl-5">
                         <h2 className="text-l flex-grow font-semibold">
                           Number of Guests
@@ -215,7 +211,7 @@ const Desc = ({
                 </div>
               </div>
 
-              <button className="px-5 rounded-r-md bg-gray-800 text-white py-8 px-10 font-bold p-4 uppercase border-gray-500 border-t border-b border-r" onClick={search}>Enquire</button>
+              <button className="px-5 w-full sm:w-1/4  rounded-r-md bg-gray-800 text-white py-8 px-10 font-bold p-4 uppercase border-gray-500 border-t border-b border-r" onClick={search}>Enquire</button>
 
             </div>
           </div>

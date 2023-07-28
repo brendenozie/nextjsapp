@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { HiOutlineMenu } from "react-icons/hi";
 import {
   Bars4Icon,
 } from "@heroicons/react/24/solid";

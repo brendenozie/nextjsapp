@@ -145,15 +145,11 @@ const addTravelStyle = ({ session }: Props)  => {
                     travelStyle.status   = list[0].status;
 
         await axios.post(`${process.env.NEXT_API_URL}/post-travel-style`, travelStyle).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
-                // router.push('/');
+                router.push("/travelstyle");
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
-            }).finally(() => {
-                // router.push("/");
-            })
+            });
         },
         [
             travelStyle,
@@ -162,20 +158,10 @@ const addTravelStyle = ({ session }: Props)  => {
 
     return (
         <div>
+            
             {/* No Placeholder htmlFor Hotels from Favorite List */}
-            <Header
-            // searchInput={searchInput}
-            // setSearchInput={setSearchInput}
-            // selectedCity={selectedCity}
-            // setSelectedCity={setSelectedCity}
-            // isOpen={isOpen}
-            // setIsOpen={setIsOpen}
-            // placeholder={
-            //   fromFavPage === "false"
-            //     ? `${location} - ${range} - ${numOfGuests}`
-            //     : ``
-            // }
-            />
+            <Header/>
+
             <div className=" h-[120px] sm:h-[120px] lg:h-[120px] xl-h-[120px] 2xl:h-[120px] bg-black"></div>
             <main className="flex flex-col max-w-4xl mx-auto">
                 {/* Left Section */}

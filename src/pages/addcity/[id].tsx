@@ -21,7 +21,6 @@ type Props = {
 
 const addCity = ({ session, detailsResult }: Props)  => {
 
-    
     const [files, setFile] = useState<any[]>([]);
     const [imageFiles, setImageFiles] = useState<any[]>([]);
     const [images, setImages] = useState<uploadImage[]>([{publicId : detailsResult.publicId,
@@ -161,8 +160,6 @@ const addCity = ({ session, detailsResult }: Props)  => {
         }
 
         await axios.put(`/api/get-city/${city.id}`, city).then(() => {
-                //   toast.success('Listing reserved!');
-                //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -176,8 +173,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
             images,
         ]);
 
-
-    const onDeleteImage = async () => {
+    const onDeleteImage = useCallback(async () => {
 
             if (!session) {
                 return {
@@ -199,7 +195,7 @@ const addCity = ({ session, detailsResult }: Props)  => {
                 // setCity({...city, publicId : "", url:""});
             })
 
-        };
+        },[]);
 
     return (
         <div>

@@ -135,10 +135,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                             formData.append("timestamp", timestamp);
                             formData.append("api_key", `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`);
 
-                            const response = await fetch(url, {
-                                method: "post",
-                                body: formData,
-                            });
+                            const response = await fetch(url, {method: "post", body: formData, });
 
                             const data = await response.json();
 
@@ -168,11 +165,11 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                 //   setDateRange(initialDateRange);
                 // router.push('/');
             }).catch(() => {
-                //   toast.error('Something went wrong.');
+                alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                // router.push("/");
-            })
+                router.push("/hotels");
+            });
         },
         [
             title,
@@ -379,14 +376,10 @@ export const getServerSideProps = async (
         };
     }
 
-    const responseCities = await fetch(
-      `${process.env.NEXT_API_URL}/get-city`
-    );
+    const responseCities = await fetch(`${process.env.NEXT_API_URL}/get-city`);
     const cities = await responseCities.json();
 
-    const responseTravelStyle = await fetch(
-        `${process.env.NEXT_API_URL}/get-travel-style`
-      );
+    const responseTravelStyle = await fetch(`${process.env.NEXT_API_URL}/get-travel-style`);
       const travelStyles = await responseTravelStyle.json();
 
     return {

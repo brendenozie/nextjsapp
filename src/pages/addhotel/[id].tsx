@@ -209,17 +209,11 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
             }).catch((err) => {
                 alert(`Something went wrong.${err.message}`);
                 setIsLoading(false);
-            }).finally(() => {
-                // const img = images.filter(img => img.publicId !== publicId);
-                // setImages(img);
-            })
+            });
         }).catch((err) => {
-            alert(`Something went wrong.${err.message}`);
-            setIsLoading(false);
-        }).finally(() => {
-            // const img = images.filter(img => img.publicId !== publicId);
-            // setImages(img);
-        })
+            alert('Something went wrong.');
+                setIsLoading(false);
+            });
 
     };
 
@@ -430,14 +424,10 @@ export const getServerSideProps = async (
 
     const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-hotels/${id}`).then( (res) => res.json() );
 
-    const responseCities = await fetch(
-      `${process.env.NEXT_API_URL}/get-city`
-    );
+    const responseCities = await fetch(`${process.env.NEXT_API_URL}/get-city`);
     const cities = await responseCities.json();
 
-    const responseTravelStyle = await fetch(
-        `${process.env.NEXT_API_URL}/get-travel-style`
-      );
+    const responseTravelStyle = await fetch(`${process.env.NEXT_API_URL}/get-travel-style`);
       const travelStyles = await responseTravelStyle.json();
 
     return {
