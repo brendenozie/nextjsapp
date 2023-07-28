@@ -396,9 +396,9 @@ export const getServerSideProps = async (
         };
     }
 
-    const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-destinations/${id}`).then( (res) => res.json() );
+    const detailsResult = await fetch(`/api/get-destinations/${id}`).then( (res) => res.json() );
 
-    const responseCities = await fetch(`${process.env.NEXT_API_URL}/get-city`);
+    const responseCities = await fetch(`/api/get-city`);
     
       const cities = await responseCities.json();
 
@@ -412,7 +412,7 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    const response = await fetch(`${process.env.NEXT_API_URL}/sign`);
+    const response = await fetch(`/api/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

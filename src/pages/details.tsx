@@ -143,7 +143,7 @@ const Details = ({ session }: Props) => {
   const submitFavorite = async () => {
     try {
       const body = { ...searchResults[0], location, cityId };
-      await fetch(`${process.env.NEXT_API_URL}/post-favorite`, {
+      await fetch(`/api/post-favorite`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -156,7 +156,7 @@ const Details = ({ session }: Props) => {
   const deleteFavorite = async () => {
     try {
       const body = { hotelId: hotelId, userEmail: userEmail };
-      await fetch(`${process.env.NEXT_API_URL}/delete-favorite`, {
+      await fetch(`/api/delete-favorite`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

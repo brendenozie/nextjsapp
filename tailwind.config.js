@@ -8,7 +8,14 @@ module.exports = {
     //   lg : '976px',
     //   xl : '1440px'
     // },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        sidebar: "300px auto", // 👈 for sidebar layout. adds grid-cols-sidebar class
+      }, 
+      gridTemplateRows: {
+        header: "64px auto", // 👈 for the navbar layout. adds grid-rows-header class
+      },
+    },
   },
   plugins: [require("tailwind-scrollbar")],
 };

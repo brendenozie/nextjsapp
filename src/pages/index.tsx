@@ -250,11 +250,11 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   
-  const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then( (res) => res.json() );
+  const citiesData =  await fetch(`/api/get-city`).then( (res) => res.json() );
 
-  const stylesData = await fetch(`${process.env.NEXT_API_URL}/get-travel-style`).then((res) => res.json());
+  const stylesData = await fetch(`/api/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch(`${process.env.NEXT_API_URL}/get-city`).then((res) => res.json());
+  const getInspiredCities = await fetch(`/api/get-city`).then((res) => res.json());
 
   return {
     props: {

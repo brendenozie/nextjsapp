@@ -191,7 +191,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const citiesData =  await fetch(`${process.env.NEXT_API_URL}/get-city`).then(
+  const citiesData =  await fetch(`/api/get-city`).then(
                         (res) => res.json()
                       );
 

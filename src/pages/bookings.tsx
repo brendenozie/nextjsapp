@@ -108,7 +108,7 @@ export const getServerSideProps = async (
   }
 
   const response = await fetch(
-    `${process.env.NEXT_API_URL}/get-bookings?userEmail=${userEmail}`
+    `/api/get-bookings?userEmail=${userEmail}`
   );
   const json = await response.json();
   const bookings = json.bookings;

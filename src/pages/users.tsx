@@ -176,7 +176,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const usersData =  await fetch(`${process.env.NEXT_API_URL}/get-user`).then(
+  const usersData =  await fetch(`/api/get-user`).then(
                         (res) => res.json()
                       );
 

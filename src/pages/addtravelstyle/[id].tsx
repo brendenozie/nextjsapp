@@ -280,7 +280,7 @@ export const getServerSideProps = async (
       };
     }
     
-    const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-travel-style/${id}`).then( (res) => res.json() );
+    const detailsResult = await fetch(`/api/get-travel-style/${id}`).then( (res) => res.json() );
   
     if (!detailsResult) {
       return {

@@ -168,7 +168,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const hotelsData =  await fetch(`${process.env.NEXT_API_URL}/get-hotels`).then(
+  const hotelsData =  await fetch(`/api/get-hotels`).then(
                         (res) => res.json()
                       );
 

@@ -113,7 +113,7 @@ export const getServerSideProps = async (
   const { id, location, startDate, endDate, numOfGuests } = context.query;
   const session = await getSession(context);
 
-  const searchResults =  await fetch(`${process.env.NEXT_API_URL}/get-destinations`).then( (res) => res.json() );
+  const searchResults =  await fetch(`/api/get-destinations`).then( (res) => res.json() );
 
   searchResults.id=id;
   searchResults.location=location;

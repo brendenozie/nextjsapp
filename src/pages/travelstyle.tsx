@@ -184,7 +184,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  const travelStyles =  await fetch(`${process.env.NEXT_API_URL}/get-travel-style`).then(
+  const travelStyles =  await fetch(`/api/get-travel-style`).then(
                         (res) => res.json()
                       );
 
