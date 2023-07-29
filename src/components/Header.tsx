@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import Nav from "./Nav";
 import Link from "next/link";
@@ -6,11 +6,14 @@ import Link from "next/link";
 import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
+import { useOnClickOutside } from "usehooks-ts";
 
 const Header = () => {
   const { data: session } = useSession();
   const [visible, setVisible] = useState(false);
   const [dark, setDark] = useState(false);
+  
+  
   const navbarVisible = () => {
     if (window.scrollY > 10 && window.scrollY < window.innerHeight - 80) {
       setVisible(true);
@@ -42,7 +45,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center gap-x-4 order-1 w-[25%] box-border pl-6 lmd:pl-14 lg:pl-24 2xl:pl-16">
             <Link href="/" className={`${dark ? "text-black" : "text-white"}`}>
-              <PaperAirplaneIcon onClick={() => { }} className="h-6" />
+              <PaperAirplaneIcon className="h-6" />
             </Link>
             <Link
               href="/"

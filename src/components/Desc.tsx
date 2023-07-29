@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   CalendarIcon,
   UsersIcon,
@@ -14,6 +14,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import useDebounce from "../hooks/useDebounce";
 import { ICity, ISuggestionFormatted } from "../types/typings";
 import getCitySuggestions from "../utils/getCitySuggestions";
+import { useOnClickOutside } from "usehooks-ts";
 
 type Props = {
   getInspiredCities: ICity[];
@@ -48,6 +49,13 @@ const Desc = ({
   const [endDate, setEndDate] = useState(new Date());
   const [numOfGuests, setNumOfGuests] = useState("1");
   const router = useRouter();
+
+  const ref = useRef<HTMLDivElement>(null);
+  
+  useOnClickOutside(ref, (e) => {
+    resetDate();
+    resetGuests();
+  });
 
   useEffect(() => {
     setCitySuggestions(null);
@@ -148,8 +156,9 @@ const Desc = ({
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: true }}
                       className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3  bg-transparent"
+                      ref={ref}
                     >
-                      <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-white pb-5 rounded-b-lg shadow-md">
+                      <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-white pb-5 rounded-b-lg shadow-md" >
                         <DateRangePicker
                           className="text-black"
                           ranges={[selectionRange]}
@@ -185,7 +194,8 @@ const Desc = ({
                       transition={{  duration: 0.3, }}
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: true }}
-                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-white rounded-md md:w-1/4 sm:w-1/2">
+                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-white rounded-md md:w-1/4 sm:w-1/2"
+                      ref={ref}>
                       <div className=" gap-4 items-center m-4 pl-5">
                         <h2 className="text-l flex-grow font-semibold">
                           Number of Guests

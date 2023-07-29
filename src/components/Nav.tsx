@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Bars4Icon,
 } from "@heroicons/react/24/solid";
 import { Navdata } from "@/constant/Data";
 import NavHor from "./NavHor";
 import NavVer from "./NavVer";
+import { useOnClickOutside } from "usehooks-ts";
 
 const Nav = () => {
   const [toggle, setToggle] = useState(true);
+
+  const ref = useRef<HTMLButtonElement>(null);
+  
+  useOnClickOutside(ref, (e) => {
+    setToggle(!toggle);
+  });
+  
   const handleClick = () => {
     setToggle(!toggle);
   };
@@ -30,8 +38,8 @@ const Nav = () => {
   }, []);
   return (
     <div className="order-3 lg:px-0 lg:order-2 w-1/4 lg:w-fit">
-      <div className=" flex justify-end pr-6 lmd:pr-14 w-full">
-        <button className={`lg:hidden rounded-full ${ dark ? "text-black" : "text-white" }`} onClick={handleClick}>
+      <div className=" flex justify-end pr-6 lmd:pr-14 w-full" >
+        <button className={`lg:hidden rounded-full ${ dark ? "text-black" : "text-white" }`} onClick={handleClick} ref={ref}>
           <Bars4Icon color={`${
                 dark ? "text-white" : "text-white "
               }`}   className="h-6"/>
