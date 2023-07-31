@@ -159,7 +159,8 @@ const addCity = ({ session, detailsResult }: Props)  => {
             return;
         }
 
-        await axios.put(`/api/get-city/${city.id}`, city).then(() => {
+        const getcity=`${process.env.NEXT_API_URL}/get-city/${city.id}`;
+        await axios.put(getcity, city).then(() => {
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -183,8 +184,8 @@ const addCity = ({ session, detailsResult }: Props)  => {
                     },
                 };
             }
-
-            await axios.post(`/api/destroy/${city.publicId}`,{public_id:city.publicId}).then(() => {
+            const destroyurl=`${process.env.NEXT_API_URL}/destroy/${city.publicId}`;
+            await axios.post(destroyurl,{public_id:city.publicId}).then(() => {
                 setImages([]);
                 setCity({...city, publicId : "", url:""});
             }).catch((err) => {
@@ -282,8 +283,10 @@ export const getServerSideProps = async (
         },
       };
     }
+
+    const geturl=`${process.env.NEXT_API_URL}/get-city/${id}`;
     
-    const detailsResult = await fetch(`${process.env.NEXT_API_URL}/get-city/${id}`).then( (res) => res.json() );
+    const detailsResult = await fetch(geturl).then( (res) => res.json() );
   
     if (!detailsResult) {
       return {
@@ -303,7 +306,8 @@ export const getServerSideProps = async (
 
 
   async function getSignature() {
-    const response = await fetch(`/api/sign`);
+    const getsign=`${process.env.NEXT_API_URL}/sign`;
+    const response = await fetch(getsign);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

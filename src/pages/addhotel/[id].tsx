@@ -167,9 +167,9 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
                             cityId : cityId,
                             travelStyleId : travelStyleId,
                         };
-        let urll = process.env.NEXT_API_URL;
+        let urll = `${process.env.NEXT_API_URL}/get-hotels/${hotelDetails.id}`;
 
-        await axios.put(`${urll}/get-hotels/${hotelDetails.id}`, hotelDetails).then(() => {
+        await axios.put(urll, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
                 // router.push('/');
@@ -424,14 +424,15 @@ export const getServerSideProps = async (
         };
     }
 
-    let url = process.env.NEXT_API_URL;
+    let deturl = `${process.env.NEXT_API_URL}/get-hotels/${id}`;
+    const detailsResult = await fetch(deturl).then( (res) => res.json() );
 
-    const detailsResult = await fetch(`${url}/get-hotels/${id}`).then( (res) => res.json() );
-
-    const responseCities = await fetch(`${url}/get-city`);
+    let citurl = `${process.env.NEXT_API_URL}/get-city`;
+    const responseCities = await fetch(citurl);
     const cities = await responseCities.json();
 
-    const responseTravelStyle = await fetch(`${url}/get-travel-style`);
+    let resurl = `${process.env.NEXT_API_URL}/get-travel-style`;
+    const responseTravelStyle = await fetch(resurl);
       const travelStyles = await responseTravelStyle.json();
 
     return {
@@ -445,8 +446,8 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    let url = process.env.NEXT_API_URL;
-    const response = await fetch(`${url}/sign`);
+    let url = `${process.env.NEXT_API_URL}/sign`;
+    const response = await fetch(url);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

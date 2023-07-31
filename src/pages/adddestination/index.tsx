@@ -359,8 +359,8 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    let url = process.env.NEXT_API_URL;
-    const response = await fetch(`${url}/sign`);
+    let url = `${process.env.NEXT_API_URL}/sign`;
+    const response = await fetch(url);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

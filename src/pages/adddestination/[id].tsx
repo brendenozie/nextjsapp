@@ -204,9 +204,9 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                     },
                 };
             }
-            let url = process.env.NEXT_API_URL;
+            let url = `${process.env.NEXT_API_URL}/destroy/${publicId}`;
 
-            await axios.delete(`${url}/destroy/${publicId}`).then(async () => {
+            await axios.delete(url).then(async () => {
                 await axios.post(`${url}/delete-destination-image`,{id:publicId}).then(() => {
                     const img = images.filter(img => img.publicId !== publicId);
                     setImages(img);
@@ -398,10 +398,10 @@ export const getServerSideProps = async (
         };
     }
 
-    let url = process.env.NEXT_API_URL;
-    const detailsResult = await fetch(`${url}/get-destinations/${id}`).then( (res) => res.json() );
-
-    const responseCities = await fetch(`${url}/get-city`);
+    let detailsUrl = `${process.env.NEXT_API_URL}/get-destinations/${id}`;
+    const detailsResult = await fetch(detailsUrl).then( (res) => res.json() );
+    let responseurl = `${process.env.NEXT_API_URL}/get-city`;
+    const responseCities = await fetch(responseurl);
     
       const cities = await responseCities.json();
 
@@ -415,8 +415,8 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    let url = process.env.NEXT_API_URL;
-    const response = await fetch(`${url}/sign`);
+    let signurl = `${process.env.NEXT_API_URL}/sign`;
+    const response = await fetch(signurl);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };
