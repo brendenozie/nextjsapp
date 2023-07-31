@@ -3,6 +3,7 @@ import Picard from "@/components/Picard";
 import Sidebar from "@/components/sidebar";
 import { IUser } from "@/types/typings";
 import { GetServerSidePropsContext } from "next";
+import Link from "next/link";
 
 type Props = {
   usersData: IUser[];
@@ -77,81 +78,46 @@ const Users = (props: Props) => {
                     <input type="text" placeholder="Search" className="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"/>
                 </div>
             </div>
-            <div>
-                <table className="min-w-full table-auto">
-                  <thead className="justify-between">
-                      <tr className="bg-gray-800">
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300"></span>
-                        </th>
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300">Name</span>
-                        </th>
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300"></span>
-                        </th>
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300"></span>
-                        </th>
-
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300"></span>
-                        </th>
-
-                        <th className="px-16 py-2">
-                          <span className="text-gray-300">Status</span>
-                        </th>
-                      </tr>
+            <div className="overflow-x-auto">
+                <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                  <thead className="ltr:text-left rtl:text-right">
+                    <tr>
+                      <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        Name
+                      </th>
+                      <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        
+                      </th>
+                      <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        
+                      </th>
+                      <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                        
+                      </th>
+                      <th className="px-4 py-2"></th>
+                    </tr>
                   </thead>
-                <tbody className="bg-gray-200">
-                    {props.usersData.map((user) => (
-                          <tr className="bg-white border-4 border-gray-200">
-                          <td className="px-16 py-2 flex flex-row items-center">
-                            <img
-                              className="h-8 w-8 rounded-full object-cover "
-                              src={user.image}
-                              alt=""
-                            />
-                          </td>
-                          <td>
-                            <span className="text-center ml-2 font-semibold">{user.name}</span>
-                          </td>
-                          <td className="px-16 py-2">
-                            <button className="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">
-                              Block
-                            </button>
-                          </td>
-                          <td className="px-16 py-2">
-                            <button className="bg-indigo-500 text-white px-4 py-2 border rounded-md hover:bg-white hover:border-indigo-500 hover:text-black ">
-                              Delete
-                            </button>
-                          </td>
-                          <td className="px-16 py-2">
-                            <span>-</span>
-                          </td>
-              
-                          <td className="px-16 py-2">
-                            <span className="text-green-500">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="w-5 h5 "
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="#2c3e50"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                              >
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <path d="M5 12l5 5l10 -10" />
-                              </svg>
-                            </span>
-                          </td>
-                        </tr>
-                    ))}
-                </tbody>
+
+                  <tbody className="divide-y divide-gray-200">
+                  {props.usersData.map((user) => (
+                    <tr>
+                      <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                      {user.name}
+                      </td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700"></td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700"></td>
+                      <td className="whitespace-nowrap px-4 py-2 text-gray-700"></td>
+                      <td className="whitespace-nowrap px-4 py-2">
+                      <Link href={`/user/${user.id}`} className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
+                        >
+                          View
+                        </Link>
+                      </td>
+                    </tr>
+)                 )}
+                  </tbody>
                 </table>
-            </div>
+          </div>
           </div>
         </main>
      </Layout>

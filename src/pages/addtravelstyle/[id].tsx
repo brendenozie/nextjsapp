@@ -157,8 +157,8 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
             setIsLoading(false);
             return;
         }
-
-        await axios.put(`/api/get-travel-style/${travelStyle.id}`, travelStyle).then(() => {
+        let urll = process.env.NEXT_API_URL;
+        await axios.put(`${urll}/get-travel-style/${travelStyle.id}`, travelStyle).then(() => {
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -182,8 +182,9 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                     },
                 };
             }
+            let url = process.env.NEXT_API_URL;
 
-            await axios.post(`/api/destroy/${travelStyle.publicId}`,{public_id:travelStyle.publicId}).then(() => {
+            await axios.post(`${url}/destroy/${travelStyle.publicId}`,{public_id:travelStyle.publicId}).then(() => {
                 setImages([]);
                 setTravelStyle({...travelStyle, publicId : "", url:""});
             }).catch((err) => {
@@ -279,8 +280,9 @@ export const getServerSideProps = async (
         },
       };
     }
+    let url = process.env.NEXT_API_URL;
     
-    const detailsResult = await fetch(`/api/get-travel-style/${id}`).then( (res) => res.json() );
+    const detailsResult = await fetch(`${url}/get-travel-style/${id}`).then( (res) => res.json() );
   
     if (!detailsResult) {
       return {
@@ -300,7 +302,8 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    const response = await fetch(`/api/sign`);
+    let url = process.env.NEXT_API_URL;
+    const response = await fetch(`${url}/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };

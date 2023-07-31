@@ -171,8 +171,9 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                 setIsLoading(false);
                 return;
         }
+        let urll = process.env.NEXT_API_URL;
                         
-        await axios.put(`/api/get-destinations/${hotelDetails.id}`, hotelDetails).then(() => {
+        await axios.put(`${urll}/get-destinations/${hotelDetails.id}`, hotelDetails).then(() => {
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -203,9 +204,10 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                     },
                 };
             }
+            let url = process.env.NEXT_API_URL;
 
-            await axios.delete(`/api/destroy/${publicId}`).then(async () => {
-                await axios.post(`/api/delete-destination-image`,{id:publicId}).then(() => {
+            await axios.delete(`${url}/destroy/${publicId}`).then(async () => {
+                await axios.post(`${url}/delete-destination-image`,{id:publicId}).then(() => {
                     const img = images.filter(img => img.publicId !== publicId);
                     setImages(img);
                 }).catch((err) => {
@@ -396,9 +398,10 @@ export const getServerSideProps = async (
         };
     }
 
-    const detailsResult = await fetch(`/api/get-destinations/${id}`).then( (res) => res.json() );
+    let url = process.env.NEXT_API_URL;
+    const detailsResult = await fetch(`${url}/get-destinations/${id}`).then( (res) => res.json() );
 
-    const responseCities = await fetch(`/api/get-city`);
+    const responseCities = await fetch(`${url}/get-city`);
     
       const cities = await responseCities.json();
 
@@ -412,7 +415,8 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    const response = await fetch(`/api/sign`);
+    let url = process.env.NEXT_API_URL;
+    const response = await fetch(`${url}/sign`);
     const data = await response.json();
     const { signature, timestamp } = data;
     return { signature, timestamp };
