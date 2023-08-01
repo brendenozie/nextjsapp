@@ -374,10 +374,6 @@ const addHotel = ({ session,travelStyles,cities,detailsResult }: Props) => {
 
                             {images.map((file, key) => {
                                     return (
-                                        // <div key={key} className="overflow-hidden relative">
-                                        //     <img className="h-20 w-20 rounded-md" src={file.url} />
-                                        //     <i onClick={() => { removeImage(file) }} className="mdi mdi-close absolute right-1 hover:text-white cursor-pointer h-10"></i>
-                                        // </div>
                                         <div key={key} className="overflow-hidden group relative h-20 w-20">
                                             <img className="w-full object-cover"
                                                 src={file.url} />
