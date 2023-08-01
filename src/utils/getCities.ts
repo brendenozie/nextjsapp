@@ -8,7 +8,7 @@ const getCities = async () => {
     //   "X-RapidAPI-Host": "hotels4.p.rapidapi.com",
     // },
   // };
-  const data = await fetch(`${process.env.NEXT_API_URL}/get-city`).then(
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-city`).then(
                         (res) => res.json()
                       );
 
