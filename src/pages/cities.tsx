@@ -144,7 +144,7 @@ export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
-  let url = process.env.NEXT_API_URL;
+  let url = process.env.NEXT_PUBLIC_API_URL;
   const citiesData =  await fetch(url+"/get-city").then(
                         (res) => res.json()
                       );

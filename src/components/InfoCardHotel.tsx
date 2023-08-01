@@ -80,7 +80,7 @@ const InfoCardHotel = ({
   const submitFavorite = async () => {
     try {
       const body = { ...item, cityId };
-      let url = process.env.NEXT_API_URL;
+      let url = process.env.NEXT_PUBLIC_API_URL;
       await fetch(url+"/post-favorite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -94,7 +94,7 @@ const InfoCardHotel = ({
   const deleteFavorite = async () => {
     try {
       const body = { hotelId: hotelId, userEmail: userEmail };
-      let url = process.env.NEXT_API_URL;
+      let url = process.env.NEXT_PUBLIC_API_URL;
       await fetch(url+"/delete-favorite", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },

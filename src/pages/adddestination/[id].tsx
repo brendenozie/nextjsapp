@@ -171,7 +171,7 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                 setIsLoading(false);
                 return;
         }
-        let urll = process.env.NEXT_API_URL;
+        let urll = process.env.NEXT_PUBLIC_API_URL;
                         
         await axios.put(`${urll}/get-destinations/${hotelDetails.id}`, hotelDetails).then(() => {
                 // router.push('/');
@@ -204,7 +204,7 @@ const addDestination = ({ session, cities, detailsResult }: Props) => {
                     },
                 };
             }
-            let url = `${process.env.NEXT_API_URL}/destroy/${publicId}`;
+            let url = `${process.env.NEXT_PUBLIC_API_URL}/destroy/${publicId}`;
 
             await axios.delete(url).then(async () => {
                 await axios.post(`${url}/delete-destination-image`,{id:publicId}).then(() => {
@@ -398,10 +398,10 @@ export const getServerSideProps = async (
         };
     }
 
-    let detailsUrl = `${process.env.NEXT_API_URL}/get-destinations/${id}`;
+    let detailsUrl = `${process.env.NEXT_PUBLIC_API_URL}/get-destinations/${id}`;
     const detailsResult  = await fetch(detailsUrl).then( (res) => res.json() );
 
-    let responseurl = `${process.env.NEXT_API_URL}/get-city`;
+    let responseurl = `${process.env.NEXT_PUBLIC_API_URL}/get-city`;
     const responseCities = await fetch(responseurl);
     
     const cities = await responseCities.json();
@@ -417,7 +417,7 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    let signurl = `${process.env.NEXT_API_URL}/sign`;
+    let signurl = `${process.env.NEXT_PUBLIC_API_URL}/sign`;
     const response = await fetch(signurl);
     const data = await response.json();
     const { signature, timestamp } = data;

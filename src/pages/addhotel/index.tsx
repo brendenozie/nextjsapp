@@ -159,7 +159,7 @@ const addHotel = ({ session,travelStyles,cities }: Props) => {
                             cityId : cityId,
                             travelStyleId : travelStyleId,
                         };
-                        let urll = process.env.NEXT_API_URL;
+                        let urll = process.env.NEXT_PUBLIC_API_URL;
         await axios.post(`${urll}/post-hotel`, hotelDetails).then(() => {
                 //   toast.success('Listing reserved!');
                 //   setDateRange(initialDateRange);
@@ -376,11 +376,11 @@ export const getServerSideProps = async (
         };
     }
 
-    let citurl = `${process.env.NEXT_API_URL}/get-city`;
+    let citurl = `${process.env.NEXT_PUBLIC_API_URL}/get-city`;
     const responseCities = await fetch(citurl);
     const cities = await responseCities.json();
 
-    let resurl = `${process.env.NEXT_API_URL}/get-travel-style`;
+    let resurl = `${process.env.NEXT_PUBLIC_API_URL}/get-travel-style`;
     const responseTravelStyle = await fetch(resurl);
     const travelStyles = await responseTravelStyle.json();
 
@@ -394,7 +394,7 @@ export const getServerSideProps = async (
 };
 
 async function getSignature() {
-    let url = `${process.env.NEXT_API_URL}/sign`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/sign`;
     const response = await fetch(url);
     const data = await response.json();
     const { signature, timestamp } = data;

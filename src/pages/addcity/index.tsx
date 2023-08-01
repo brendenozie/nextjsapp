@@ -145,7 +145,7 @@ const addCity = ({ session }: Props)  => {
         city.url      = list[0].url;
         city.status   = list[0].status;
 
-        const postcity=`${process.env.NEXT_API_URL}/post-city`;
+        const postcity=`${process.env.NEXT_PUBLIC_API_URL}/post-city`;
 
         await axios.post(postcity, city).then(() => {
                 // router.push('/');
@@ -249,7 +249,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    const geturl=`${process.env.NEXT_API_URL}/sign`;
+    const geturl=`${process.env.NEXT_PUBLIC_API_URL}/sign`;
     const response = await fetch(geturl);
     const data = await response.json();
     const { signature, timestamp } = data;

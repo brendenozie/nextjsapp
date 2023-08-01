@@ -144,7 +144,7 @@ const addTravelStyle = ({ session }: Props)  => {
                     travelStyle.url      = list[0].url;
                     travelStyle.status   = list[0].status;
 
-                    const ur_l =`${process.env.NEXT_API_URL}/post-travel-style`
+                    const ur_l =`${process.env.NEXT_PUBLIC_API_URL}/post-travel-style`
         await axios.post(ur_l, travelStyle).then(() => {
                 router.push("/travelstyle");
             }).catch(() => {
@@ -247,7 +247,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    let url = `${process.env.NEXT_API_URL}/sign`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/sign`;
     const response = await fetch(url);
     const data = await response.json();
     const { signature, timestamp } = data;

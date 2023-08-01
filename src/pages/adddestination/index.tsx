@@ -89,6 +89,17 @@ const addDestination = ({ session, cities }: Props) => {
         setFile(files.filter(x => x.name !== i));
     }
 
+    const getSignature  = async () => {
+
+        const signurl = process.env.NEXT_PUBLIC_API_URL+"/sign";
+        console.log(signurl);
+        const response = await fetch(`${signurl}`);
+        const data = await response.json();
+        const { signature, timestamp } = data;
+
+        return { signature, timestamp };
+      }
+
     const changeHandler = async (e: any) => {
         const { files } = e.target;
         const validImageFiles: any[] = [];
@@ -159,7 +170,7 @@ const addDestination = ({ session, cities }: Props) => {
                             cityId : cityId,
                         };
 
-        await axios.post(`${process.env.NEXT_API_URL}/post-destinations`, hotelDetails).then(() => {
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/post-destinations`, hotelDetails).then(() => {
                 // router.push('/');
             }).catch(() => {
                 alert('Something went wrong.');
@@ -345,7 +356,7 @@ export const getServerSideProps = async (
             },
         };
     }
-    let url = `${process.env.NEXT_API_URL}/get-city`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/get-city`;
     const responseCities = await fetch(url);
     
       const cities = await responseCities.json();
@@ -358,11 +369,5 @@ export const getServerSideProps = async (
     };
 };
 
-async function getSignature() {
-    let url = `${process.env.NEXT_API_URL}/sign`;
-    const response = await fetch(url);
-    const data = await response.json();
-    const { signature, timestamp } = data;
-    return { signature, timestamp };
-  }
+
   

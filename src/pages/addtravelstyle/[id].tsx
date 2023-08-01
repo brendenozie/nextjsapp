@@ -157,7 +157,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
             setIsLoading(false);
             return;
         }
-        let urll = `${process.env.NEXT_API_URL}/get-travel-style/${travelStyle.id}`;
+        let urll = `${process.env.NEXT_PUBLIC_API_URL}/get-travel-style/${travelStyle.id}`;
         await axios.put(urll, travelStyle).then(() => {
                 // router.push('/');
             }).catch(() => {
@@ -182,7 +182,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                     },
                 };
             }
-            let url = `${process.env.NEXT_API_URL}/destroy/${travelStyle.publicId}`;
+            let url = `${process.env.NEXT_PUBLIC_API_URL}/destroy/${travelStyle.publicId}`;
 
             await axios.post(url,{public_id:travelStyle.publicId}).then(() => {
                 setImages([]);
@@ -280,7 +280,7 @@ export const getServerSideProps = async (
         },
       };
     }
-    let url = process.env.NEXT_API_URL;
+    let url = process.env.NEXT_PUBLIC_API_URL;
     
     const detailsResult = await fetch(`${url}/get-travel-style/${id}`).then( (res) => res.json() );
   
@@ -302,7 +302,7 @@ export const getServerSideProps = async (
 
 
 async function getSignature() {
-    let url = `${process.env.NEXT_API_URL}/sign`;
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/sign`;
     const response = await fetch(url);
     const data = await response.json();
     const { signature, timestamp } = data;
