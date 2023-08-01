@@ -399,11 +399,12 @@ export const getServerSideProps = async (
     }
 
     let detailsUrl = `${process.env.NEXT_API_URL}/get-destinations/${id}`;
-    const detailsResult = await fetch(detailsUrl).then( (res) => res.json() );
+    const detailsResult  = await fetch(detailsUrl).then( (res) => res.json() );
+
     let responseurl = `${process.env.NEXT_API_URL}/get-city`;
     const responseCities = await fetch(responseurl);
     
-      const cities = await responseCities.json();
+    const cities = await responseCities.json();
 
     return {
         props: {
@@ -412,6 +413,7 @@ export const getServerSideProps = async (
             cities
         },
     };
+    
 };
 
 async function getSignature() {
