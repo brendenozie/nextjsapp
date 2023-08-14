@@ -15,7 +15,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import MapCard from "../components/MapCard";
+import MapCardDetails from "../components/MapCardDetails";
 import { IDetails, IResult, ISuggestionFormatted, uploadImage } from "../types/typings";
 import getHotelDetails from "@/utils/getHotelDetails";
 import CarouselCard from "@/components/CarouselCard";
@@ -309,7 +309,7 @@ const Details = ({ session }: Props) => {
           <h3 className="text-2xl font-semibold py-7">Location</h3>
           <p className="pb-7">{location}</p>
           <div className="w-full h-[500px]">
-            <MapCard searchResults={searchResults} />
+            <MapCardDetails searchResults={searchResults} />
           </div>
         </section>
       </main>
