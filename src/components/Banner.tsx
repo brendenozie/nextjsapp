@@ -18,7 +18,7 @@ const Banner = ({  }: Props) => {
       <div className="relative h-[600px] sm:h-[600px] lg:h-[500px] xl-h-[600px] 2xl:h-[530px]">
         <Image
           className="object-cover"
-          src="/31.jpg"
+          src="/31.JPG"
           fill
           alt="banner"
           priority
