@@ -17,6 +17,8 @@ import Pic from "@/components/Pic";
 import { GetServerSidePropsContext } from "next";
 import axios from "axios";
 
+import traveldisc from "../../public/get-inspired1200x600.jpg";
+
 type Props = {
   citiesData: ICity[];
   stylesData: ITravelStyle[];
@@ -127,7 +129,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         </section>
 
         <LargeCard
-          img="/get-inspired1200x600.jpg"
+          img={traveldisc}
           title="Discover New Destinations"
           description="Curated by our Travel Experts"
           buttonText="Get Inspired"

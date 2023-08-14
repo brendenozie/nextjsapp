@@ -1,12 +1,12 @@
 import { ICity } from "@/types/typings";
 import { addDays } from "date-fns";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
 
 type Props = {
-  img: string;
+  img: StaticImageData;
   title: string;
   description: string;
   buttonText: string;
