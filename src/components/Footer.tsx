@@ -11,11 +11,11 @@ const Footer = (props: Props) => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div className="text-teal-600">
-              HobbyHorseTours
+              HobbyHorseTours 
             </div>
 
             <p className="mt-4 max-w-xs text-gray-500">
-              Because travel to us denotes not just the distance between two points but the experiences of travel
+              Because travel to us denotes not just the distance between two points but the experiences along the way 
             </p>
 
             <ul className="mt-8 flex gap-6">
