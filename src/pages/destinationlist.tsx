@@ -115,11 +115,9 @@ export const getServerSideProps = async (
   let url = process.env.NEXT_PUBLIC_API_URL;
   const destinationResults =  await fetch(url+"/get-destinations").then( (res) => res.json() );
 
-  console.log(destinationResults);
-
   const searchResults :any={};
 
-  searchResults.results=[destinationResults];
+  searchResults.results=destinationResults;
 
   if (!searchResults) {
     return {
