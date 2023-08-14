@@ -112,7 +112,7 @@ const InfoCard = ({
       <div className="relative h-40 w-40 md:h-52 md:w-80 flex-shrink-0">
         <Image
           className="object-cover rounded-2xl"
-          src={item.img[0].url}
+          src={item.img && item.img[0].url}
           alt={item.title}
           fill
         />

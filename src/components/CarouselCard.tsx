@@ -17,7 +17,7 @@ const CarouselCard = ({ images }: Props) => {
         emulateTouch
         interval={7000}
       >
-        {JSON.parse(images).map((item: { url: string | undefined; status: string | undefined; }) => (
+        {images && JSON.parse(images).map((item: { url: string | undefined; status: string | undefined; }) => (
           <div className="h-[400px] w-full md:h-[500px]">
             <img className="object-cover" src={item.url} alt={item.status} />
           </div>

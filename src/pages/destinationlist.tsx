@@ -61,7 +61,7 @@ const Hotels = ({ searchResults, session }: Props) => {
             {searchResults &&
               searchResults?.results?.map((item: IDestination) => (
                 <InfoCard
-                  key={item.img[0].url}
+                  key={item.img && item.img[0].url}
                   cityId={item.id as string}
                   item={item}
                   startDate={startDate as string}
@@ -76,7 +76,7 @@ const Hotels = ({ searchResults, session }: Props) => {
         {searchResults ? (
           <section className="hidden lg:inline-flex xl:min-w-[600px]">
             <div className="sticky top-[68px] w-full h-screen">
-              <MapCard searchResults={searchResults} />
+              <MapCard searchResults={searchResults.results} />
             </div>
           </section>
         ) : (
@@ -110,17 +110,15 @@ export default Hotels;
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
-  const { id, location, startDate, endDate, numOfGuests } = context.query;
+  // const { id, location, startDate, endDate, numOfGuests } = context.query;
   const session = await getSession(context);
   let url = process.env.NEXT_PUBLIC_API_URL;
   const destinationResults =  await fetch(url+"/get-destinations").then( (res) => res.json() );
 
+  console.log(destinationResults);
+
   const searchResults :any={};
-  searchResults.id=id;
-  searchResults.location=location;
-  searchResults.startDate=startDate;
-  searchResults.endDate=endDate;
-  searchResults.numOfGuests=numOfGuests;
+
   searchResults.results=[destinationResults];
 
   if (!searchResults) {
