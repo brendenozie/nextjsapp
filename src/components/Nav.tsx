@@ -6,8 +6,10 @@ import { Navdata } from "@/constant/Data";
 import NavHor from "./NavHor";
 import NavVer from "./NavVer";
 import { useOnClickOutside } from "usehooks-ts";
+import { useSession } from "next-auth/react";
 
 const Nav = () => {
+  const { data: session } = useSession();
   const [toggle, setToggle] = useState(true);
 
   const ref = useRef<HTMLButtonElement>(null);
@@ -58,6 +60,11 @@ const Nav = () => {
                 <NavVer title={item.title} href={item.href} reference={item.reference} />
               </div>
             ))}
+            {session && (
+              <div key="my bookings">
+              <NavVer title="My Bookings" href="/bookings" reference="My bookings" />
+            </div>
+            )}
           </ul>
         </nav>
       ) : null}
@@ -69,6 +76,11 @@ const Nav = () => {
               <NavHor title={item.title} href={item.href} reference={item.reference} />
             </div>
           ))}
+          {session && (
+              <div key="mybookings">
+              <NavHor title="My Bookings" href="/bookings" reference="My Bookings" />
+            </div>
+            )}
         </ul>
       </nav>
     </div>

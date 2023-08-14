@@ -12,11 +12,11 @@ import { IResult, ISuggestionFormatted } from "../types/typings";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
-  searchResults: any[];
+  bookings: any[];
   session: Session;
 };
 
-const Bookings = ({ searchResults, session }: Props) => {
+const Bookings = ({ bookings, session }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
@@ -30,7 +30,7 @@ const Bookings = ({ searchResults, session }: Props) => {
 
       </div>
       <main
-        className={`flex ${!searchResults && "flex-col max-w-4xl mx-auto"} `}
+        className={`flex ${!bookings && "flex-col max-w-4xl mx-auto"} `}
       >
         {/* Left Section */}
         <section className="flex-grow pt-14 px-6">
@@ -44,8 +44,8 @@ const Bookings = ({ searchResults, session }: Props) => {
           
           <div className="flex flex-col">
             {/* Map Available Hotels */}
-            {searchResults &&
-              searchResults?.map((item) => (
+            {bookings &&
+              bookings?.map((item) => (
                 <InfoCard
                 key={item.img}
                 item={item}
@@ -58,10 +58,10 @@ const Bookings = ({ searchResults, session }: Props) => {
           </div>
         </section>
         {/* MapBox, Right Section */}
-        {searchResults ? (
+        {bookings ? (
           <section className="hidden lg:inline-flex xl:min-w-[600px]">
             <div className="sticky top-[68px] w-full h-screen">
-              <MapCard searchResults={searchResults} />
+              <MapCard searchResults={bookings} />
             </div>
           </section>
         ) : (
@@ -107,11 +107,13 @@ export const getServerSideProps = async (
     };
   }
 
-  const response = await fetch(
-    `/api/get-bookings?userEmail=${userEmail}`
+  let url = process.env.NEXT_PUBLIC_API_URL;
+  const response = await fetch(url+`/get-bookings?userEmail=${userEmail}`
   );
+
   const json = await response.json();
-  const bookings = json.bookings;
+
+  const bookings = json;
 
   return {
     props: {

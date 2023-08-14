@@ -53,7 +53,7 @@ const Admin = (props: Props) => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* <div className="overflow-x-auto">
                 <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                   <thead className="ltr:text-left rtl:text-right">
                     <tr>
@@ -126,7 +126,7 @@ const Admin = (props: Props) => {
                     </tr>
                   </tbody>
                 </table>
-          </div>
+          </div> */}
 
         </div>
       </main>

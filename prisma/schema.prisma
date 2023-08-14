@@ -79,7 +79,7 @@ model Hotel {
 model Booking {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime @default(now())
-  sessionId   String?   
+  sessionId   String?
   hotelId     String
   description String
   startDate   String
@@ -89,6 +89,7 @@ model Booking {
   location    String
   long        Float
   price       String
+  status      String   @default("active")
   star        Float
   title       String
   total       Float?
@@ -148,7 +149,7 @@ model City {
 model TravelStyle {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   styleName String
-  publicId  String @unique
+  publicId  String  @unique
   url       String
   status    String
   Hotel     Hotel[]

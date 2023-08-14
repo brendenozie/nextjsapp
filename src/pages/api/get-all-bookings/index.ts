@@ -8,7 +8,7 @@ export default async function handle(
   const { userEmail } = req.query;
   if (req.method === "GET") {
     const user = await prisma.booking.findMany({
-      where: { userEmail: userEmail as string }
+      // where: { userEmail: userEmail as string }
     });
     res.json(user);
   } else {
