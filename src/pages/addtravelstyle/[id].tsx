@@ -191,7 +191,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
                 alert('Something went wrong.');
                 setIsLoading(false);
             }).finally(() => {
-                router.push("/travelstyle");
+                //router.push("/travelstyle");
             })
 
         };
