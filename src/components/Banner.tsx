@@ -1,9 +1,7 @@
 import { ICity } from "@/types/typings";
-import { addDays } from "date-fns";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
 type Props = {
@@ -12,20 +10,8 @@ type Props = {
   setSelectedCity: Dispatch<SetStateAction<ICity | null>>;
 };
 
-const Banner = ({ getInspiredCities, setSearchInput, setSelectedCity }: Props) => {
+const Banner = ({  }: Props) => {
   const { data: session } = useSession();
-  const router = useRouter();
-  const startDate = addDays(new Date(), 4);
-  const endDate = addDays(new Date(), 7);
-  const numOfGuests = 1;
-
-  const luckyCity =
-    getInspiredCities[Math.floor(Math.random() * getInspiredCities.length)];
-
-  const setSearchInputAndSelectedCity = () => {
-    setSearchInput(luckyCity.cityName);
-    setSelectedCity(luckyCity);
-  }
 
   return (
     <>
