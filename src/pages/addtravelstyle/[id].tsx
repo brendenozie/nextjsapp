@@ -159,7 +159,7 @@ const addTravelStyle = ({ session, detailsResult }: Props)  => {
         }
         let urll = `${process.env.NEXT_PUBLIC_API_URL}/get-travel-style/${travelStyle.id}`;
         await axios.put(urll, travelStyle).then(() => {
-                // router.push('/');
+                
             }).catch(() => {
                 alert('Something went wrong.');
                 setIsLoading(false);

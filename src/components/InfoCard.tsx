@@ -160,7 +160,7 @@ const InfoCard = ({
           {/* Price per Night */}
           <div>
             <p className="text-right text-lg lg:text-xl font-semibold">
-              {`${item.offer==true? item.price  : item.offerPrice} / night`}
+              {`${item.offer==true? item.offerPrice  : item.price} / night`}
             </p>
             {/* Total Price */}
             {!fromFavPage && (
