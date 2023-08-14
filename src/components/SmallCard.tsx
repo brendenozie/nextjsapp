@@ -12,10 +12,12 @@ type Props = {
 };
 
 const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
+  
   const router = useRouter();
   const startDate = addDays(new Date(), 4);
   const endDate = addDays(new Date(), 7);
   const numOfGuests = 1;
+
   const setSearchInputAndSelectedCity = () => {
     setSearchInput(cityData.cityName);
     setSelectedCity(cityData);
