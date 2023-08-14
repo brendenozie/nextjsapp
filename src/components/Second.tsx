@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import pg24 from "../../public/pg2-4.jpg";
 
 import {GlobeAsiaAustraliaIcon,UserGroupIcon,WindowIcon } from "@heroicons/react/24/solid";
 
@@ -52,7 +53,7 @@ const Second = () => {
             <div className="w-full md:w-[45%]  box-border">
               <div className="bg-[url('/pg2-2.jpg')] h-[20rem] w-full bg-cover bg-center shadow-2xl sm:h-3/4 lg:h-[100%] lg:h-[90%] relative">
                 <div className="absolute -bottom-4 -right-4 shadow-2xl border-8 border-gray-200">
-                  <Image src="/pg2-4.jpg" alt="" width={200} height={50} />
+                  <Image src={pg24} alt="" width={200} height={50} />
                 </div>
               </div>
             </div>

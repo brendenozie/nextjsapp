@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import hero from "../31.jpg";
+import hero from "../../public/31.jpg";
 
 type Props = {
   getInspiredCities: ICity[];

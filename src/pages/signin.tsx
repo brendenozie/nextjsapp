@@ -7,6 +7,8 @@ import Drawer from "../components/Drawer";
 import Header from "../components/Header";
 import { ISuggestionFormatted, provider } from "../types/typings";
 
+import travelsignin from "../../public/travel-signin.svg";
+
 type Props = {
   providers: provider[];
 };
@@ -32,7 +34,7 @@ const SignIn = ({ providers }: Props) => {
         <div className="relative h-[80%]">
           <Image
             className="-translate-y-[55px] max-w-xl p-5 mx-auto"
-            src="/travel-signin.svg"
+            src={travelsignin}
             fill
             alt="Travel"
           />
