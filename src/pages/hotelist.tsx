@@ -14,7 +14,7 @@ import { IHotel, IResult, ISuggestionFormatted } from "../types/typings";
 import InfoCardHotel from "@/components/InfoCardHotel";
 
 type Props = {
-  searchResults: any[];
+  searchResults: any;
   session: Session;
 };
 
@@ -64,7 +64,8 @@ const Hotels = ({ searchResults, session }: Props) => {
           <div className="flex flex-col">
             {/* Map Available Hotels */}
             {searchResults &&
-              searchResults.results.map((item) => (
+              searchResults.results?.map((item: IHotel) => (
+
                 <InfoCardHotel
                   key={item.img[0].url}
                   cityId={item.cityId as string}

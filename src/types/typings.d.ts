@@ -195,3 +195,22 @@ export type IHotel = {
   createdAt: Date
   travelStyleId: string
 }
+
+export type IHotelSearch = {
+  [x: string]: any;
+  results: any[];
+  id: string;
+  title: string
+  description: string
+  star: number
+  lat: number
+  location: string
+  long: number
+  price: float
+  offer: boolean
+  offerPrice: float
+  userEmail: string
+  cityId: string
+  createdAt: string
+  travelStyleId: string
+}
