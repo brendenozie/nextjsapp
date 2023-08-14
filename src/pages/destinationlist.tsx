@@ -14,7 +14,7 @@ import { IDestination, IResult, ISuggestionFormatted } from "../types/typings";
 import getHotelList from "@/utils/getHotelList";
 
 type Props = {
-  searchResults: IDestination[];
+  searchResults: any[];
   session: Session;
 };
 
@@ -59,7 +59,7 @@ const Hotels = ({ searchResults, session }: Props) => {
           <div className="flex flex-col">
             {/* Map Available Hotels */}
             {searchResults &&
-              searchResults?.map((item) => (
+              searchResults?.results.map((item) => (
                 <InfoCard
                   key={item.img[0].url}
                   cityId={item.id as string}
@@ -113,13 +113,15 @@ export const getServerSideProps = async (
   const { id, location, startDate, endDate, numOfGuests } = context.query;
   const session = await getSession(context);
   let url = process.env.NEXT_PUBLIC_API_URL;
-  const searchResults =  await fetch(url+"/get-destinations").then( (res) => res.json() );
+  const destinationResults =  await fetch(url+"/get-destinations").then( (res) => res.json() );
 
+  const searchResults :any={};
   searchResults.id=id;
   searchResults.location=location;
   searchResults.startDate=startDate;
   searchResults.endDate=endDate;
   searchResults.numOfGuests=numOfGuests;
+  searchResults.results=[destinationResults];
 
   if (!searchResults) {
     return {

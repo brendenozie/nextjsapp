@@ -15,7 +15,7 @@ const MapCard = ({ searchResults, favorites=false }: Props) => {
   const [selectedLocation, setSelectedLocation] = useState<IDestination | null>(
     null
   );
-  const coordinates = searchResults.map((result) => ({
+  const coordinates = searchResults.results.map((result) => ({
     latitude: result.lat,
     longitude: result.long,
   }));
@@ -39,7 +39,7 @@ const MapCard = ({ searchResults, favorites=false }: Props) => {
         mapStyle="mapbox://styles/javiergongora/clalbftnj000g15nsx3nbjynw"
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
       >
-        {searchResults.map((result) => (
+        {searchResults.results.map((result) => (
           <div key={result.long}>
             <Marker
               latitude={result.lat}
