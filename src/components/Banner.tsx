@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
+import hero from "../31.jpg";
 
 type Props = {
   getInspiredCities: ICity[];
@@ -18,7 +19,7 @@ const Banner = ({  }: Props) => {
       <div className="relative h-[600px] sm:h-[600px] lg:h-[500px] xl-h-[600px] 2xl:h-[530px]">
         <Image
           className="object-cover"
-          src={"/31.jpg"}
+          src={hero}
           fill
           alt="banner"
           priority
