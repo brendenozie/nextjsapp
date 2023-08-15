@@ -17,6 +17,10 @@ import useDebounce from "../hooks/useDebounce";
 import { ISuggestionFormatted } from "../types/typings";
 import getCitySuggestions from "../utils/getCitySuggestions";
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 type Props = {
   placeholder?: string;
   searchInput: string;
@@ -103,6 +107,7 @@ const Header = ({
           height={40}
           width={100}
           alt="Travel"
+          loader={loaderProp}
         />
       </div>
       {/* Middle Section */}

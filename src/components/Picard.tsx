@@ -10,6 +10,10 @@ interface cardProps {
   desc: string;
 }
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 const Picard = ({ src, title, desc }: cardProps) => {
   return (
     <div className="flex flex-col gap-y-3 snap-center px-2">
@@ -19,6 +23,7 @@ const Picard = ({ src, title, desc }: cardProps) => {
           alt={`${title} picture`}
           width={808}
           height={632}
+          loader={loaderProp}
           className="group-hover:scale-110 group-hover:brightness-75 brig transition-all duration-300"
         />
         <div className="absolute top-0 opacity-0 group-hover:opacity-100 w-full flex justify-between transition-opacity duration-300 p-4">

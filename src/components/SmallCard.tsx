@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
 
 type Props = {
   cityData: ICity;
@@ -32,6 +35,7 @@ const SmallCard = ({ cityData, setSearchInput, setSelectedCity }: Props) => {
           src={cityData.url!}
           alt={cityData.cityName!}
           fill
+          loader={loaderProp}
         />
       </div>
       {/* Right side */}

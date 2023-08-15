@@ -11,6 +11,10 @@ type Props = {
   favorites?: Boolean;
 };
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 const MapCardDetails = ({ searchResults, favorites=false }: Props) => {
   const [selectedLocation, setSelectedLocation] = useState<IDestination | null>(
     null
@@ -73,6 +77,7 @@ const MapCardDetails = ({ searchResults, favorites=false }: Props) => {
                       src={result.img[0].url}
                       alt={result.title}
                       fill
+                      loader={loaderProp}
                     />
                   </div>
                   <div className="h-[100px] w-[180px]">

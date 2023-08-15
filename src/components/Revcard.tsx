@@ -12,6 +12,10 @@ interface revProps {
   headline: string;
 }
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 const Revcard = ({
   name,
   job,
@@ -29,6 +33,7 @@ const Revcard = ({
           width={50}
           height={50}
           className="rounded-full"
+          loader={loaderProp}
         />
         <div className="flex flex-col text-gray-700">
           <h3 className="font-semibold text-sm">{name}</h3>
@@ -55,6 +60,7 @@ const Revcard = ({
               alt=""
               width={400}
               height={200}
+              loader={loaderProp}
               className="object-cover object-start"
             />
           )}

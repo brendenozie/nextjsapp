@@ -11,6 +11,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IDestination, IResult } from "../types/typings";
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 type Props = {
   cityId?: string;
   item: IDestination;
@@ -135,6 +139,7 @@ const InfoCard = ({
           src={item.img && item.img[0].url}
           alt={item.title}
           fill
+          loader={loaderProp}
         />
       </div>
       <div className="flex flex-col flex-grow pl-5">

@@ -9,6 +9,10 @@ import { ISuggestionFormatted, provider } from "../types/typings";
 
 import travelsignin from "../../public/travel-signin.svg";
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
 type Props = {
   providers: provider[];
 };
@@ -37,6 +41,7 @@ const SignIn = ({ providers }: Props) => {
             src={travelsignin}
             fill
             alt="Travel"
+            loader={loaderProp}
           />
 
           {Object.values(providers).map((provider) => (
