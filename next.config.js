@@ -5,6 +5,7 @@ module.exports = {
     stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
   },
   images: {
+    loader: "custom",
     domains: [
       "t1.gstatic.com",
       "t2.gstatic.com",
