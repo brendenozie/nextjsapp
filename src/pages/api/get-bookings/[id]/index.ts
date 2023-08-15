@@ -13,15 +13,15 @@ export default async function handle(
   // }
 
   if (req.method === 'DELETE') {
-    deleteQuestion(req, res)
+    deleteBooking(req, res)
   } else if (req.method === 'PUT') {
-    updateQuestion(req, res)
+    updateBooking(req, res)
   } else {
     res.status(404).end()
   }
 }
 
-async function deleteQuestion(req: NextApiRequest, res: NextApiResponse) {
+async function deleteBooking(req: NextApiRequest, res: NextApiResponse) {
   const amaId = req.query.id as string
   try {
     const ama = await prisma.booking.delete({
@@ -36,26 +36,21 @@ async function deleteQuestion(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-async function updateQuestion(req: NextApiRequest, res: NextApiResponse) {
-  const amaId = req.query.id as string
-  const { question } = JSON.parse(req.body)
+async function updateBooking(req: NextApiRequest, res: NextApiResponse) {
+  const amaId = req.query.id as string;
+  // console.log(req.body);
+  const { status } = req.body;
   try {
-    // const ama = await prisma.booking.update({
-    //   where: {
-    //     id: amaId,
-    //   },
-    //   data: {
-    //     question: question.question,
-    //     answer: question.answer,
-    //     status: question.status,
-    //     audioUrl: question.audioUrl ?? null,
-    //     audioWaveform: Array.isArray(question.audioWaveform)
-    //       ? question.audioWaveform
-    //       : Prisma.DbNull,
-    //   },
-    // })
+    const ama = await prisma.booking.update({
+      where: {
+        id: amaId,
+      },
+      data: {
+        status: status,
+      },
+    })
 
-    return res.status(200).json("ama")
+    return res.status(200).json(ama)
   } catch (e) {
     console.log(e)
     res.status(500).end()

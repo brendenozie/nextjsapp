@@ -172,6 +172,7 @@ export interface IDestination {
   price: float
   offer: boolean
   offerPrice: float
+  status:string
   userEmail: string
   cityId: string
   createdAt: Date

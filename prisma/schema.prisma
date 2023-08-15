@@ -89,7 +89,7 @@ model Booking {
   location    String
   long        Float
   price       String
-  status      String   @default("active")
+  status      String   @default("active pending") //
   star        Float
   title       String
   total       Float?

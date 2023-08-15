@@ -132,7 +132,7 @@ const Details = ({ session }: Props) => {
         star: star,
         cityId: cityId,
       }).then(() => {
-        router.back();
+        router.push("/bookings");
     }).catch(() => {
         alert('Something went wrong.');
     }).finally(() => {

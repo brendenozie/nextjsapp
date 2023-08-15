@@ -93,7 +93,7 @@ const InfoCard = ({
 
   const deleteFavorite = async () => {
     try {
-      const body = { hotelId: hotelId, userEmail: userEmail };
+      const body = { itemId: item.id, userEmail: userEmail };
       let url = process.env.NEXT_PUBLIC_API_URL;
       await fetch(url+"/delete-favorite", {
         method: "DELETE",
@@ -106,11 +106,11 @@ const InfoCard = ({
     }
   };
 
-  const updateBooking = async (status: string) => {
+  const updateBooking = async () => {
 
     try {
 
-      const body = { bookingId: item.id, status: status };
+      const body = { bookingId: item.id, status: "Cancelled" };
 
       let updateBookingStatus=`${process.env.NEXT_PUBLIC_API_URL}/get-bookings/${item.id}`;
 
@@ -124,6 +124,7 @@ const InfoCard = ({
       console.error(error);
     }
   };
+
 
   return (
     <div className="flex py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">
@@ -139,7 +140,7 @@ const InfoCard = ({
       <div className="flex flex-col flex-grow pl-5">
         <div className="flex justify-between">
           {/* Hotel Location Info, distance from nearest city center */}
-          <p className="">{item.userEmail}</p>
+          <p className="">{item.location}</p>
           {/* Favorite Heart Icon */}
           {!booking &&
             (!isFav ? (
@@ -182,7 +183,7 @@ const InfoCard = ({
           {/* Price per Night */}
           <div>
             <p className="text-right text-lg lg:text-xl font-semibold">
-              {`${item.price && item.offer==true? item.offerPrice  : item.price} / night`}
+              {`${item.offer==true? item.offerPrice  : item.price} / night`}
             </p>
             {/* Total Price */}
             {!fromFavPage && (
@@ -191,16 +192,10 @@ const InfoCard = ({
             {/* More Details, go to Details Page */}
             <div className="justify-end flex items-baseline">
             <p
-                onClick={()=>updateBooking("Admin Cancelled")}
+                onClick={updateBooking}
                 className="text-right text-base pt-2 lg:text-l font-semibold cursor-pointer hover:text-orange-500 mr-2"
               >
                 Cancel Booking
-              </p>
-              <p
-                onClick={()=>updateBooking("Booking Admin Approved")}
-                className="text-right text-base pt-2 lg:text-l font-semibold cursor-pointer hover:text-orange-500 mr-2"
-              >
-                Approve Booking
               </p>
               <p
                 onClick={details}

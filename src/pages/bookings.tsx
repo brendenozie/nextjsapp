@@ -6,7 +6,7 @@ import { useState } from "react";
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import InfoCard from "../components/InfoCard";
+import InfoCard from "../components/InfoCardMyBooking";
 import MapCard from "../components/MapCard";
 import { IResult, ISuggestionFormatted } from "../types/typings";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";

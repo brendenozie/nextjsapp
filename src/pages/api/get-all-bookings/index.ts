@@ -5,10 +5,10 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { userEmail } = req.query;
+  const { status } = req.query;
   if (req.method === "GET") {
     const user = await prisma.booking.findMany({
-      // where: { userEmail: userEmail as string }
+      where: { status: status as string }
     });
     res.json(user);
   } else {
