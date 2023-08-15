@@ -11,6 +11,11 @@ type Props = {
   setSelectedCity: Dispatch<SetStateAction<ICity | null>>;
 };
 
+const loaderProp =({ src  } :any) => {
+  return src;
+}
+
+
 const Banner = ({  }: Props) => {
   const { data: session } = useSession();
 
@@ -23,6 +28,7 @@ const Banner = ({  }: Props) => {
           fill
           alt="banner"
           priority
+          loader={loaderProp}
         />
         <div className="absolute top-1/3 w-full text-center">
           {session && (
