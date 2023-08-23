@@ -62,7 +62,7 @@ const Header = () => {
           <div className="order-2 lg:order-3 lg:w-[25%] box-border flex justify-center items-center lg:pr-24 2xl:pr-16 gap-x-2 lg:justify-end">
             <Link
               href="/signin"
-              className={`uppercase sm:hidden lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black border-gray-700" : "text-white "
+              className={`uppercase  lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black border-gray-700" : "text-white "
                 }`}
             >
               log in
@@ -70,7 +70,7 @@ const Header = () => {
             <div className={`h-4 sm:h-[1.5rem] w-[1px] border-l-[1px] ${dark ? "border-gray-700" : "border-gray-100"}`} ></div>
             <Link
               href="/signin"
-              className={`uppercase sm:hidden lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black" : "text-white"
+              className={`uppercase lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black" : "text-white"
                 }`}
             >
               register

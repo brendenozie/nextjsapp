@@ -64,7 +64,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   return (
     <div className="">
       <Head>
-        <title>Travel - Vacation</title>
+        <title>HobbyHorseTours</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}

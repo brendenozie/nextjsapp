@@ -15,14 +15,13 @@ const Second = () => {
       <div
         id="about"
         data-testid="about"
-        className="flex flex-col justify-end 2xl:container"
-      >
+        className="flex flex-col justify-end 2xl:container" >
         <div className="min-h-[7rem]"></div>
-        <div className="flex flex-col cont-height justify-center gap-y-20 sm:gap-y-28 px-10 2xl:px-4 box-border min-h-[80vh] md:min-h-[50vh]">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 ">
-            <div className="flex flex-col gap-y-10 md:w-[45%] px-6 box-border">
+        <div className="flex flex-col cont-height gap-y-20 sm:gap-y-28 box-border min-h-[80vh] md:min-h-[50vh]">
+          <div className="flex flex-wrap gap-y-6 gap-x-6">
+            <div className="flex flex-col gap-y-10 md:w-[50%] box-border">
               <div className="flex flex-col gap-y-6">
-                <h2 className="text-3xl font-bold text-gray-700 md:text-4xl lg:text-5xl max-w-lg">
+                <h2 className="text-3xl font-bold text-gray-700 md:text-4xl lg:text-5xl ">
                   Awesome travel destinations in the world
                 </h2>
                 <p className="lg:text-lg">
@@ -62,8 +61,8 @@ const Second = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-start px-10 xl:px-16 box-border">
-            <div className="md:w-[80%] flex flex-col sm:flex-row gap-y-6 justify-between justify-items-center items-center px-6 box-border">
+          <div className="flex items-center justify-start box-border justify-center">
+            <div className="md:w-[100%] flex flex-col sm:flex-row gap-y-6 justify-between justify-items-center items-center px-2 box-border">
               
               <div className="flex items-start gap-x-3">
                 <GlobeAsiaAustraliaIcon className="h-30" />

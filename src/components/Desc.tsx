@@ -109,11 +109,11 @@ const Desc = ({
 
   return (
     <>
-      <div className="min-h-[6rem] w-full justify-center items-center  box-border text-slate-100 backdrop-blur bg-[#65324b] ">
-        <div className=" text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-10 sm:max-w-[64%] mx-auto">
-          <div className="justify-center items-center mx-8 bg-white rounded-md ">
+      <div className="min-h-[6rem] w-full justify-center items-center box-border text-slate-100 backdrop-blur bg-[#65324b] ">
+        <div className=" text-center rounded-md transform -translate-y-20 sm:-translate-y-10 sm:max-w-[90%] mx-auto">
+          <div className="justify-center items-center mx-16 bg-white rounded-md ">
             <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
-              <div className="p-2 sm:w-1/4 w-full  border-[1px] justify-center flex items-center rounded-md shadow-md ">
+              <div className="p-2 sm:w-1/4 w-full border-[1px] justify-center flex items-center rounded-md shadow-md ">
                 <div >
                   <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
                 </div>

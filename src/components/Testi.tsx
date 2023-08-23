@@ -12,7 +12,7 @@ const Testi = () => {
       className="flex flex-col xl:container"
     >
       <div className="min-h-[8rem]"></div>
-      <div className="flex flex-wrap justify-center gap-y-10 min-h-[80vh] md:min-h-[50vh] gap-x-6">
+      <div className="flex flex-wrap justify-center gap-y-10 min-h-[80vh] md:min-h-[50vh] gap-x-2">
         <div className="flex flex-col justify-center items-center gap-y-6 2xl:w-[47%] order-2">
         <section className="my-8 bg-gray-100 text-gray-900">
             <div className="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
@@ -38,7 +38,7 @@ const Testi = () => {
         </div>
 
         <div className="flex justify-center w-full:w-[47%] order-1 h-[30rem] items-center bg-[#fefefe]">
-          <div className="relative h-[20rem] w-[20rem] lg:w-[33rem]">
+          <div className="relative h-[20rem] w-[20rem] lg:w-[29rem]">
             <div className="w-full p-5 card-shadow max-w-[20rem] lg:max-w-[25rem] bg-white z-30 absolute top-0 right-0">
               <Revcard
                 name="David Johns"

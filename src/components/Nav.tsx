@@ -12,10 +12,10 @@ const Nav = () => {
   const { data: session } = useSession();
   const [toggle, setToggle] = useState(true);
 
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   
   useOnClickOutside(ref, (e) => {
-    setToggle(!toggle);
+    setToggle(true);
   });
   
   const handleClick = () => {
@@ -38,10 +38,11 @@ const Nav = () => {
       window.removeEventListener("scroll", navbarDark);
     };
   }, []);
+
   return (
-    <div className="order-3 lg:px-0 lg:order-2 w-1/4 lg:w-fit">
+    <div className="order-3 lg:px-0 lg:order-2 w-1/4 lg:w-fit" ref={ref}>
       <div className=" flex justify-end pr-6 lmd:pr-14 w-full" >
-        <button className={`lg:hidden rounded-full ${ dark ? "text-black" : "text-white" }`} onClick={handleClick} ref={ref}>
+        <button className={`lg:hidden rounded-full ${ dark ? "text-black" : "text-white" }`} onClick={handleClick} >
           <Bars4Icon color={`${
                 dark ? "text-white" : "text-white "
               }`}   className="h-6"/>
