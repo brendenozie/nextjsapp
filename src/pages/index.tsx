@@ -21,7 +21,7 @@ import traveldisc from "../../public/get-inspired1200x600.jpg";
 
 type Props = {
   citiesData: {results:ICity[]};
-  stylesData: ITravelStyle[];
+  stylesData: {results:ITravelStyle[]};
   getInspiredCities: ICity[];
 };
 
