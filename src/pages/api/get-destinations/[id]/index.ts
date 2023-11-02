@@ -26,17 +26,34 @@ export default async function handle(
 }
 
 async function getDestinations(req: NextApiRequest, res: NextApiResponse) {
-  const destinationId = req.query.id as string
+  const destinationId = req.query.id as string //|| req.query.page as string
   try {
-    const destination = await prisma.destination.findFirst({
-      where: {
-        id: destinationId,
-      },
-      include: {
-        img: { select: { id: true, publicId:true, url: true, status: true, } },
-      },
-    })
-    return res.status(200).json(destination)
+    if(destinationId){
+      const destination = await prisma.destination.findFirst({
+        where: {
+          id: destinationId,
+        },
+        include: {
+          img: { select: { id: true, publicId:true, url: true, status: true, } },
+        },
+      })
+      return res.status(200).json({info:{count: 1,
+                                          next: "2",
+                                          pages: 10,
+                                          prev: "0"},
+                                    results: destination});
+    }else{
+      const destination = await prisma.destination.findMany({
+        include: {
+          img: { select: { id: true, publicId:true, url: true, status: true, } },
+        }
+      });
+      res.status(200).json({info:{count: 1,
+                                  next: "2",
+                                  pages: 10,
+                                  prev: "0"},
+                            results: destination});
+    }
   } catch (e) {
     console.log(e)
     res.status(500)

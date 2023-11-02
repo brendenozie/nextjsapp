@@ -6,12 +6,15 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  
+  console.log(req.body);
+
   const {
     sessionId,
-    hotelId,
     description,
     img,
     location,
+    userEmail,
     lat,
     long,
     price,
@@ -19,6 +22,7 @@ export default async function handle(
     title,
     total,
     cityId,
+    travelStyleId,
     startDate,
     endDate,
   } = req.body;
@@ -27,11 +31,11 @@ export default async function handle(
   const result = await prisma.booking.create({
     data: {
       sessionId,
-      hotelId,
+      hotellId: req.body.hotelId  ? req.body.hotelId : req.body.hotellId,
       description,
       startDate,
       endDate,
-      img,
+      // img:img,
       lat: Number(lat),
       location,
       long: Number(long),
@@ -39,8 +43,9 @@ export default async function handle(
       star: Number(star),
       title,
       total: Number(total),
-      userEmail : session!.user!.email!,
+      userEmail : userEmail ? userEmail : session?.user!.email!,
       cityId,
+      travelStyleId
     },
   });
   res.json(result);

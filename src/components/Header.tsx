@@ -69,7 +69,7 @@ const Header = () => {
             </Link>
             <div className={`h-4 sm:h-[1.5rem] w-[1px] border-l-[1px] ${dark ? "border-gray-700" : "border-gray-100"}`} ></div>
             <Link
-              href="/signin"
+              href="/register"
               className={`uppercase lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black" : "text-white"
                 }`}
             >

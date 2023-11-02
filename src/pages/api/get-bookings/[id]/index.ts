@@ -13,6 +13,8 @@ export default async function handle(
   // }
 
   if (req.method === 'DELETE') {
+    getBooking(req, res)
+  }else if (req.method === 'DELETE') {
     deleteBooking(req, res)
   } else if (req.method === 'PUT') {
     updateBooking(req, res)
@@ -20,6 +22,30 @@ export default async function handle(
     res.status(404).end()
   }
 }
+
+async function getBooking(req: NextApiRequest, res: NextApiResponse) {
+  // const amaId = req.query.id as string
+  const { userEmail } = req.query;
+  if (req.method === "GET") {
+    const user = await prisma.booking.findMany({
+      include: {
+        img: { select: { id: true, publicId:true, url: true, status: true, } },
+      }
+      // where: { userEmail: userEmail as string }
+    });
+    res.json({InfoResponse:{count: 1,
+                  next: "2",
+                  pages: 10,
+                  prev: "0"},
+                results: user
+            });
+  } else {
+    throw new Error(
+      `The HTTP ${req.method} method is not supported at this route.`
+    );
+  }
+}
+
 
 async function deleteBooking(req: NextApiRequest, res: NextApiResponse) {
   const amaId = req.query.id as string

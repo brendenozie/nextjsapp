@@ -35,7 +35,12 @@ async function GetHotel(req: NextApiRequest, res: NextApiResponse) {
         img: { select: { id: true, publicId:true, url: true, status: true, } },
       },
     })
-    return res.status(200).json(hotel);
+    return res.status(200).json({InfoResponse:{count: 1,
+            next: "2",
+            pages: 10,
+            prev: "0"},
+            results: hotel
+    });
   } catch (e) {
     console.log(e)
     res.status(500)

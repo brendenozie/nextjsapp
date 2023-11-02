@@ -38,7 +38,12 @@ async function GetCity(req: NextApiRequest, res: NextApiResponse) {
         id: cityId,
       },
     })
-    return res.status(200).json(city)
+    return res.status(200).json({InfoResponse:{count: 1,
+                    next: "2",
+                    pages: 10,
+                    prev: "0"},
+              results: city
+              })
   } catch (e) {
     console.log(e)
     res.status(500)

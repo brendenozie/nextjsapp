@@ -32,7 +32,12 @@ async function GetTravelStyle(req: NextApiRequest, res: NextApiResponse) {
         id: travelstyleId,
       },
     })
-    return res.status(200).json(travelStyle)
+    return res.status(200).json({InfoResponse:{count: 1,
+                next: "2",
+                pages: 10,
+                prev: "0"},
+          results: travelStyle
+          })
   } catch (e) {
     console.log(e)
     res.status(500)

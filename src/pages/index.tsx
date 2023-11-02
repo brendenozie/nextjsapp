@@ -20,7 +20,7 @@ import axios from "axios";
 import traveldisc from "../../public/get-inspired1200x600.jpg";
 
 type Props = {
-  citiesData: ICity[];
+  citiesData: {results:ICity[]};
   stylesData: ITravelStyle[];
   getInspiredCities: ICity[];
 };
@@ -93,7 +93,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
           {/* Map Canadian cities */}
           <div className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {citiesData.map((city) => (
+            {citiesData.results.map((city) => (
               <SmallCard
                 key={city.url}
                 cityData={city}

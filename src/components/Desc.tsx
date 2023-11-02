@@ -17,7 +17,7 @@ import getCitySuggestions from "../utils/getCitySuggestions";
 import { useOnClickOutside } from "usehooks-ts";
 
 type Props = {
-  getInspiredCities: ICity[];
+  getInspiredCities: {results:ICity[]};
   placeholder?: string;
   searchInput: string;
   setSearchInput: Dispatch<SetStateAction<string>>;
@@ -127,7 +127,7 @@ const Desc = ({
                                                       status   : ""});
                                                     }}>
                   <option value="Pick A City" >Pick A City</option>
-                  {getInspiredCities.map((city) => (
+                  {getInspiredCities.results.map((city) => (
                       <option value={JSON.stringify(city)} >{city.cityName}</option>
                     ))}
                   </select>

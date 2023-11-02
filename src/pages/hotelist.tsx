@@ -130,7 +130,7 @@ export const getServerSideProps = async (
   searchResults.startDate=startDate;
   searchResults.endDate=endDate;
   searchResults.numOfGuests=numOfGuests;
-  searchResults.results=[hotelResults];
+  searchResults.results=[hotelResults.results];
 
   return {
     props: {

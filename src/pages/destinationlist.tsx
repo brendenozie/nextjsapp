@@ -117,7 +117,7 @@ export const getServerSideProps = async (
 
   const searchResults :any={};
 
-  searchResults.results=destinationResults;
+  searchResults.results=destinationResults.results;
 
   if (!searchResults) {
     return {

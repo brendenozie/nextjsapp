@@ -17,7 +17,7 @@ type Props = {
   providers: provider[];
 };
 
-const SignIn = ({ providers }: Props) => {
+const Register = ({ providers }: Props) => {
   
   const router = useRouter();
 
@@ -28,23 +28,30 @@ const SignIn = ({ providers }: Props) => {
     null
   );
 
-  const [data,setData] = useState({
+  const [data,setData] = useState({name:'',
                                     email:'',
-                                    password:''
+                                    password:'',
+                                    provider:'web'
                                   });
 
-  const loginUser = async (e: { preventDefault: () => void; }) =>{
-    e.preventDefault();
+  const registerUser = async (e: { preventDefault: () => void; }) =>{
+      e.preventDefault();
 
-    const res = await signIn('credentials',{
-                          ...data,
-                          redirect: false });
+      // const { signature, timestamp } = await getCsrfSignature();
 
-    if (res?.error) {  console.log(res.error); return; }
+      // let checkRegisterDetails=`${process.env.NEXT_PUBLIC_API_URL}/register`;
 
-    console.log(res);
+      let response =await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({data:data}),
+                });
 
-    router.push('/');  
+      let res = await response.json();
+
+      if (res?.error) {  console.log(res.error); return; }
+
+      router.push('/signin');  
     
   }
 
@@ -53,7 +60,7 @@ const SignIn = ({ providers }: Props) => {
   return (
     <div className="h-screen">
       <Head>
-        <title>Travel - Sign In</title>
+        <title>Travel - Register Account</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
@@ -77,16 +84,26 @@ const SignIn = ({ providers }: Props) => {
             <div className="top-[78%] w-full text-center">
                 <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Enter Login Details</h2>
+                        <h2 className="text-base font-semibold leading-7 text-gray-900">Enter Register Details</h2>
                         <p className="mt-1 text-sm leading-6 text-gray-600"></p>
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
-                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-password">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-name">
+                            Name
+                        </label>
+                        <input name="name" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-name" type="text" placeholder="Username" 
+                        onChange={(e) => { setData({...data, name: e.target.value}) }}/>
+
+                    </div>
+                </div>
+                <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-email">
                             Email
                         </label>
-                        <input name="email" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="Email" 
+                        <input name="email" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="text" placeholder="Email" 
                         onChange={(e) => { setData({...data, email: e.target.value}) }}/>
 
                     </div>
@@ -102,7 +119,7 @@ const SignIn = ({ providers }: Props) => {
                     </div>
                 </div>
                 <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <button onClick={loginUser}  type="submit" disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
+                    <button onClick={registerUser}  type="submit" disabled={isLoading} className={`w-full rounded-md ${ isLoading ? 'bg-gray-600' : 'bg-indigo-600' } px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}>Save</button>
                 </div>
 
             </div>
@@ -113,7 +130,7 @@ const SignIn = ({ providers }: Props) => {
                   className="text-red-600 bg-white border px-10 py-4 shadow-md rounded-md w-full font-bold my-3 hover:shadow-xl active:scale-90 transition duration-150"
                   onClick={() => signIn(provider.id)}
                 >
-                  Sign in with {provider.name}
+                  Register with {provider.name}
                 </button>
               </div>)
             ))}
@@ -136,7 +153,7 @@ const SignIn = ({ providers }: Props) => {
   );
 };
 
-export default SignIn;
+export default Register;
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -158,3 +175,11 @@ export const getServerSideProps = async (
     },
   };
 };
+
+async function getCsrfSignature() {
+  let url = `${process.env.NEXT_PUBLIC_API_URL}/auth/csrf`;
+  const response = await fetch(url);
+  const data = await response.json();
+  const { signature, timestamp } = data;
+  return { signature, timestamp };
+}
