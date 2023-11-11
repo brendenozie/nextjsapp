@@ -14,6 +14,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   return res.send({status:401,message:"Missing Registration details"});
 }
 
+//750499178
 
 async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
   const {name, email, password, provider} = req.body.data;
@@ -58,8 +59,13 @@ async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
   });
 
   if(result.hashedPassword){
-    let {hashedPassword,emailVerified,...newUser} = result;
-    return res.send({status:200,message:"User Created.", body:newUser});
+    if(result.emailVerified){
+      let {hashedPassword,emailVerified,...newUser} = result;
+      return res.send({status:200,message:"User Created.", body:newUser});
+    }else{
+      let {hashedPassword,...newUser} = result;
+      return res.send({status:200,message:"User Created.", body:newUser});
+    }
   }
 
   return res.send({status:200,message:"User Created.", body:result});

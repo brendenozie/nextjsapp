@@ -93,13 +93,26 @@ export default async function handle(
         pipeline: [
           // { $match: { offer: "true" } },
           // { $group: { _id: "$_id",views :"views" } },
-          {
+          
+            {
+              $lookup:
+                {
+                  from: "HotelImage",
+                  localField: "hotelId",
+                  foreignField: "id",
+                  as: "img"
+                }
+           },
+           {
             $project:{
               count : {"$size":'$likes'},
               document:'$$ROOT'
-                ,_id:0}
+                ,_id:0,
+              }
             },
             {$sort:{"count":-1}},
+            // { $skip: 10 },
+            // { $limit: 5 }
         ]
       })
 

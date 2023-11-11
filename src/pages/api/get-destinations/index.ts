@@ -22,11 +22,12 @@ export default async function handle(
       }),
     ]);
 
-    res.json({InfoResponse:{count: results[0] ?? 0,
+    res.json({InfoResponse:{
+                count: results[0] ?? 0,
                 next: currentPage * 20 > results[0] ? currentPage : 0 ,
                 pages: results[0]/20 > 1 ? results[0]/20 : 1 ,
                 prev: currentPage-1 > 1 ? currentPage-1 : 0},
-              results: results[1]
+                results: results[1]
             });
             
   } else {
