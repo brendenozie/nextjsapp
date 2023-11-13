@@ -22,9 +22,19 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 
   if(user){
 
+    
     if(user.hashedPassword){
-      let {hashedPassword,emailVerified,...newUser} = user;
-      return res.send({status:200,message:"Success.", body:newUser});
+
+      let {hashedPassword,...newObject} = user;
+      
+      if(newObject.emailVerified == null){
+
+        let {emailVerified,...newUser} = newObject;
+        
+        return res.send({status:200,message:"Success.", body:newUser});
+      }
+      
+      return res.send({status:200,message:"Success.", body:newObject});
     }
 
     return res.send({status:200,message:"Success", body:user});
