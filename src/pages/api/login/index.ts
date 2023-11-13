@@ -31,7 +31,6 @@ async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
   });
 
   if(user){
-
     
     if(user.hashedPassword){
 
