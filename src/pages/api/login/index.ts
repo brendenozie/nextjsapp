@@ -5,12 +5,14 @@ import prisma from "../../../server/db/prismadb";
 // POST /api/post
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    await LoginUser(req, res)
-    return;
-  } 
+  // if (req.method === 'POST') {
+  //   await LoginUser(req, res)
+  //   return;
+  // } 
 
-  return res.send({status:401,message:"Missing Registration details",data:req.body});
+  await LoginUser(req, res);
+
+  return res.send({status:401,message:"Missing Registration details"});
 }
 
 
