@@ -10,7 +10,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     return;
   } 
 
-  return res.send({status:401,message:"Missing Registration details"});
+  return res.send({status:401,message:"Missing Registration details",data:req.body});
 }
 
 
