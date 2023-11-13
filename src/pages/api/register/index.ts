@@ -15,6 +15,8 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 }
 
 async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
+  console.log(req.body.data);
+  
   const {name, email, password, provider} = req.body.data;
 
   if(!email || !password || !name){
