@@ -59,16 +59,24 @@ async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
   });
 
   if(result.hashedPassword){
-    if(result.emailVerified){
-      let {hashedPassword,emailVerified,...newUser} = result;
-      return res.send({status:200,message:"User Created.", body:newUser});
-    }else{
-      let {hashedPassword,...newUser} = result;
+
+    let {hashedPassword,...newObject} = result;
+
+    if(result.emailVerified == null){
+
+      let {emailVerified,...newUser} = newObject;
+      
       return res.send({status:200,message:"User Created.", body:newUser});
     }
+    
+     return res.send({status:200,message:"User Created.", body:newObject});
+
   }
 
-  return res.send({status:200,message:"User Created.", body:result});
+  if(result) return res.send({status:200,message:"User Created.", body:result});
+  
+  return res.send({status:400,message:"This account does not exist. Create an account by registering"});
+  
   
 }
 
