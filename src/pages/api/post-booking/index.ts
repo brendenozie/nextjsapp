@@ -7,8 +7,6 @@ export default async function handle(
   res: NextApiResponse
 ) {
   
-  console.log(req.body);
-
   const {
     sessionId,
     description,
