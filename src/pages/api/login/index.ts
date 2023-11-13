@@ -10,9 +10,14 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   //   return;
   // } 
 
-  await LoginUser(req, res);
+  try {
+    await LoginUser(req, res);
+    res.redirect(307, '/');
+  } catch (err) {
+    res.status(500).send({ error: 'Failed to fetch data' })
+  }
 
-  return res.send({status:401,message:"Missing Registration details"});
+  //return res.send({status:401,message:"Missing Registration details"});
 }
 
 
