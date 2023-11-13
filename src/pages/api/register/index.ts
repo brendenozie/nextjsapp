@@ -14,8 +14,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   return res.send({status:401,message:"Missing Registration details"});
 }
 
-//750499178
-
 async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
   const {name, email, password, provider} = req.body.data;
 
