@@ -18,8 +18,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     }
   });
 
-  // let {hashedPassword,emailVerified,...newUser} = user;
-
   if(user){
 
     
