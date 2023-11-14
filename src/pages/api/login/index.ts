@@ -6,25 +6,6 @@ import prisma from "../../../server/db/prismadb";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   
-  if (req.method === 'POST') {
-    await LoginUser(req, res)
-    return;
-  } 
-
-  // try {
-  //   await LoginUser(req, res);
-  //   res.redirect(307, '/');
-  // } catch (err) {
-  //   res.status(500).send({ error: 'Failed to fetch data' })
-  // }
-
-  return res.send({status:401,message:"Missing Registration details"});
-}
-
-
-
-async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
-
   const {email, password } = req.body.data;
 
   if(!email || !password){
@@ -102,4 +83,11 @@ async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
   return res.send({status:400,message:"This account does not exist. Create an account by registering"});
 
 
+}
+
+
+
+async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
+
+  
 }
