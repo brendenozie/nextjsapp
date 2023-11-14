@@ -6,6 +6,20 @@ import prisma from "../../../server/db/prismadb";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   
+  if (req.method === 'POST') {
+    await LoginUser(req, res)
+    return;
+  } 
+
+  return res.send({status:401,message:req.method});
+
+
+}
+
+
+
+async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
+
   const {email, password } = req.body.data;
 
   if(!email || !password){
@@ -81,13 +95,5 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
   if(result) return res.send({status:200,message:"Success.", body:result});
   
   return res.send({status:400,message:"This account does not exist. Create an account by registering"});
-
-
-}
-
-
-
-async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
-
   
 }
