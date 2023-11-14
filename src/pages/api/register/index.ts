@@ -2,16 +2,19 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import prisma from "../../../server/db/prismadb";
 
+
 // POST /api/post
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method === 'POST') {
-    await RegisterUser(req, res)
+    await RegisterUser(req, res);
     return;
   } 
 
-  return res.send({status:401,message:req.method});
+  var payloadObj = JSON.parse(req.body);
+
+  return res.send({status:401,message:req.method, dt:payloadObj});
 }
 
 async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {

@@ -10,7 +10,6 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
-    "usehooks-ts": "2.6.0",
     "@alpinejs/persist": "^3.12.0",
     "@badrap/bar-of-progress": "^0.2.2",
     "@heroicons/react": "^2.0.13",
@@ -20,6 +19,7 @@
     "@stripe/stripe-js": "^1.44.1",
     "alpinejs": "^3.10.3",
     "axios": "^1.2.0",
+    "body-parser": "^1.20.2",
     "cloudinary": "1.27.1",
     "compressorjs": "^1.2.1",
     "cross-env": "^7.0.3",
@@ -37,7 +37,8 @@
     "react-map-gl": "^7.0.19",
     "react-responsive-carousel": "^3.2.23",
     "stripe": "^11.1.0",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "usehooks-ts": "2.6.0"
   },
   "devDependencies": {
     "@types/micro": "^7.3.7",
