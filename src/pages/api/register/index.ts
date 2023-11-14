@@ -6,10 +6,10 @@ import prisma from "../../../server/db/prismadb";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
 
-  if (req.method === 'POST') {
+  // if (req.method === 'POST') {
     await RegisterUser(req, res)
     return;
-  } 
+  // } 
 
   return res.send({status:401,message:req.method});
 }
