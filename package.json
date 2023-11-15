@@ -43,7 +43,7 @@
   "devDependencies": {
     "@types/micro": "^7.3.7",
     "@types/multer": "^1.4.7",
-    "@types/node": "20.1.1",
+    "@types/node": "20.9.0",
     "@types/nodemailer": "^6.4.9",
     "@types/react": "18.0.21",
     "@types/react-date-range": "^1.4.4",
