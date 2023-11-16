@@ -2,14 +2,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import prisma from "../../../server/db/prismadb";
 
-// POST /api/post
-
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// }
-
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   
   if (req.method === 'POST') {
