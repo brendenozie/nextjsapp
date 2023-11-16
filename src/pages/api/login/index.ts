@@ -4,6 +4,12 @@ import prisma from "../../../server/db/prismadb";
 
 // POST /api/post
 
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+}
+
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   
   if (req.method === 'POST') {
