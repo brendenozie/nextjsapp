@@ -6,7 +6,7 @@ import prisma from "../../../server/db/prismadb";
 
 export const config = {
   api: {
-    bodyParser: true,
+    bodyParser: false,
   },
 }
 
