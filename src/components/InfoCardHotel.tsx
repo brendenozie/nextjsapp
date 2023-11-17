@@ -68,7 +68,7 @@ const InfoCardHotel = ({
         startDate: startDateFormatted,
         endDate: endDateFormatted,
         numOfGuests: numOfGuests,
-        hotelId: item.hotelId,
+        hotelId: item.id,
         img:JSON.stringify(item.img),
         location: item.location,
         title: item.title,

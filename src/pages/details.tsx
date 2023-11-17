@@ -117,7 +117,7 @@ const Details = ({ session }: Props) => {
   // Create New Stripe Checkout Session
   const createBooking = async () => {
     
-    await axios.post(`/api/post-booking`, {
+    await axios.post(`/api/post-booking/`, {
         hotelId: hotelId,
         title: title,
         description: description,
