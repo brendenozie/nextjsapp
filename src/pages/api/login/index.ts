@@ -4,12 +4,12 @@ import prisma from "../../../server/db/prismadb";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   
-  if (req.method === 'POST') {
+  // if (req.method === 'POST') {
     await LoginUser(req, res)
-    return;
-  } 
+    // return;
+  // } 
 
-  return res.send({status:req.statusCode,message:req.body,data:req.method});
+  // return res.send({status:req.statusCode,message:req.body,data:req.method});
 }
 
 
