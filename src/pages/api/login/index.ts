@@ -8,8 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await LoginUser(req, res)
     return;
   } 
+  
   // testing
-
   return res.send({status:req.statusCode,message:req.body,data:req.method});
 }
 
