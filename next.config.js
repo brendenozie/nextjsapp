@@ -18,19 +18,19 @@ module.exports = {
       "/"
     ],
   },
-  async headers() {
-    return [
-      {
-        source: '/login',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/json',
-          },
-        ],
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/login',
+  //       headers: [
+  //         {
+  //           key: 'Content-Type',
+  //           value: 'application/json',
+  //         },
+  //       ],
+  //     },
+  //   ]
+  // },
 };
 
 // const withBundleAnalyzer = require('@next/bundle-analyzer')({
