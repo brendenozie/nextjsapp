@@ -23,7 +23,7 @@ async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
     return res.send({status:400,message:"Missing login details"});
   }
 
-  //check to see if user exists
+  //check to see if user exists5
   const user = await prisma.user.findUnique({
     where : {
       email: email
