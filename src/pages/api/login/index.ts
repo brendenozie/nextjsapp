@@ -2,14 +2,29 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import prisma from "../../../server/db/prismadb";
 
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   
-  // if (req.method === 'POST') {
-  //   await LoginUser(req, res)
-  //   return;
-  // } 
+  // const  {data}  = req.body;
+
+  // // let data = JSON.parse(JSON.parse(body));
+
+  // // eval(body);
+
+  // // let theBody = req.body; 
+
+  // // const {email, password } = req.body.data;
+
+  // // const {data} = JSON.parse(body);
+
+  // // const email= JSON.parse(req.body);
+
+  if (req.method === 'POST') {
+    await LoginUser(req, res)
+    return;
+  } 
   
-  return res.send({status:req.statusCode,message:req.body,data:req.method});
+  return res.status(200).send(req.body.data);
 }
 
 
