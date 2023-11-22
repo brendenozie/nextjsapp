@@ -20,7 +20,7 @@ function runMiddleware(req :any, res:any, fn:any) {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   
   await runMiddleware(req, res, cors);
-  // const  {data}  = req.body;
+  const  {data}  = req.body;
 
   // // let data = JSON.parse(JSON.parse(body));
 
