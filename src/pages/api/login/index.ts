@@ -71,7 +71,6 @@ async function LoginUser(req: NextApiRequest, res: NextApiResponse) {
     },
   });
 
-  
   if(result.hashedPassword){
 
     let {hashedPassword,...newObject} = result;
