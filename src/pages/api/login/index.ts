@@ -1,21 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../server/db/prismadb";
-// import Cors from "cors";
-
-// const cors = Cors({
-//   methods: ["POST", "GET", "HEAD"],
-// });
-
-// function runMiddleware(req :any, res:any, fn:any) {
-//   return new Promise((resolve, reject) => {
-//     fn(req, res, (result:any) => {
-//       if (result instanceof Error) {
-//         return reject(result);
-//       }
-//       return resolve(result);
-//     });
-//   });
-// }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
