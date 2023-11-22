@@ -3,10 +3,10 @@ import prisma from "../../../server/db/prismadb";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  // if (req.method === 'POST') {
-  //   await LoginUser(req, res)
-  //   return;
-  // } 
+  if (req.method === 'POST') {
+    await LoginUser(req, res)
+    return;
+  } 
   
   return res.status(200).send({headrs:req.headers, bdy: req.body});
 }
