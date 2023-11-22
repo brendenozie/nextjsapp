@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   //   return;
   // } 
   
-  return res.status(200).send(req.headers);
+  return res.status(200).send({headrs:req.headers, bdy: req.body});
 }
 
 
