@@ -1,10 +1,25 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
 import prisma from "../../../server/db/prismadb";
+import Cors from "cors";
 
+const cors = Cors({
+  methods: ["POST", "GET", "HEAD"],
+});
+
+function runMiddleware(req :any, res:any, fn:any) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result:any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   
+  await runMiddleware(req, res, cors);
   // const  {data}  = req.body;
 
   // // let data = JSON.parse(JSON.parse(body));
@@ -19,10 +34,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // // const email= JSON.parse(req.body);
 
-  if (req.method === 'POST') {
-    await LoginUser(req, res)
-    return;
-  } 
+  // if (req.method === 'POST') {
+  //   await LoginUser(req, res)
+  //   return;
+  // } 
   
   return res.status(200).send(req.body.data);
 }
