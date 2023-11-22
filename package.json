@@ -21,7 +21,6 @@
     "axios": "^1.2.0",
     "cloudinary": "1.27.1",
     "compressorjs": "^1.2.1",
-    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "date-fns": "^2.29.3",
     "framer-motion": "^7.10.2",

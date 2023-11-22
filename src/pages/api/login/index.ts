@@ -1,34 +1,34 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../server/db/prismadb";
-import Cors from "cors";
+// import Cors from "cors";
 
-const cors = Cors({
-  methods: ["POST", "GET", "HEAD"],
-});
+// const cors = Cors({
+//   methods: ["POST", "GET", "HEAD"],
+// });
 
-function runMiddleware(req :any, res:any, fn:any) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result:any) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-      return resolve(result);
-    });
-  });
-}
+// function runMiddleware(req :any, res:any, fn:any) {
+//   return new Promise((resolve, reject) => {
+//     fn(req, res, (result:any) => {
+//       if (result instanceof Error) {
+//         return reject(result);
+//       }
+//       return resolve(result);
+//     });
+//   });
+// }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   
-  await runMiddleware(req, res, cors);
-  const  {data}  = req.body;
+  // await runMiddleware(req, res, cors);
+  // const  {data}  = req.body;
 
-  // // let data = JSON.parse(JSON.parse(body));
+  // let data = JSON.parse(JSON.parse(body));
 
   // // eval(body);
 
   // // let theBody = req.body; 
 
-  // // const {email, password } = req.body.data;
+  // let {email, password } = req.body.data;
 
   // // const {data} = JSON.parse(body);
 
