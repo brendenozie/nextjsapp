@@ -18,28 +18,13 @@ import prisma from "../../../server/db/prismadb";
 // }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  if (req.method === 'POST') {
+    await LoginUser(req, res)
+    return;
+  } 
   
-  // await runMiddleware(req, res, cors);
-  // const  {data}  = req.body;
-
-  // let data = JSON.parse(JSON.parse(body));
-
-  // // eval(body);
-
-  // // let theBody = req.body; 
-
-  // let {email, password } = req.body.data;
-
-  // // const {data} = JSON.parse(body);
-
-  // // const email= JSON.parse(req.body);
-
-  // if (req.method === 'POST') {
-  //   await LoginUser(req, res)
-  //   return;
-  // } 
-  
-  return res.status(200).send(req.body);
+  return res.status(200).send(req.body.data);
 }
 
 
