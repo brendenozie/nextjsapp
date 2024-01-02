@@ -59,7 +59,7 @@ const Hotels = ({ searchResults, session }: Props) => {
           <div className="flex flex-col">
             {/* Map Available Hotels */}
             {searchResults &&
-              searchResults?.results?.map((item: IDestination) => (
+              searchResults.results.map((item: IDestination) => (
                 <InfoCard
                   key={item.img && item.img[0].url}
                   cityId={item.id as string}
@@ -76,7 +76,7 @@ const Hotels = ({ searchResults, session }: Props) => {
         {searchResults ? (
           <section className="hidden lg:inline-flex xl:min-w-[600px]">
             <div className="sticky top-[68px] w-full h-screen">
-              <MapCard searchResults={searchResults.results} />
+              <MapCard searchResults={searchResults} />
             </div>
           </section>
         ) : (

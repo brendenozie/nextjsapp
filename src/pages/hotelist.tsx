@@ -46,8 +46,8 @@ const Hotels = ({ searchResults, session }: Props) => {
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">
             {searchResults
-              ? `Accommodations available 2 days, 4 guests`
-              : `No accommodations available 2 days, 4 guests`}
+              ? `Accommodations available `
+              : `No accommodations available `}
           </p>
           <h1 className="text-3xl font-semibold mt-2 mb-6">
             Stays in {location}
@@ -64,18 +64,18 @@ const Hotels = ({ searchResults, session }: Props) => {
           <div className="flex flex-col">
             {/* Map Available Hotels */}
             {searchResults &&
-              searchResults.results?.map((item: IHotel) => (
-
-                <InfoCardHotel
-                  key={item.img[0].url}
-                  cityId={item.cityId as string}
-                  item={item}
-                  startDate={startDate as string}
-                  endDate={endDate as string}
-                  numOfGuests={numOfGuests as string}
-                  session={session!}
-                />
-              ))}
+              searchResults.results.map((item: IHotel) => (
+                  <InfoCardHotel
+                    key={item.img[0].url}
+                    cityId={item.cityId != null ? item.cityId as string : ""}
+                    item={item}
+                    startDate={startDate as string}
+                    endDate={endDate as string}
+                    numOfGuests={numOfGuests as string}
+                    session={session!}
+                  />
+              )
+              )}
           </div>
         </section>
         {/* MapBox, Right Section */}
