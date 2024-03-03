@@ -13,7 +13,7 @@ export default async function handle(
 
   let where : any= {};
 
-  if (titleHotel) where.title = {contains:titleHotel,mode: 'insensitive'}
+  if (titleHotel) where.title = {contains:titleHotel, mode: 'insensitive'}
   if (city) where.cityId = city
   if (travelstyle) where.travelStyleId = travelstyle
   
