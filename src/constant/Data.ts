@@ -1,5 +1,32 @@
 import { title } from "process";
 
+export const NavFindata = [
+  // {
+  //   title: "Home",
+  //   reference: "home",
+  // },
+  {
+    href: "#about",
+    title: "For Business",
+    reference: "about",
+  },
+  {
+    href: "/destinationlist",
+    title: "How it works?",
+    reference: "destinations",
+  },
+  {
+    href: "#review",
+    title: "Blog",
+    reference: "review",
+  },
+  {
+    href: "#contact",
+    title: "Features",
+    reference: "contact",
+  },
+];
+
 export const Navdata = [
   // {
   //   title: "Home",

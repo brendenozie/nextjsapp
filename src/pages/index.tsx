@@ -64,59 +64,196 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   return (
     <div className="">
       <Head>
-        <title>HobbyHorseTours</title>
+        <title>Africa Connect</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
       <Header  />
-      {/* Banner */}
-      <Banner
-        getInspiredCities={getInspiredCities}
-        setSearchInput={setSearchInput}
-        setSelectedCity={setSelectedCity}
-      />
+  
+      {/* <Desc /> */}
 
-      <Desc
-        getInspiredCities={citiesData}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        selectedCity={selectedCity}
-        setSelectedCity={setSelectedCity}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen} />
+      <main className="bg-black max-w-full mx-auto ">
+        
+        {/* Banner */}
+        <Banner />
 
-      <main className="max-w-full mx-auto px-8 sm:px-16">
-        <section className="pt-6">
+        <section className="pt-6 bg-white">
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center" id="destinations">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400  items-center justify-items-center "></span>
-            <h2 className="text-4xl font-bold lg:text-5xl  items-center justify-items-center ">Popular Cities</h2>
+            <h2 className="text-4xl font-light lg:text-5xl  items-center justify-items-center ">Feel the <span className="font-bold">best experiences</span> with <span className="font-bold">our features</span></h2>
           </div>
-          {/* Map Canadian cities */}
-          <div className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {citiesData.results.map((city) => (
-              <SmallCard
-                key={city.url}
-                cityData={city}
-                setSearchInput={setSearchInput}
-                setSelectedCity={setSelectedCity}
-              />
-            ))}
-          </div>
+          <div className="flex flex-wrap justify-center gap-y-10 min-h-[80vh] md:min-h-[50vh] gap-x-2">
+                <div className="flex flex-col justify-center items-center gap-y-6 2xl:w-[47%]">
+                  <section className="my-8 bg-gray-100 text-gray-900 rounded-xl">
+                    <div className="container flex flex-col items-start p-4 mx-auto space-y-6 md:p-8">
+                      <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                      <p className="pl-4 py-2 text-1xl font-semibold text-center sm:font-bold sm:text-3xl md:text-2xl lg:max-w-2xl xl:max-w-2xl dark:text-gray-900">Personal Wallet for your transactions</p>
+                      <p className="pl-4 py-2 text-1xl sm:text-xl md:text-xl lg:max-w-xl xl:max-w-xl dark:text-gray-900">Your personal financial hub designed for seamless management of your financial assets</p>
+                      <div className="flex justify-center space-x-3">
+                      <ul className="mt-8 gap-6 space-y-2">
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Most Popular Crypto Wallets</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">USD $ EUR Accounts</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Create Virtual Cards</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Transaction Statistics</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Generate Invoices</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Withdrawal to crypto account</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+                      </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <div className="flex flex-col justify-center items-center gap-y-6 2xl:w-[47%]">
+                  <section className="my-8 bg-gray-100 text-gray-900 rounded-xl">
+                    <div className="container flex flex-col items-start p-4 mx-auto space-y-6 md:p-8">
+                      <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                      <p className="pl-4 py-2 text-1xl font-semibold text-center sm:font-bold sm:text-3xl md:text-2xl lg:max-w-2xl xl:max-w-2xl dark:text-gray-900">Card Management with team wallet</p>
+                      <p className="pl-4 py-2 text-1xl sm:text-xl md:text-xl lg:max-w-xl xl:max-w-xl dark:text-gray-900">Empower your team with collaborative financial tools within a dedicated team environment</p>
+                      <div className="flex justify-center space-x-3">
+                      <ul className="mt-8 gap-6 space-y-2">
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Create Team</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Complete management of the team</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Create Virtual Cards</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Transaction Statistics</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Generate Invoices</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+
+                        <li className="flex space-x-2 items-center"> 
+                          <img src="/avatar.png" alt="" className="w-20 h-20 bg-center bg-cover rounded-full dark:bg-yellow-500" />
+                          <div>
+                            <p className="leadi font-bold">Detail statistics of your team and its members</p>
+                            <p className="text-sm leadi dark:text-gray-300"></p>
+                          </div>
+                        </li>
+                      </ul>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+        </div>
         </section>
 
         <Second />
 
-        <section>
-          <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
+        <section className="bg-white p-8">
+          <div className="max-w-2xl mx-auto mt-16 mb-16 text-center ">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
-            <h2 className="text-4xl font-bold lg:text-5xl">Find your travel style</h2>
+            <h2 className="text-2xl font-bold lg:text-4xl">Fast and responsive performance for quick interactions</h2>
           </div>
-          {/* Map styles data from api */}
-          <CarouselTitlesCard travelStyles={stylesData} />
-          {/* Travel Styles Carousel */}
+          
+          <img
+            alt="Student"
+            src="/21.jpg"
+            className="h-56 w-full object-cover sm:h-full"
+          />
         </section>
 
-        <Testi />
+
+        <section className="overflow-hidden bg-gray-900 sm:grid sm:grid-cols-2">
+          <div className="p-8 md:p-12 lg:px-16 lg:py-24">
+            <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+              <h2 className="text-2xl font-bold text-gray-100 md:text-3xl">
+                Download our application and get to experience its features
+              </h2>
+
+              <p className="hidden text-gray-500 md:mt-4 md:block">
+                Travel allows us to enjoy complete anonymity in new and unexplored territories.
+                It gives us absolute freedom to live in the moment and it allows us to be anyone,
+                to go anywhere and to do anything. The best part of my six-month trip around the world,
+                way back when, was the freedom of being able to just wake up and pick a spot anywhere on the map and
+                find a way to get there. Travel enables us to be spontaneous and seek new experiences.
+              </p>
+
+              <div className="flex mt-4 md:mt-8 gap-x-2 items-center">
+                <Link href="#" className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400" >
+                  Playstore
+                </Link>
+                <Link href="#" className="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400" >
+                  Appstore
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <img
+            alt="Student"
+            src="/21.jpg"
+            className="h-56 w-full object-cover sm:h-full"
+          />
+        </section>
 
         <section className="py-6 dark:text-gray-50">
           <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4">
@@ -128,7 +265,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
         </section>
 
-        <LargeCard
+        {/* <LargeCard
           img={traveldisc}
           title="Discover New Destinations"
           description="Curated by our Travel Experts"
@@ -136,7 +273,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           getInspiredCities={getInspiredCities}
           setSearchInput={setSearchInput}
           setSelectedCity={setSelectedCity}
-        />
+        /> */}
 
         <section className="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2">
           <div className="p-8 md:p-12 lg:px-16 lg:py-24">
@@ -256,11 +393,11 @@ export const getServerSideProps = async (
 
   let url = process.env.NEXT_PUBLIC_API_URL;
 
-  const citiesData =  await fetch(url+`/get-city`).then( (res) => res.json() );
+  const citiesData = [{}];// await fetch(url+`/get-city`).then( (res) => res.json() );
 
-  const stylesData = await fetch(url+`/get-travel-style`).then((res) => res.json());
+  const stylesData = [{}];//await fetch(url+`/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch(url+`/get-city`).then((res) => res.json());
+  const getInspiredCities = [{}];//await fetch(url+`/get-city`).then((res) => res.json());
 
   return {
     props: {

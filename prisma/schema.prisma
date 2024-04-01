@@ -104,8 +104,11 @@ model Booking {
   // hotelImageId String?    @db.ObjectId
 }
 
+//"country":"kenya","email":"fill@gmail.com","img":"fill@gmail.com","lastname":"fill",
+//"password":"1234567890","phone":"","provider":"mobile","user_id":"","username":"fill"
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  user_id        String    @unique @default(uuid())
   name           String?
   email          String?   @unique
   emailVerified  DateTime?
@@ -161,6 +164,26 @@ model TravelStyle {
   url       String
   status    String
   Hotel     Hotel[]
+}
+
+model MyBalance {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  account_id      String @default("")
+  current_balance String
+  user_id         String @unique @db.ObjectId
+}
+
+model Transactions {
+  id                 String @id @default(auto()) @map("_id") @db.ObjectId
+  initiatorName      String
+  initiatorEmail     String
+  recepientName      String
+  recepientEmail     String
+  status             String
+  dte                String
+  transaction_amount String
+  transaction_id     String
+  transaction_type   String
 }
 
 // model HotelViews {

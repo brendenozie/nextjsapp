@@ -52,7 +52,7 @@ const Header = () => {
               className={`hidden lg:inline  text-lg sm:text-xl lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
                 }`}
             >
-              HobbyHorseTours
+              AfricaConnect
             </Link>
           </div>
           {/* navigation */}

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   Bars4Icon,
 } from "@heroicons/react/24/solid";
-import { Navdata } from "@/constant/Data";
+import { NavFindata } from "@/constant/Data";
 import NavHor from "./NavHor";
 import NavVer from "./NavVer";
 import { useOnClickOutside } from "usehooks-ts";
@@ -56,7 +56,7 @@ const Nav = () => {
           className={`lg:hidden absolute top-[4.5rem] right-4 py-[0.6rem] px-3 bg-gray-800`}
         >
           <ul className="flex flex-col gap-2 pr-2 text-gray-800">
-            {Navdata.map((item) => (
+            {NavFindata.map((item) => (
               <div key={item.reference}>
                 <NavVer title={item.title} href={item.href} reference={item.reference} />
               </div>
@@ -72,7 +72,7 @@ const Nav = () => {
 
       <nav id="nav-menu" className="hidden lg:block">
         <ul className="flex text-black  font-bold">
-          {Navdata.map((item) => (
+          {NavFindata.map((item) => (
             <div key={item.reference}>
               <NavHor title={item.title} href={item.href} reference={item.reference} />
             </div>
