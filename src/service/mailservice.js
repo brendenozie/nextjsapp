@@ -434,8 +434,8 @@ export default function SendMail(params = { to: 'email', subject: 'cmpe165', tex
             secure: true,
             auth: {
               type: "OAuth2",
-              clientId: "892462548153-vlq75gb6doda6jft8lftih6tuvnb10db.apps.googleusercontent.com",
-              clientSecret: "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", // this will be obtained in part 2  
+              clientId: "",
+              clientSecret: "", // this will be obtained in part 2  
             }
           });
 
@@ -446,8 +446,8 @@ export default function SendMail(params = { to: 'email', subject: 'cmpe165', tex
             html: output,
             auth: {
               user: "akinyisafiris@gmail.com",
-              refreshToken: "1//04RUUAAup23dcCgYIARAAGAQSNwF-L9Ir1IdZ5DEmvckfZj0iVDnSXKGu3xCzEWgiv3ym_1OTsrUEYmxrAcFBUqTM5Ass1MawfGE",
-              accessToken: "ya29.a0Ael9sCPFVYgEqghPYz0Pj1EL4DMGbhvQBHcliVtfHNJdK3_R0vS9s9VTGPoOoN4w_uAESFSKIN8I0ngkz2EinrznSV_poV_8cL6JxZPg8bOP_Nm6wS0nxAzZGdrFp40cxIY7JVvbgqs7oQhf99v1MErFJ1sRaCgYKAaQSARASFQF4udJh1ogFmlznc2CUyJRK8RmwWA0163",
+              refreshToken: "",
+              accessToken: "",
               expires: new Date().getTime(), // this will request a new token each time so that it never expires. google allows up to 10,000 requests per day for free.
             },
           };

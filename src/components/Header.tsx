@@ -51,7 +51,11 @@ const Header = () => {
               className={`lg:inline text-lg sm:text-sm lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
                 }`}
             >
+<<<<<<< HEAD
               Umbrella Tours
+=======
+              AfricaConnect
+>>>>>>> 4fdff45666786834c473d7ee2b93cee0e3906dff
             </Link>
           </div>
           {/* navigation */}

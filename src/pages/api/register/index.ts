@@ -38,12 +38,19 @@ async function RegisterUser(req: NextApiRequest, res: NextApiResponse) {
 
   // const hashedPassword = password;
 
-  const result = await prisma.user.create({
+  const result1 = await prisma.user.create({
     data: {
       name,
       email,
       hashedPassword : password,
     },
+  });
+
+  const result = await prisma.user.update({
+    data: {
+      user_id:result1.id
+    },
+    where:{id:result1.id}
   });
 
   const accountResult = await prisma.account.create({
