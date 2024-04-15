@@ -147,7 +147,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
                   <p className="mt-1.5 text-pretty text-xs text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
-                    odio id?Lorem ipsum
+                    odio id?Lorem ipsum another a=randome test 
                   </p>
                 </div>
               </a>
