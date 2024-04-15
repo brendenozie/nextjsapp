@@ -73,7 +73,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   return (
     <div className="">
       <Head>
-        <title>The Umbrella ToursTours</title>
+        <title>The Umbrella Tours</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
@@ -297,8 +297,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
         </section>
 
-        <Second />
-
         <section>
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
@@ -308,8 +306,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           <CarouselTitlesCard travelStyles={stylesData} />
           {/* Travel Styles Carousel */}
         </section>
-
-        <Testi />
 
         <section className="py-6 dark:text-gray-50">
           <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4">
