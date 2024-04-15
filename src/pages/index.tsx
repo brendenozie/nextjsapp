@@ -74,7 +74,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
     <div className="">
       <Head>
         <title>The Umbrella Tours</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       {/* Header */}
       <Header  />
@@ -96,28 +96,34 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
         
 
-      <main className="max-w-full mx-auto px-8 sm:px-16">
-        <section className="py-6 mt-36 dark:text-gray-50">
+      <main className="max-w-full mx-auto px-16 sm:px-16">
+        <section className="py-6 my-36 dark:text-gray-50">
             <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly">              
-              <a href="#" className="group block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1  aspect-square p-2">
-                <div className="h-full flex flex-col justify-between">
-                  <h3 className="text-6xl font-bold text-gray-700">
-                    It's time to start your adventure
-                  </h3>
+              <div className="block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-auto p-2">
+                  <div className="h-full flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-5xl font-bold text-gray-700">
+                        It's time to start your adventure
+                      </h3>
+                    </div>
 
-                  <p className="text-pretty mt-1 text-xl text-gray-500">
-                    A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.<br/><br/>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                  </p>
+                    <div>
+                      <p className="text-pretty mt-1 text-md text-gray-500">
+                        A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+                        
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                      </p>
+                    </div>
 
-                  <div className="mt-1 flex flex-wrap justify-center gap-4 pr-10 pl-10 mx-4">
-                    <Link className="block rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-                      href="#contact" >
-                      Search Destination
-                    </Link>
+                    <div>
+                      <Link className="w-1/4 mt-4 block rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 text-center"  href="#contact" >
+                        Search Destination
+                      </Link>
+                    </div>
+
                   </div>
+                  
                 </div>
-              </a>
-
 
               <a href="#" className="group block">
                 <div className="relative h-[80px] sm:h-[80px]">
@@ -135,6 +141,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                   </p>
                 </div>
               </a>
+
               <a href="#" className="group block">
                 <div className="relative h-[80px] sm:h-[80px]">
                   <PaperAirplaneIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
@@ -151,6 +158,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                   </p>
                 </div>
               </a>
+
               <a href="#" className="group block">
                 <div className="relative  h-[80px] sm:h-[80px]">
                   <UserCircleIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
@@ -167,6 +175,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                   </p>
                 </div>
               </a>
+
               <a href="#" className="group block">
                 <div className="relative  h-[80px] sm:h-[80px]">
                   <TrophyIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
@@ -184,7 +193,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 </div>
               </a>
             </div>
-          </section>
+        </section>
 
         {/* <section className="pt-6">
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center" id="destinations">
@@ -207,14 +216,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         <section>
           <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <header>
-              <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center">Best Place Destination</h2>
-
+              <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center m-8">Best Place Destination</h2>
               <p className="mt-4 max-w-md text-gray-500"></p>
             </header>
-
-            <div className="mt-8 flex items-center justify-between">
-              
-            </div>
 
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <li>
@@ -297,7 +301,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
         </section>
 
-        <section>
+        <section className="my-24">
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
             <h2 className="text-4xl font-bold lg:text-5xl">Find your travel style</h2>
@@ -307,7 +311,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           {/* Travel Styles Carousel */}
         </section>
 
-        <section className="py-6 dark:text-gray-50">
+        <section className="py-6 dark:text-gray-50 my-40">
           <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4">
             <img src="/34.jpg" alt="" className="w-full h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 dark:bg-gray-500 aspect-square" />
             <img src="/35.jpg" alt="" className="w-full h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" />
@@ -358,8 +362,8 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         </section>
 
         <section id="contact" className="py-24 lg:py-36 bg-white overflow-hidden">
-          <div className="container px-4 mx-auto">
-            <div className="flex flex-wrap -m-8">
+          <div className="container md:p-16 mx-auto">
+            <div className="flex flex-wrap">
               <div className="w-full md:w-1/2 p-8">
                 <div className="md:max-w-md">
                   <div className="flex items-center justify-center mb-8 w-20 h-20 rounded-xl" style={{ background: "#000000", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>

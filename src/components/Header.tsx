@@ -50,15 +50,14 @@ const Header = () => {
               href="/"
               className={`lg:inline text-lg sm:text-sm lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
                 }`}
-            >
-              Umbrella Tours
+            >The Umbrella Tours
             </Link>
           </div>
           {/* navigation */}
           <Nav />
           {/* login & register */}
           {!session && (
-          <div className="order-2 lg:order-3 lg:w-[25%] box-border flex justify-center items-center lg:pr-24 2xl:pr-16 gap-x-2 lg:justify-end">
+          <div className="order-2 lg:order-3 lg:w-[25%] box-border flex justify-center items-center lg:pr-24 2xl:pr-16 gap-x-2 lg:justify-end bg-yellow-500 py-4">
             <Link
               href="/signin"
               className={`uppercase  lg:inline xs:inline xs:text-sm sm:text-base tracking-widest ${dark ? "text-black border-gray-700" : "text-white "

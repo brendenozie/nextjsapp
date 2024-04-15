@@ -24,7 +24,7 @@ const Banner = ({ setSearchInput, setSelectedCity, getInspiredCities }: Props) =
     <>
       <div className="relative h-[660px] sm:h-[660px] lg:h-[660px] xl-h-[660px] 2xl:h-[700px]">
         <Image
-          className="object-cover"
+          className="md:object-cover sm:object-fill"
           src={hero}
           fill
           alt="banner"
