@@ -15,9 +15,18 @@ import Second from "@/components/Second";
 import Testi from "@/components/Testi";
 import Pic from "@/components/Pic";
 import { GetServerSidePropsContext } from "next";
+import Image, { StaticImageData } from "next/image";
 import axios from "axios";
-
 import traveldisc from "../../public/get-inspired1200x600.jpg";
+import place1 from "../../public/place-1.jpg.webp";
+import place2 from "../../public/place-2.jpg.webp";
+import place3 from "../../public/place-3.jpg.webp";
+import place4 from "../../public/place-4.jpg.webp";
+import { PaperAirplaneIcon, UserCircleIcon, MapIcon, TrophyIcon } from "@heroicons/react/24/outline";
+
+const loaderProp =({ src  } :any) => {
+  return src;
+}
 
 type Props = {
   citiesData: {results:ICity[]};
@@ -64,7 +73,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   return (
     <div className="">
       <Head>
-        <title>HobbyHorseTours</title>
+        <title>The Umbrella ToursTours</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header */}
@@ -85,13 +94,104 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         isOpen={isOpen}
         setIsOpen={setIsOpen} />
 
+        
+
       <main className="max-w-full mx-auto px-8 sm:px-16">
-        <section className="pt-6">
+        <section className="py-6 mt-36 dark:text-gray-50">
+            <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly">              
+              <a href="#" className="group block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1  aspect-square p-2">
+                <div className="h-full flex flex-col justify-between">
+                  <h3 className="text-6xl font-bold text-gray-700">
+                    It's time to start your adventure
+                  </h3>
+
+                  <p className="text-pretty mt-1 text-xl text-gray-500">
+                    A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.<br/><br/>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                  </p>
+
+                  <div className="mt-1 flex flex-wrap justify-center gap-4 pr-10 pl-10 mx-4">
+                    <Link className="block rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+                      href="#contact" >
+                      Search Destination
+                    </Link>
+                  </div>
+                </div>
+              </a>
+
+
+              <a href="#" className="group block">
+                <div className="relative h-[80px] sm:h-[80px]">
+                  <MapIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
+                </div>
+
+                <div className="mt-1">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                    Activities
+                  </h3>
+
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
+                    odio id?
+                  </p>
+                </div>
+              </a>
+              <a href="#" className="group block">
+                <div className="relative h-[80px] sm:h-[80px]">
+                  <PaperAirplaneIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
+                </div>
+
+                <div className="mt-3">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                    Travel Arrangments
+                  </h3>
+
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
+                    odio id?
+                  </p>
+                </div>
+              </a>
+              <a href="#" className="group block">
+                <div className="relative  h-[80px] sm:h-[80px]">
+                  <UserCircleIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
+                </div>
+
+                <div className="mt-1">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                    Private Guide
+                  </h3>
+
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
+                    odio id?
+                  </p>
+                </div>
+              </a>
+              <a href="#" className="group block">
+                <div className="relative  h-[80px] sm:h-[80px]">
+                  <TrophyIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
+                </div>
+
+                <div className="mt-1">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                    Location Manager
+                  </h3>
+
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
+                    odio id?
+                  </p>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        {/* <section className="pt-6">
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center" id="destinations">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400  items-center justify-items-center "></span>
             <h2 className="text-4xl font-bold lg:text-5xl  items-center justify-items-center ">Popular Cities</h2>
           </div>
-          {/* Map Canadian cities */}
+          {/* Map Canadian cities 
           <div className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {citiesData.results.map((city) => (
               <SmallCard
@@ -101,6 +201,99 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 setSelectedCity={setSelectedCity}
               />
             ))}
+          </div>
+        </section> */}
+
+        <section>
+          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <header>
+              <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center">Best Place Destination</h2>
+
+              <p className="mt-4 max-w-md text-gray-500"></p>
+            </header>
+
+            <div className="mt-8 flex items-center justify-between">
+              
+            </div>
+
+            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <li>
+                <a href="#" className="group relative block">
+                  <div className="relative h-[350px] sm:h-[450px]">
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" src={place1} alt={"title"} fill loader={loaderProp}/>                    
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" src={place1} alt={"title"} fill loader={loaderProp}/> 
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-start p-6">
+                    <h3 className="text-xl font-medium text-white">Singapore</h3>
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
+                    <span className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                      Visit
+                    </span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="group relative block">
+                  <div className="relative h-[350px] sm:h-[450px]">
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" src={place2} alt={"title"} fill loader={loaderProp}/>                    
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" src={place1} alt={"title"} fill loader={loaderProp}/> 
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-start p-6">
+                    <h3 className="text-xl font-medium text-white">Canada</h3>
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
+                    <span className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                      Visit
+                    </span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="group relative block">
+                  <div className="relative h-[350px] sm:h-[450px]">
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" src={place3} alt={"title"} fill loader={loaderProp}/>                    
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" src={place1} alt={"title"} fill loader={loaderProp}/> 
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-start p-6">
+                    <h3 className="text-xl font-medium text-white">Thailand</h3>
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
+                    <span className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                      Visit
+                    </span>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="group relative block">
+                  <div className="relative h-[350px] sm:h-[450px]">
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0" src={place4} alt={"title"} fill loader={loaderProp}/>                    
+                    <Image className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100" src={place1} alt={"title"} fill loader={loaderProp}/>                  
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-start p-6">
+                    <h3 className="text-xl font-medium text-white">Australia</h3>
+                  </div>
+
+                  <div className="absolute inset-0 flex flex-col items-start justify-end p-6">
+                    <span className="mt-3 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white">
+                      Visit
+                    </span>
+                  </div>
+                </a>
+              </li>
+
+            </ul>
           </div>
         </section>
 
@@ -179,9 +372,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                       <path d="M21 16C21 18.7614 18.7614 21 16 21C13.2386 21 11 18.7614 11 16C11 13.2386 13.2386 11 16 11C18.7614 11 21 13.2386 21 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At HobbyHorse we'll help you plan your trip effectively&amp; productively. Ensuring that you have a seamless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
+                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At The Umbrella Tours we'll help you plan your trip effectively&amp; productively. Ensuring that you have a seamless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
                   <h4 className="font-semibold tracking-tight mb-1">Sharon Akinyi</h4>
-                  <span>Founder, HobbyHorse.</span>
+                  <span>Founder, The Umbrella Tours.</span>
                 </div>
               </div>
               <div className="w-full md:w-1/2 p-8">
@@ -256,17 +449,17 @@ export const getServerSideProps = async (
 
   let url = process.env.NEXT_PUBLIC_API_URL;
 
-  const citiesData =  await fetch(url+`/get-city`).then( (res) => res.json() );
+  const citiesDataResults =  await fetch(url+`/get-city`).then( (res) => res.json() );
 
-  const stylesData = await fetch(url+`/get-travel-style`).then((res) => res.json());
+  const stylesDataResults = await fetch(url+`/get-travel-style`).then((res) => res.json());
 
-  const getInspiredCities = await fetch(url+`/get-city`).then((res) => res.json());
+  const getInspiredCitiesResults = await fetch(url+`/get-city`).then((res) => res.json());
 
   return {
     props: {
-      citiesData,
-      stylesData,
-      getInspiredCities,
+      citiesData:citiesDataResults,
+      stylesData:stylesDataResults,
+      getInspiredCities:getInspiredCitiesResults,
     },
   };
 };

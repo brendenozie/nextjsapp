@@ -3,7 +3,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
-import hero from "../../public/31.jpg";
+import hero from "../../public/home.jpg";
+import {PlayIcon} from "@heroicons/react/24/solid";
 
 type Props = {
   getInspiredCities: ICity[];
@@ -21,7 +22,7 @@ const Banner = ({  }: Props) => {
 
   return (
     <>
-      <div className="relative h-[600px] sm:h-[600px] lg:h-[500px] xl-h-[600px] 2xl:h-[530px]">
+      <div className="relative h-[660px] sm:h-[660px] lg:h-[660px] xl-h-[660px] 2xl:h-[700px]">
         <Image
           className="object-cover"
           src={hero}
@@ -30,25 +31,22 @@ const Banner = ({  }: Props) => {
           priority
           loader={loaderProp}
         />
-        <div className="absolute top-1/3 w-full text-center">
+        <div className="absolute h-full items-center flex flex-col justify-center bg-[linear-gradient(45deg, #2f88fc 0%, #ff5959 100%)] w-full text-center">
           {session && (
             <p className="text-white text-base font-extrabold sm:text-2xl pb-2">
               Hi , {session.user?.name!}
             </p>
           )}
-          <h1 className="text-3xl text-white font-extrabold sm:text-5xl">
-            The Best Tour Experience Ever
-            <strong className="font-extrabold text-red-700 sm:block">
-              Without The Crowds.
-            </strong>
-          </h1>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10 ">
-            <Link className="block w-full rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+          <div className="mt-8 flex flex-wrap justify-center gap-4 pr-10 pl-10 mx-4">
+            <Link className="block w-full rounded-full bg-yellow-500 p-8 text-sm font-normal text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
               href="#contact" >
-              Make An Enquiry
+              <PlayIcon className="h-8 w-8"/>
             </Link>
           </div>
+          <h3 className="text-xl text-white mx-4 font-semibold">Travel to the any corner of the world, without going around in circles</h3>
+          <h1 className="text-xl text-white font-normal sm:text-7xl mx-4">Make Your Tour Amazing With Us</h1>
+
+          
         </div>
       </div>
     </>

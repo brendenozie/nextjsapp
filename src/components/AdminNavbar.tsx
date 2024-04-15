@@ -16,7 +16,7 @@ const Navbar = (props: Props) => {
     >
       <div className="font-bold text-lg">
         <Link href="/XDH4U3IJKE20">
-          <h3 className="m-4 ml-4 text-sm font-bold text-base">HobbyHorseTours Admin</h3>
+          <h3 className="m-4 ml-4 text-sm font-bold text-base">The Umbrella ToursTours Admin</h3>
         </Link>
       </div>
       <div className="flex-grow"></div>

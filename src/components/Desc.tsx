@@ -110,23 +110,23 @@ const Desc = ({
   return (
     <>
       <div className="min-h-[6rem] w-full justify-center items-center box-border text-slate-100 backdrop-blur bg-[#65324b] ">
-        <div className=" text-center rounded-md transform -translate-y-20 sm:-translate-y-10 sm:max-w-[90%] mx-auto">
-          <div className="justify-center items-center mx-16 bg-white rounded-md ">
+        <div className=" text-center rounded-md transform -translate-y-28 sm:-translate-y-28 sm:max-w-[90%] mx-auto bg-gray-700">
+          <div className="justify-center items-center mx-16 bg--gray-700 rounded-md ">
             <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
-              <div className="p-2 sm:w-1/4 w-full border-[1px] justify-center flex items-center rounded-md shadow-md ">
+              <div className="p-2 sm:w-1/4 w-full justify-center flex items-center rounded-md shadow-md ">
                 <div >
-                  <MapPinIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
+                  <MapPinIcon className="flex items-center rounded-l-md border border-gray-700 justify-center w-12 text-white h-5 w-5 text-gray-900" />
                 </div>
 
                 <div className="w-full">
-                  <select id="country" name="country" defaultValue={"Pick A City"} className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 sm:text-sm h-12 focus:outline-none" 
-                  onChange={(e) => {setSelectedCity({id:JSON.parse(e.target.value).id,
+                  <select id="country" name="country" defaultValue={"Pick A City"} className="w-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-white sm:text-sm h-12 focus:outline-none" 
+                    onChange={(e) => {setSelectedCity({id:JSON.parse(e.target.value).id,
                                                       cityName : JSON.parse(e.target.value).cityName,
                                                       publicId : "",
                                                       url      : "",
                                                       status   : ""});
                                                     }}>
-                  <option value="Pick A City" >Pick A City</option>
+                  <option value="Pick A City" >Pick Destination</option>
                   {getInspiredCities.results.map((city) => (
                       <option value={JSON.stringify(city)} >{city.cityName}</option>
                     ))}
@@ -134,14 +134,14 @@ const Desc = ({
                 </div>
               </div>
 
-              <div className="p-2 w-full sm:w-1/4  border-[1px]  justify-center flex items-center rounded-md shadow-md">
+              <div className="p-2 w-full sm:w-1/4 justify-center flex items-center rounded-md shadow-md">
                 <div>
-                  <CalendarIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
+                  <CalendarIcon className="flex items-center  bg-gray-700 justify-center w-12 text-white h-5 w-5 " />
                 </div>
 
                 <div className="w-full">
                   <input type="search" x-model="input1"
-                    className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none h-12"
+                    className="w-full h-5 px-4 py-1 rounded-r-md text-white bg-gray-700 focus:outline-none h-12"
                     placeholder="Pick A Date" onClick={() => { setSelectedDate(true); setTriggerDate(true) }} value={triggerDate ? `${selectionRange.startDate} ${selectionRange.endDate} `: "Set Date"} />
                   {/* Date Range Picker, Bottom */}
                   {selectedDate && (
@@ -158,7 +158,7 @@ const Desc = ({
                       className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3  bg-transparent"
                       ref={ref}
                     >
-                      <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-white pb-5 rounded-b-lg shadow-md" >
+                      <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-gray-700 pb-5 rounded-b-lg shadow-md" >
                         <DateRangePicker
                           className="text-black"
                           ranges={[selectionRange]}
@@ -167,8 +167,8 @@ const Desc = ({
                           onChange={handleSelect}
                         />
                         <div />
-                        <div className="flex w-full justify-between px-6 pt-2 text-black">
-                          <button  onClick={resetDate} className="bg-white self-start px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150" >
+                        <div className="flex w-full justify-between px-6 pt-2 text-white">
+                          <button  onClick={resetDate} className="bg-gray-700 self-start px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150" >
                             Close
                           </button>
                         </div>
@@ -178,14 +178,14 @@ const Desc = ({
                 </div>
               </div>
 
-              <div className="p-2 w-full sm:w-1/4  border-[1px] justify-center flex items-center rounded-md shadow-md">
+              <div className="p-2 w-full sm:w-1/4 justify-center flex items-center rounded-md shadow-md">
                 <div>
-                  <UsersIcon className="flex items-center rounded-l-md border border-white justify-center w-12 text-white h-5 w-5 text-gray-900" />
+                  <UsersIcon className="flex items-center rounded-l-md border border-gray-700 justify-center w-12 text-white h-5 w-5 " />
                 </div>
 
-                <div className="w-full">
+                <div className="w-full bg-gray-700">
                   <input type="search" x-model="input2"
-                    className="w-full h-5 px-4 py-1 rounded-r-md text-gray-800 focus:outline-none h-12"
+                    className="w-full h-5 px-4 py-1 rounded-r-md text-white bg-gray-700 focus:outline-none h-12"
                     placeholder="Guests" onClick={() => { setselectedGuest(true); setTriggerGuest(true) }} value={`${triggerGuest ? numOfGuests : "Guests"}`} />
                   {/* Number Of Guests, Bottom */}
                   {selectedGuest && (
@@ -194,7 +194,7 @@ const Desc = ({
                       transition={{  duration: 0.3, }}
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: true }}
-                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-white rounded-md md:w-1/4 sm:w-1/2"
+                      className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-gray-700 rounded-md md:w-1/4 sm:w-1/2"
                       ref={ref}>
                       <div className=" gap-4 items-center m-4 pl-5">
                         <h2 className="text-l flex-grow font-semibold">
@@ -212,7 +212,7 @@ const Desc = ({
                         </div>
                       </div>
                       <div className="flex justify-items-center items-center p-2">
-                        <button onClick={resetGuests} className="bg-white px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150"  >
+                        <button onClick={resetGuests} className="bg-gray-700 px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150"  >
                           Close
                         </button>
                       </div>
@@ -221,7 +221,7 @@ const Desc = ({
                 </div>
               </div>
 
-              <button className="px-5 w-full sm:w-1/4  rounded-r-md bg-gray-800 text-white py-8 px-10 font-bold p-4 uppercase border-gray-500 border-t border-b border-r" onClick={search}>Enquire</button>
+              <button className="mx-5 w-full sm:w-1/4 bg-yellow-500 text-white my-8  font-semibold p-4 uppercase rounded-full " onClick={search}>Search</button>
 
             </div>
           </div>

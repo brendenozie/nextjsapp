@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import Nav from "./Nav";
 import Link from "next/link";
-
 import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
@@ -44,15 +43,15 @@ const Header = () => {
         >
           {/* Logo */}
           <div className="flex items-center gap-x-4 order-1 w-[25%] box-border pl-6 lmd:pl-14 lg:pl-24 2xl:pl-16">
-            <Link href="/" className={`${dark ? "text-black" : "text-white"}`}>
+            {/* <Link href="/" className={`${dark ? "text-black" : "text-white"}`}>
               <PaperAirplaneIcon className="h-6" />
-            </Link>
+            </Link> */}
             <Link
               href="/"
-              className={`hidden lg:inline  text-lg sm:text-xl lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
+              className={`lg:inline text-lg sm:text-sm lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
                 }`}
             >
-              HobbyHorseTours
+              Umbrella Tours
             </Link>
           </div>
           {/* navigation */}
