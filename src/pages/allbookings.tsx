@@ -1,15 +1,9 @@
 import { GetServerSidePropsContext } from "next";
 import { Session } from "next-auth";
-import { getSession, signOut } from "next-auth/react";
-import Link from "next/link";
+import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import Drawer from "../components/Drawer";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import InfoCard from "../components/InfoCardBookings";
-import MapCard from "../components/MapCard";
-import { IDestination, IResult, ISuggestionFormatted } from "../types/typings";
-import { FaceFrownIcon } from "@heroicons/react/24/outline";
+import { ISuggestionFormatted } from "../types/typings";
 import Layout from "@/components/AdminLayout";
 
 type Props = {

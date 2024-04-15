@@ -8,9 +8,8 @@ import { useState } from "react";
 import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import InfoCard from "../components/InfoCard";
 import MapCard from "../components/MapCard";
-import { IHotel, IResult, ISuggestionFormatted } from "../types/typings";
+import { IHotel, ISuggestionFormatted } from "../types/typings";
 import InfoCardHotel from "@/components/InfoCardHotel";
 
 type Props = {

@@ -84,12 +84,15 @@ const InfoCard = ({
   const submitFavorite = async () => {
     try {
       const body = { ...item, cityId };
+      
       let url = process.env.NEXT_PUBLIC_API_URL;
+
       await fetch(url+"/post-favorite", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
     } catch (error) {
       console.error(error);
     }

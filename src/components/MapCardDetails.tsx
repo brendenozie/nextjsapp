@@ -3,7 +3,9 @@ import { getCenter } from "geolib";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import { useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl";
+const Marker = require('react-map-gl').Marker;
+const Popup  = require('react-map-gl').Popup;
+const Map = require('react-map-gl').Map;
 import { IDestination, IResult } from "../types/typings";
 
 type Props = {

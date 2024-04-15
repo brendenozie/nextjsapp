@@ -3,7 +3,9 @@ import { getCenter } from "geolib";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import { useState } from "react";
-import Map, { Marker, Popup } from "react-map-gl";
+const Marker = require('react-map-gl').Marker;
+const Popup  = require('react-map-gl').Popup;
+const Map = require('react-map-gl').Map;
 import { IDestination, IHotel, IResult } from "../types/typings";
 
 type Props = {
@@ -48,7 +50,7 @@ const MapCard = ({ searchResults, favorites=false }: Props) => {
                 <Marker
                   latitude={result.lat}
                   longitude={result.long}
-                  offset={[-20, -10]}
+                  // offset={[-20, -10]}
                 >
                   <p  role="img" 
                       onPointerOver={() => { setSelectedLocation(result);  }}

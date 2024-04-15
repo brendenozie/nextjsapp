@@ -16,8 +16,7 @@ import Drawer from "../components/Drawer";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import MapCardDetails from "../components/MapCardDetails";
-import { IDetails, IResult, ISuggestionFormatted, uploadImage } from "../types/typings";
-import getHotelDetails from "@/utils/getHotelDetails";
+import { IResult, ISuggestionFormatted } from "../types/typings";
 import CarouselCard from "@/components/CarouselCard";
 
 let stripePromise: Promise<Stripe | null>;

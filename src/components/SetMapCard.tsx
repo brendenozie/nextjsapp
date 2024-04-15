@@ -1,6 +1,8 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Dispatch, SetStateAction, useState } from "react";
-import Map, { Marker } from "react-map-gl";
+const Marker = require('react-map-gl').Marker;
+const Popup  = require('react-map-gl').Popup;
+const Map = require('react-map-gl').Map;
 
 type Props = {
   marker: any;

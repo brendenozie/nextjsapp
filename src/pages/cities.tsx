@@ -1,13 +1,5 @@
 import { GetServerSidePropsContext } from "next";
-import { getProviders, getSession, signIn, signOut } from "next-auth/react";
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import Drawer from "../components/Drawer";
-import Header from "../components/Header";
-import { ICity, ISuggestionFormatted, IUser, provider } from "../types/typings";
-import Sidebar from "@/components/sidebar";
-import Picard from "@/components/Picard";
+import { ICity } from "../types/typings";
 import Link from "next/link";
 import Layout from "@/components/AdminLayout";
 
