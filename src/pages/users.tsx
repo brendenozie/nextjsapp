@@ -6,7 +6,7 @@ import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 
 type Props = {
-  usersData: IUser[];
+  usersData: {results:IUser[]};
 };
 
 const Users = (props: Props) => {
@@ -78,7 +78,7 @@ const Users = (props: Props) => {
                   </thead>
 
                   <tbody className="divide-y divide-gray-200">
-                  {props.usersData.map((user) => (
+                  {props.usersData.results.map((user) => (
                     <tr>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       {user.name}
@@ -104,14 +104,13 @@ const Users = (props: Props) => {
 };
 
 export default Users;
+
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
  
   let url = process.env.NEXT_PUBLIC_API_URL;
-  const usersData =  await fetch(url+`/get-user`).then(
-                        (res) => res.json()
-                      );
+  const usersData =  await fetch(url+`/get-user`).then((res) => res.json());
 
   return {
     props: {

@@ -6,7 +6,7 @@ import Layout from "@/components/AdminLayout";
 
 
 type Props = {
-  hotelsData: IHotel[];
+  hotelsData: {results:IHotel[]};
 };
 
 const Hotels = (props: Props) => {
@@ -88,7 +88,7 @@ const Hotels = (props: Props) => {
                   </thead>
 
                   <tbody className="divide-y divide-gray-200">
-                  {props.hotelsData.map((hotel) => (
+                  {props.hotelsData.results.map((hotel) => (
                     <tr>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       {hotel.title}

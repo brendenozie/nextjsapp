@@ -5,7 +5,7 @@ import Layout from "@/components/AdminLayout";
 
 
 type Props = {
-  citiesData: ICity[];
+  citiesData: {results:ICity[]};
 };
 
 const Cities = (props: Props) => {
@@ -104,7 +104,7 @@ const Cities = (props: Props) => {
                   </thead>
 
                   <tbody className="divide-y divide-gray-200">
-                  {props.citiesData.map((city) => (
+                  {props.citiesData.results.map((city) => (
                     <tr>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       {city.cityName}

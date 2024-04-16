@@ -6,7 +6,7 @@ import Layout from "@/components/AdminLayout";
 
 
 type Props = {
-  travelStyles: ITravelStyle[];
+  travelStyles: {results:ITravelStyle[]};
 };
 
 const Cities = (props: Props) => {
@@ -104,7 +104,7 @@ const Cities = (props: Props) => {
                   </thead>
 
                   <tbody className="divide-y divide-gray-200">
-                  {props.travelStyles.map((travelstyle) => (
+                  {props.travelStyles.results.map((travelstyle) => (
                     <tr>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       {travelstyle.styleName}

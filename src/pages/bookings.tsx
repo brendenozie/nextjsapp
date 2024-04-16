@@ -12,7 +12,7 @@ import { IResult, ISuggestionFormatted } from "../types/typings";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
-  bookings: any[];
+  bookings: {results:any[]};
   session: Session;
 };
 
@@ -45,7 +45,7 @@ const Bookings = ({ bookings, session }: Props) => {
           <div className="flex flex-col">
             {/* Map Available Hotels */}
             {bookings &&
-              bookings?.map((item) => (
+              bookings?.results.map((item) => (
                 <InfoCard
                 key={item.img}
                 item={item}

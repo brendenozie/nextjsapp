@@ -7,7 +7,7 @@ import Link from "next/link";
 
 
 type Props = {
-  destinationsData: IDestination[];
+  destinationsData:{results:IDestination[]};
 };
 
 const Destinations = (props: Props) => {

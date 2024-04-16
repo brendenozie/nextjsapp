@@ -8,19 +8,12 @@ export default async function handle(
   const { page } = req.query;
   if (req.method === "GET") {
 
-    // const users = await prisma.user.findMany();
-    // res.json(users);
-
-
     let currentPage = page as unknown as number;
-    let skip = currentPage >0  ? currentPage *20 : 0;
+    let skip = currentPage > 1 ? currentPage *20 : 0;
     
     const results = await prisma.$transaction([
-      prisma.user.count({
-        skip : skip,
-        take: 20,
-      }),
-      prisma.user.findMany({
+      prisma.travelStyle.count(),
+      prisma.travelStyle.findMany({
         skip : skip,
         take: 20,
       }),
