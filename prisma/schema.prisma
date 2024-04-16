@@ -108,7 +108,7 @@ model Booking {
 //"password":"1234567890","phone":"","provider":"mobile","user_id":"","username":"fill"
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  user_id        String    @unique @default(uuid())
+  user_id        String?   @unique @default(uuid())
   name           String?
   email          String?   @unique
   emailVerified  DateTime?

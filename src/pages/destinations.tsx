@@ -87,7 +87,7 @@ const Destinations = (props: Props) => {
                   </thead>
 
                   <tbody className="divide-y divide-gray-200">
-                  {props.destinationsData.map((destination) => (
+                  {props.destinationsData.results.map((destination) => (
                     <tr>
                       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       {destination.title}

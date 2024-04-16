@@ -12,19 +12,20 @@ export default async function handle(
     let skip = currentPage > 1 ? currentPage *20 : 0;
     
     const results = await prisma.$transaction([
-      prisma.travelStyle.count(),
-      prisma.travelStyle.findMany({
+      prisma.user.count(),
+      prisma.user.findMany({
         skip : skip,
         take: 20,
       }),
     ]);
 
     res.json({InfoResponse:{count: results[0] ?? 0,
-                  next: currentPage * 20 > results[0] ? currentPage : 0 ,
-                  pages: results[0]/20 > 0 ? results[0]/20 : 1 ,
-                  prev: currentPage-1 > 0 ? currentPage-1 : 0},
-              results: results[1]
+                next: currentPage * 20 > results[0] ? currentPage : 0 ,
+                pages: results[0]/20 > 1 ? results[0]/20 : 1 ,
+                prev: currentPage-1 > 1 ? currentPage-1 : 0},
+                results: results[1]
             });
+
   } else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`
