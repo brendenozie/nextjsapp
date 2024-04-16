@@ -11,7 +11,7 @@ const Footer = (props: Props) => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <div className="text-teal-600">
-              The Umbrella Tours 
+              The Umbrella Expeditions 
             </div>
 
             <p className="mt-4 max-w-xs text-gray-500">
@@ -21,7 +21,7 @@ const Footer = (props: Props) => {
             <ul className="mt-8 flex gap-6">
               <li>
                 <Link
-                  href="facebook.com/The Umbrella Tours"
+                  href="facebook.com/The Umbrella Expeditions"
                   rel="noreferrer"
                   target="_blank"
                   className="text-gray-700 transition hover:opacity-75"
@@ -45,7 +45,7 @@ const Footer = (props: Props) => {
 
               <li>
                 <Link
-                  href="instagram.com/The Umbrella Tours"
+                  href="instagram.com/The Umbrella Expeditions"
                   rel="noreferrer"
                   target="_blank"
                   className="text-gray-700 transition hover:opacity-75"
@@ -69,7 +69,7 @@ const Footer = (props: Props) => {
 
               <li>
                 <Link
-                  href="twitter.com/The Umbrella Tours"
+                  href="twitter.com/The Umbrella Expeditions"
                   rel="noreferrer"
                   target="_blank"
                   className="text-gray-700 transition hover:opacity-75"
@@ -142,7 +142,7 @@ const Footer = (props: Props) => {
         </div>
 
         <p className="text-xs text-gray-500">
-          &copy; 2022. The Umbrella Tours. All rights reserved.
+          &copy; 2022. The Umbrella Expeditions. All rights reserved.
         </p>
       </div>
     </footer>

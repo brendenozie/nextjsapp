@@ -11,7 +11,7 @@ const UserLayout = (props: PropsWithChildren) => {
               <div className="text-white">
                   <div className="flex p-2  bg-gray-800">
                       <div className="flex flex-col py-3 px-2 items-center">
-                          <p className="text-2xl text-white font-bold">The Umbrella Tours</p> 
+                          <p className="text-2xl text-white font-bold">The Umbrella Expeditions</p> 
                           {/* <p className="ml-2 font-bold">DASHBOARD</p> */}
                       </div>
                   </div>

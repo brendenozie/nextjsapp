@@ -50,7 +50,7 @@ const Header = () => {
               href="/"
               className={`lg:inline text-lg sm:text-sm lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
                 }`}
-            >The Umbrella Tours
+            >The Umbrella Expeditions
             </Link>
           </div>
           {/* navigation */}

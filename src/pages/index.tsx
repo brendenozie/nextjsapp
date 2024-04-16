@@ -73,7 +73,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   return (
     <div className="">
       <Head>
-        <title>The Umbrella Tours</title>
+        <title>The Umbrella Expeditions</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       {/* Header */}
@@ -372,9 +372,9 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                       <path d="M21 16C21 18.7614 18.7614 21 16 21C13.2386 21 11 18.7614 11 16C11 13.2386 13.2386 11 16 11C18.7614 11 21 13.2386 21 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At The Umbrella Tours we'll help you plan your trip effectively&amp; productively. Ensuring that you have a seamless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
+                  <h3 className="mb-6 text-3xl font-semibold" style={{ letterSpacing: "-0.5px" }}>&ldquo;At The Umbrella Expeditions we'll help you plan your trip effectively&amp; productively. Ensuring that you have a seamless holiday even as you travel with us touring all the places of interest !&rdquo;</h3>
                   <h4 className="font-semibold tracking-tight mb-1">Sharon Akinyi</h4>
-                  <span>Founder, The Umbrella Tours.</span>
+                  <span>Founder, The Umbrella Expeditions.</span>
                 </div>
               </div>
               <div className="w-full md:w-1/2 p-8">
