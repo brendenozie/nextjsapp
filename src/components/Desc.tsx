@@ -110,7 +110,7 @@ const Desc = ({
   return (
     <>
       <div className="min-h-[6rem] w-full justify-center items-center box-border text-slate-100 backdrop-blur bg-[#65324b] ">
-        <div className=" text-center rounded-md transform -translate-y-28 sm:-translate-y-28 sm:max-w-[90%] mx-auto bg-gray-700">
+        <div className=" text-center  transform -translate-y-28 sm:-translate-y-28 sm:max-w-[90%] mx-auto bg-gray-700">
           <div className="justify-center items-center mx-16 bg--gray-700 rounded-md ">
             <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
               <div className="p-2 sm:w-1/4 w-full justify-center flex items-center rounded-md shadow-md ">

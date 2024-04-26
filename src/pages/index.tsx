@@ -96,7 +96,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
         
 
-      <main className="max-w-full mx-auto px-16 sm:px-16">
+      <main className="max-w-full mx-auto md:w-9/12">
         <section className="py-6 my-36 dark:text-gray-50">
             <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly">              
               <div className="block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-auto p-2">
@@ -116,7 +116,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                     </div>
 
                     <div>
-                      <Link className="w-1/4 mt-4 block rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 text-center"  href="#contact" >
+                      <Link className="sm:w-1/4 w-fit mt-4 block md:rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 text-center"  href="#contact" >
                         Search Destination
                       </Link>
                     </div>

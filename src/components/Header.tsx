@@ -48,7 +48,7 @@ const Header = () => {
             </Link> */}
             <Link
               href="/"
-              className={`lg:inline text-lg sm:text-sm lg:text-[1.375rem] font-bold tracking-wide ${dark ? "text-black" : "text-white"
+              className={`lg:inline text-sm uppercase text-center sm:text-sm lg:text-[1.375rem] font-bold tracking-normal ${dark ? "text-black" : "text-white"
                 }`}
             >The Umbrella Expeditions
             </Link>
