@@ -22,7 +22,7 @@ import place1 from "../../public/place-1.jpg.webp";
 import place2 from "../../public/place-2.jpg.webp";
 import place3 from "../../public/place-3.jpg.webp";
 import place4 from "../../public/place-4.jpg.webp";
-import { PaperAirplaneIcon, UserCircleIcon, MapIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { PaperAirplaneIcon, UserCircleIcon, MapIcon, TrophyIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 const loaderProp =({ src  } :any) => {
   return src;
@@ -97,7 +97,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         
 
       <main className="max-w-full mx-auto md:w-9/12">
-        <section className="py-6 my-36 dark:text-gray-50">
+        <section className="py-6 my-28 dark:text-gray-50">
             <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly">              
               <div className="block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-auto p-2">
                   <div className="h-full flex flex-col justify-between">
@@ -109,14 +109,16 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
                     <div>
                       <p className="text-pretty mt-1 text-md text-gray-500">
+                      <br/>
                         A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
-                        
+                        <br/><br/>
                         Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                        <br/>
                       </p>
                     </div>
 
                     <div>
-                      <Link className="sm:w-1/4 w-fit mt-4 block md:rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 text-center"  href="#contact" >
+                      <Link className="sm:w-2/4 w-fit mt-4 block md:rounded-full bg-yellow-500 p-4 text-sm font-normal text-white shadow hover:bg-red-700 text-center"  href="#contact" >
                         Search Destination
                       </Link>
                     </div>
@@ -178,7 +180,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
               <a href="#" className="group block">
                 <div className="relative  h-[80px] sm:h-[80px]">
-                  <TrophyIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
+                  <MapPinIcon className="absolute inset-0 h-16 w-16 object-cover text-yellow-500" />
                 </div>
 
                 <div className="mt-1">
@@ -214,7 +216,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         </section> */}
 
         <section>
-          <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+          <div className="mx-auto max-w-screen-xl py-8 sm:py-12">
             <header>
               <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center m-8">Best Place Destination</h2>
               <p className="mt-4 max-w-md text-gray-500"></p>

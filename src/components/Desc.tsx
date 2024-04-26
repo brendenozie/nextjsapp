@@ -112,7 +112,7 @@ const Desc = ({
       <div className="min-h-[6rem] w-full justify-center items-center box-border text-slate-100 backdrop-blur bg-[#65324b] ">
         <div className=" text-center  transform -translate-y-28 sm:-translate-y-28 sm:max-w-[90%] mx-auto bg-gray-700">
           <div className="justify-center items-center mx-16 bg--gray-700 rounded-md ">
-            <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid">
+            <div className="container flex flex-col sm:flex-row ng-untouched ng-pristine ng-valid  uppercase font-semibold">
               <div className="p-2 sm:w-1/4 w-full justify-center flex items-center rounded-md shadow-md ">
                 <div >
                   <MapPinIcon className="flex items-center rounded-l-md border border-gray-700 justify-center w-12 text-white h-5 w-5 text-gray-900" />
@@ -128,7 +128,7 @@ const Desc = ({
                                                     }}>
                   <option value="Pick A City" >Pick Destination</option>
                   {getInspiredCities.results.map((city) => (
-                      <option value={JSON.stringify(city)} >{city.cityName}</option>
+                      <option className="text-black uppercase font-semibold" value={JSON.stringify(city)} >{city.cityName}</option>
                     ))}
                   </select>
                 </div>
