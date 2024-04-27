@@ -6,7 +6,7 @@ import UserNavbar from "@/components/UserNavbar";
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
  
-const chartConfig = {
+const chartConfig :any = {
   type: "line",
   height: 240,
   series: [
@@ -168,7 +168,10 @@ const Dash = (props: Props) => {
                                     </div>
                                     <div className="col-span-12 mt-5">
                                         <div className="bg-white shadow-lg p-4" id="chartline">
-                                            <Chart {...chartConfig} />
+                                            <Chart options={chartConfig.options}
+                                                    series={chartConfig.series}
+                                                    type={chartConfig.type}
+                                                    height={chartConfig.height} />
                                         </div>
                                     </div>
                                     <div className="col-span-12 mt-5">

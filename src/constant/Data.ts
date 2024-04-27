@@ -7,17 +7,17 @@ export const NavFindata = [
   // },
   {
     href: "#about",
-    title: "For Business",
+    title: "About",
     reference: "about",
   },
   {
     href: "/destinationlist",
-    title: "How it works?",
+    title: "Destinations",
     reference: "destinations",
   },
   {
     href: "#review",
-    title: "Blog",
+    title: "Reviews",
     reference: "review",
   },
   {
