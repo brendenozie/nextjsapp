@@ -108,7 +108,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                     </div>
 
                     <div>
-                      <p className="text-pretty mt-1 text-md text-gray-500">
+                      <p className="text-pretty mt-1 text-md text-gray-500 text-left">
                       <br/>
                         A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
                         <br/><br/>
@@ -133,11 +133,11 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 </div>
 
                 <div className="mt-1">
-                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold text-left">
                     Activities
                   </h3>
 
-                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500 text-left">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
                     odio id?
                   </p>
@@ -150,11 +150,11 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 </div>
 
                 <div className="mt-3">
-                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold text-left">
                     Travel Arrangments
                   </h3>
 
-                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500 text-left">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
                     odio id?Lorem ipsum another a=randome test 
                   </p>
@@ -167,11 +167,11 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 </div>
 
                 <div className="mt-1">
-                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold text-left">
                     Private Guide
                   </h3>
 
-                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500 text-left">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
                     odio id?
                   </p>
@@ -184,11 +184,11 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
                 </div>
 
                 <div className="mt-1">
-                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold">
+                  <h3 className="text-md text-gray-700 group-hover:underline group-hover:underline-offset-4 font-bold text-left">
                     Location Manager
                   </h3>
 
-                  <p className="mt-1.5 text-pretty text-xs text-gray-500">
+                  <p className="mt-1.5 text-pretty text-xs text-gray-500 text-left">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam ab maiores placeat
                     odio id?
                   </p>
@@ -306,7 +306,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         <section className="my-24">
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
-            <h2 className="text-4xl font-bold lg:text-5xl uppercase">Find your travel style</h2>
+            <h2 className="text-4xl font-bold uppercase">Find your travel style</h2>
           </div>
           {/* Map styles data from api */}
           <CarouselTitlesCard travelStyles={stylesData} />
