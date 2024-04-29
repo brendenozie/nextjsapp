@@ -33,6 +33,7 @@ const LargeCard = ({ img, title, description, buttonText, getInspiredCities, set
 
   return (
     <section className="relative py-16">
+     
       {/* bg image */}
       <div className="relative h-96 min-w=[300px]">
         <Image className="object-cover object-left rounded-2xl" src={img} alt={title} fill loader={loaderProp}/>

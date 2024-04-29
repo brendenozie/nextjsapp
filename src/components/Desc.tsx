@@ -136,7 +136,7 @@ const Desc = ({
 
               <div className="p-2 w-full sm:w-1/4 justify-center flex items-center rounded-md shadow-md">
                 <div>
-                  <CalendarIcon className="flex items-center  bg-gray-700 justify-center w-12 text-white h-5 w-5 " />
+                  <CalendarIcon className="flex sm:flex-col items-center  bg-gray-700 justify-center w-12 text-white h-5 w-5 " />
                 </div>
 
                 <div className="w-full">

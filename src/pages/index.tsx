@@ -76,9 +76,13 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         <title>The Umbrella Expeditions</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
+
       {/* Header */}
+
       <Header  />
+
       {/* Banner */}
+
       <Banner
         getInspiredCities={getInspiredCities}
         setSearchInput={setSearchInput}
@@ -93,8 +97,6 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         setSelectedCity={setSelectedCity}
         isOpen={isOpen}
         setIsOpen={setIsOpen} />
-
-        
 
       <main className="w-full mx-auto lg:w-9/12">
         <section className="py-6 my-12 dark:text-gray-50">
@@ -314,6 +316,12 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         </section>
 
         <section className="py-6 dark:text-gray-50 my-40">
+
+          <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
+            <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>
+            <h2 className="text-4xl font-bold uppercase text-black">Explore Cultures</h2>
+          </div>
+
           <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4">
             <img src="/34.jpg" alt="" className="w-full h-full col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 dark:bg-gray-500 aspect-square" />
             <img src="/35.jpg" alt="" className="w-full h-full rounded shadow-sm min-h-48 dark:bg-gray-500 aspect-square" />
@@ -421,13 +429,11 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
         </section>
 
-      
+      </main>
 
-      {/* <Pic />
+      <Pic />
 
-      <Footer /> */}
-
-</main>
+      <Footer />
 
       {/* Drawer */}
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
