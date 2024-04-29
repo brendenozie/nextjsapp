@@ -71,7 +71,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
   };
 
   return (
-    <>
+    <div className="overflow-hidden">
       <Head>
         <title>The Umbrella Expeditions</title>
         <link rel="icon" href="/favicon.png" />
@@ -447,7 +447,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           Sign out
         </p>
       </Drawer>
-    </>
+    </div>
   );
 };
 
