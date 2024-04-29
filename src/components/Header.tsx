@@ -37,11 +37,11 @@ const Header = () => {
     <header className={`bg-transparent fixed top-0 left-0 w-full flex items-center z-50 ${visible ? "fixed backdrop-blur-sm" : ""} 
                           ${dark ? "fixed nav-color backdrop-blur shadow-md" : ""}`}  >
       <div id="navbar" className="w-screen 2xl:container relative">
-        <div className={`flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 relative ${dark ? "min-h-[4.5rem]" : " min-h-[5rem] md:min-h-[7rem]"
+        <div className={`flex items-center justify-between max-w-7xl mx-auto sm:px-6 relative ${dark ? "min-h-[4.5rem]" : " min-h-[5rem] md:min-h-[7rem]"
           }`}
         >
           {/* Logo */}
-          <div className="flex items-center gap-x-4 order-1 w-[25%] box-border pl-6 lmd:pl-14 lg:pl-24 2xl:pl-16">
+          <div className="flex items-center gap-x-4 order-1 w-[25%] box-border lmd:pl-14 lg:pl-24 2xl:pl-16">
             {/* <Link href="/" className={`${dark ? "text-black" : "text-white"}`}>
               <PaperAirplaneIcon className="h-6" />
             </Link> */}

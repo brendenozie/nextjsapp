@@ -44,9 +44,7 @@ const Banner = ({ setSearchInput, setSelectedCity, getInspiredCities }: Props) =
             </Link>
           </div>
           <h3 className=" text-md text-white mx-4 font-normal">Travel to the any corner of the world, without going around in circles</h3>
-          <h1 className="text-4xl text-white font-semibold sm:text-7xl mx-4">Make Your Tour Amazing With Us</h1>
-
-          
+          <h1 className="text-4xl text-white font-semibold sm:text-7xl mx-4 uppercase">Make Your Tour Amazing With Us</h1>          
         </div>
       </div>
     </>
