@@ -62,26 +62,34 @@ const Hotels = ({ searchResults, session }: Props) => {
           )}
           <div className="flex flex-col">
             {/* Map Available Hotels */}
-            {searchResults &&
-              searchResults.results.map((item: IHotel) => (
-                  <InfoCardHotel
-                    key={item.img[0].url}
-                    cityId={item.cityId != null ? item.cityId as string : ""}
-                    item={item}
-                    startDate={startDate as string}
-                    endDate={endDate as string}
-                    numOfGuests={numOfGuests as string}
-                    session={session!}
-                  />
-              )
-              )}
+            {searchResults ? searchResults.results && searchResults.results != "null"  && searchResults.results != "" && searchResults.results != null && searchResults.results != " "  
+             ? searchResults.results.map((item: IHotel) => (
+                          <InfoCardHotel
+                            key={item.img[0].url}
+                            cityId={item.cityId != null ? item.cityId as string : ""}
+                            item={item}
+                            startDate={startDate as string}
+                            endDate={endDate as string}
+                            numOfGuests={numOfGuests as string}
+                            session={session!}
+                          />
+                      )
+              ) : 
+                  <p>
+                    {`Sorry, there are no accommodations available in  ${location} . Please, try again on different location.`}
+                  </p>
+              :
+            <p>
+              {`Sorry, there are no accommodations available in this Location . Please, try again on different location.`}
+            </p>
+            }
           </div>
         </section>
         {/* MapBox, Right Section */}
         {searchResults ? (
           <section className="hidden lg:inline-flex xl:min-w-[600px]">
             <div className="sticky top-[68px] w-full h-screen">
-              <MapCard searchResults={searchResults} />
+              {/* <MapCard searchResults={searchResults} /> */}
             </div>
           </section>
         ) : (
@@ -125,11 +133,15 @@ export const getServerSideProps = async (
   const searchResults :any={};
   searchResults.id=id;
   searchResults.hotelId=id;
+  searchResults.cityId=id;
   searchResults.location=location;
   searchResults.startDate=startDate;
   searchResults.endDate=endDate;
   searchResults.numOfGuests=numOfGuests;
   searchResults.results=[hotelResults.results];
+
+  console.log(id);
+  console.log(hotelResults);
 
   return {
     props: {

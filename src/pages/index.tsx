@@ -96,7 +96,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
 
         
 
-      <main className="w-full mx-auto md:w-9/12">
+      <main className="w-full mx-auto lg:w-9/12">
         <section className="py-6 my-12 dark:text-gray-50">
             <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly items-center text-center">              
               <div className="block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-auto p-2 mb-10 md:mb-0">
@@ -421,11 +421,13 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           </div>
         </section>
 
-      </main>
+      
 
-      <Pic />
+      {/* <Pic />
 
-      <Footer />
+      <Footer /> */}
+
+</main>
 
       {/* Drawer */}
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>

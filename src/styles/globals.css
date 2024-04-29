@@ -13,4 +13,5 @@
   .drawer-current-item {
     @apply font-bold text-base shrink p-1 px-5
   }
+  
 }
