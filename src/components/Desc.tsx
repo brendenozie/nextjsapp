@@ -136,7 +136,7 @@ const Desc = ({
 
               <div className="p-2 w-full sm:w-1/4 justify-center flex items-center rounded-md shadow-md">
                 <div>
-                  <CalendarIcon className="flex sm:flex-col items-center  bg-gray-700 justify-center w-12 text-white h-5 w-5 " />
+                  <CalendarIcon className="flex items-center  bg-gray-700 justify-center w-12 text-white h-5 w-5 " />
                 </div>
 
                 <div className="w-full">
@@ -158,9 +158,9 @@ const Desc = ({
                       className="flex absolute left-0 right-0 mx-auto items-center flex-col col-span-3  bg-transparent"
                       ref={ref}
                     >
-                      <div className="flex z-10 mx-auto items-center flex-col col-span-3 mb-3 bg-gray-700 pb-5 rounded-b-lg shadow-md" >
+                      <div className="flex z-60 mx-auto items-center flex-col col-span-3 mb-3 bg-gray-700 pb-5 rounded-b-lg shadow-md" >
                         <DateRangePicker
-                          className="text-black"
+                          className="text-black sm:flex-col"
                           ranges={[selectionRange]}
                           minDate={new Date()}
                           rangeColors={["#EA640E"]}
@@ -197,11 +197,11 @@ const Desc = ({
                       className="flex absolute left-0 right-0 mx-auto items-center flex-col  mt-[24px] text-black bg-gray-700 rounded-md md:w-1/4 sm:w-1/2"
                       ref={ref}>
                       <div className=" gap-4 items-center m-4 pl-5">
-                        <h2 className="text-l flex-grow font-semibold">
+                        <h2 className="text-l flex-grow font-semibold text-white">
                           Number of Guests
                         </h2>
                         <div className="flex p-2">
-                          <UsersIcon className="h-8" />
+                          <UsersIcon className="h-8 text-white pr-2" />
                           <input
                             value={numOfGuests}
                             onChange={(e) => setNumOfGuests(e.target.value)}
@@ -212,7 +212,7 @@ const Desc = ({
                         </div>
                       </div>
                       <div className="flex justify-items-center items-center p-2">
-                        <button onClick={resetGuests} className="bg-gray-700 px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150"  >
+                        <button onClick={resetGuests} className="bg-gray-700 px-5 py-2 shadow-md rounded-full font-bold text-sm hover:shadow-xl active:scale-90 transition duration-150 text-white"  >
                           Close
                         </button>
                       </div>
