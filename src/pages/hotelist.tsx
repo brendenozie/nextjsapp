@@ -140,8 +140,6 @@ export const getServerSideProps = async (
   searchResults.numOfGuests=numOfGuests;
   searchResults.results=[hotelResults.results];
 
-  console.log(id);
-  console.log(hotelResults);
 
   return {
     props: {
