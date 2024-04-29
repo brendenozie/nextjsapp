@@ -34,7 +34,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`bg-transparent fixed top-0 left-0 flex items-center z-50 ${visible ? "fixed backdrop-blur-sm" : ""} 
+    <header className={`bg-transparent fixed top-0 left-0 max-w-full flex items-center z-50 ${visible ? "fixed backdrop-blur-sm" : ""} 
                           ${dark ? "fixed nav-color backdrop-blur shadow-md" : ""}`}  >
       <div id="navbar" className="w-screen 2xl:container relative">
         <div className={`flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 relative ${dark ? "min-h-[4.5rem]" : " min-h-[5rem] md:min-h-[7rem]"

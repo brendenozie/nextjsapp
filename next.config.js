@@ -15,6 +15,7 @@ module.exports = {
       "links.papareact.com",
       "images.trvl-media.com",
       "hobbyhorsetours.com",
+      "umbrellaexpeditions.com",
       "/"
     ],
   },
