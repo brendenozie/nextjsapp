@@ -99,12 +99,12 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         setIsOpen={setIsOpen} />
 
       <main className="w-full mx-auto lg:w-9/12">
-        <section className="py-6 my-12 dark:text-gray-50">
+        <section className="p-6 my-12 dark:text-gray-50">
             <div className="container grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 justify-evenly items-center text-center">              
               <div className="block w-full h-3/4 col-span-2 row-span-2 rounded shadow-sm min-h-96 md:col-start-3 md:row-start-1 aspect-auto p-2 mb-10 md:mb-0">
                   <div className="h-full flex flex-col justify-between">
                     <div>
-                      <h3 className="text-5xl font-bold text-gray-700">
+                      <h3 className="text-5xl font-bold text-gray-700 uppercase">
                         It's time to start your adventure
                       </h3>
                     </div>
@@ -220,7 +220,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
         <section>
           <div className="mx-auto max-w-screen-xl py-8 sm:py-12">
             <header>
-              <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center m-8 uppercase">Best Place Destination</h2>
+              <h2 className="text-5xl font-bold text-gray-900 sm:text-3xl w-full items-center text-center uppercase">Best Place Destination</h2>
               <p className="mt-4 max-w-md text-gray-500"></p>
             </header>
 
@@ -315,7 +315,7 @@ const Home = ({ citiesData, stylesData, getInspiredCities }: Props) => {
           {/* Travel Styles Carousel */}
         </section>
 
-        <section className="py-6 dark:text-gray-50 my-40">
+        <section className="dark:text-gray-50 my-40">
 
           <div className="max-w-2xl mx-auto mt-16 mb-16 text-center">
             <span className="font-bold tracking-wider uppercase dark:text-violet-400"></span>

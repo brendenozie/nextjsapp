@@ -21,7 +21,7 @@ const CarouselTitlesCard = ({ travelStyles }: Props) => {
       >
         {travelStyles.results.map((travelStyle) => (
           <div className="h-[400px] w-full md:h-[500px] relative overflow-hidden rounded-2xl">
-            <img className="object-cover " src={travelStyle.url} alt={travelStyle.styleName} />
+            <img className="object-cover h-full" src={travelStyle.url} alt={travelStyle.styleName} />
             <div className="absolute bottom-5 text-4xl font-bold my-3 mx-9 text-white bg-black/30 px-2 py-1">
               {travelStyle.styleName}
             </div>

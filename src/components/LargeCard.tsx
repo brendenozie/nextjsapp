@@ -36,7 +36,7 @@ const LargeCard = ({ img, title, description, buttonText, getInspiredCities, set
      
       {/* bg image */}
       <div className="relative h-96 min-w=[300px]">
-        <Image className="object-cover object-left rounded-2xl" src={img} alt={title} fill loader={loaderProp}/>
+        <Image className="object-cover object-left rounded-2xl sm:object-fill" src={img} alt={title} fill loader={loaderProp}/>
       </div>
       {/* text */}
       <div className="absolute top-32 left-12">
