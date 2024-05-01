@@ -3,6 +3,7 @@ module.exports = {
   reactStrictMode: true,
   env: {
     stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+    PAYSTACK_SECRET_LIVE_PUBLIC_KEY: process.env.PAYSTACK_SECRET_LIVE_PUBLIC_KEY,    
   },
   images: {
     loader: "custom",

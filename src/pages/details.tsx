@@ -81,10 +81,11 @@ const Details = ({ session }: Props) => {
 
   const [allImages, setAllImages] =useState<any>(img? img : [])
   // Update Fav State from Query Value
-
+  
+  const pKey = process.env.PAYSTACK_SECRET_LIVE_PUBLIC_KEY;
 
   const config :any = {
-    publicKey: `${process.env.PAYSTACK_SECRET_LIVE_PUBLIC_KEY}`,
+    publicKey: `${pKey}`,
     reference: new Date().getTime(),
     email: `${userEmail}`,
     currency: 'KES',
@@ -290,7 +291,7 @@ const Details = ({ session }: Props) => {
             <div className="w-full flex justify-end">
               <button
                 // onClick={createBooking}
-                onClick={async () => initializePayment(onSuccess)}
+                onClick={async () => {initializePayment(onSuccess)}}
                 className="text-md px-3 py-1 italic text-white cursor-pointer bg-orange-500  rounded-xl mt-3 hover:bg-orange-600 active:scale-95 transition duration-250"
               >
                 {/* {!session ? "Sign in to express booking" : "Express Booking"} */}
