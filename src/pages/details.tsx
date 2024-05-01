@@ -19,8 +19,18 @@ import MapCardDetails from "../components/MapCardDetails";
 import { IResult, ISuggestionFormatted } from "../types/typings";
 import CarouselCard from "@/components/CarouselCard";
 import { usePaystackPayment } from "react-paystack";
+import { InitializePayment } from "react-paystack/dist/types";
 
 let stripePromise: Promise<Stripe | null>;
+
+type referenceObj = {
+	message: string;
+	reference: string;
+	status: "sucess" | "failure";
+	trans: string;
+	transaction: string;
+	trxref: string;
+};
 
 type Props = {
   // detailsResult: IDetails;
@@ -93,25 +103,13 @@ const Details = ({ session }: Props) => {
     // metadata: router.query,
   };
 
-  const initializePayment : any= usePaystackPayment(config);
+  const initializePayment : InitializePayment= usePaystackPayment(config);
 
-  const onSuccess = (reference: any) => {
+  const onSuccess :any = (reference: any) => {
 
-    // console.log(reference);
       createBooking(reference)
-    // db.collection("users")
-    //   .doc(user?.uid)
-    //   .collection("orders")
-    //   .doc(reference.trans)
-    //   .set({
-    //     cart,
-    //     amount: getCartTotal(cart) * 100,
-    //     created: new Date().getTime(),
-    //     orderId: reference.trans,
-    //   });
-    // dispatch({ type: "EMPTY_CART" });
-    // history.replace("/orders");
-  };
+
+    };
 
 
   useEffect(() => {
@@ -152,10 +150,7 @@ const Details = ({ session }: Props) => {
   };
 
   // Create New Stripe Checkout Session
-  const createBooking = async (reference: any) => {
-
-    console.log(reference);
-    
+  const createBooking = async (reference: any) => {    
     await axios.post(`/api/post-booking/`, {
         hotelId: hotelId,
         title: title,
@@ -171,7 +166,8 @@ const Details = ({ session }: Props) => {
         lat: lat,
         star: star,
         cityId: cityId,
-        transaction:reference.trans
+        transaction:reference.trans,
+        transactionStatus:reference.status
       }).then(() => {
         router.push("/bookings");
     }).catch(() => {
@@ -291,7 +287,9 @@ const Details = ({ session }: Props) => {
             <div className="w-full flex justify-end">
               <button
                 // onClick={createBooking}
-                onClick={async () => {initializePayment(onSuccess)}}
+                onClick={ async () => await initializePayment({
+                  onSuccess: (reference: any) => onSuccess(reference) // asd is seen as string
+              })} 
                 className="text-md px-3 py-1 italic text-white cursor-pointer bg-orange-500  rounded-xl mt-3 hover:bg-orange-600 active:scale-95 transition duration-250"
               >
                 {/* {!session ? "Sign in to express booking" : "Express Booking"} */}

@@ -23,6 +23,8 @@ export default async function handle(
     travelStyleId,
     startDate,
     endDate,
+    transaction,
+    transactionStatus
   } = req.body;
 
   const session = await getSession({ req });
@@ -42,6 +44,8 @@ export default async function handle(
       title,
       total: Number(total),
       userEmail : userEmail ? userEmail : session?.user!.email!,
+      status : transactionStatus == "success" ? "active paid" : "active pending",
+      transaction,
       cityId,
       travelStyleId
     },

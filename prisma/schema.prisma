@@ -97,6 +97,7 @@ model Booking {
   total         Float?
   userEmail     String
   travelStyleId String?
+  transaction   String?
   cityId        String
   user          User       @relation(fields: [userEmail], references: [email], onDelete: Cascade)
   img           HotelImage @relation(fields: [hotellId], references: [hotelId], onDelete: Cascade)
