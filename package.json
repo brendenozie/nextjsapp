@@ -39,7 +39,8 @@
     "react-responsive-carousel": "^3.2.23",
     "stripe": "^11.1.0",
     "tailwind-scrollbar-hide": "^1.1.7",
-    "usehooks-ts": "2.6.0"
+    "usehooks-ts": "2.6.0",    
+		"react-paystack": "latest"
   },
   "devDependencies": {
     "@types/micro": "^7.3.7",

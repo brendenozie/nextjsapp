@@ -17,7 +17,7 @@ const loaderProp =({ src  } :any) => {
 
 type Props = {
   cityId?: string;
-  item: IDestination;
+  item: any;
   session: Session;
   favorite?: boolean;
   fromFavPage?: boolean;
@@ -44,8 +44,9 @@ const InfoCard = ({
   const hotelId = item.id;
   let startDateFormatted: string;
   let endDateFormatted: string;
-
+  
   useEffect(() => {
+    
     if (favorite) setIsFav(true);
     if (startDate && endDate) {
       startDateFormatted = format(new Date(startDate as string), "dd MMMM yy");
@@ -136,7 +137,7 @@ const InfoCard = ({
       <div className="relative h-40 w-40 md:h-52 md:w-80 flex-shrink-0">
         <Image
           className="object-cover rounded-2xl"
-          src={item.img && item.img[0].url}
+          src={item.img && (item.img[0] ? item.img[0]?.url : item.img.url)}
           alt={item.title}
           fill
           loader={loaderProp}
@@ -202,12 +203,12 @@ const InfoCard = ({
               >
                 Cancel Booking
               </p>
-              <p
+              {/* <p
                 onClick={details}
                 className="text-right text-base pt-2 lg:text-l font-semibold cursor-pointer hover:text-orange-500"
               >
                 More details
-              </p>
+              </p> */}
               <ChevronRightIcon className="h-2.5" />
             </div>
           </div>

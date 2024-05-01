@@ -111,9 +111,12 @@ export const getServerSideProps = async (
   const response = await fetch(url+`/get-bookings?userEmail=${userEmail}`
   );
 
+  
   const json = await response.json();
-
+  
   const bookings = json;
+
+  // console.log(bookings);
 
   return {
     props: {

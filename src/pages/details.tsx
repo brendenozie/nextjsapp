@@ -54,6 +54,7 @@ const Details = ({ session }: Props) => {
     long,
     lat,
   } = router.query;
+
   const searchResults: IResult[] = [
     {
       hotelId: hotelId as string,
@@ -68,6 +69,7 @@ const Details = ({ session }: Props) => {
       userEmail: userEmail as string,
     },
   ];
+  
   // console.log({ startDate, endDate });
   const formattedStartDate = startDate;
   const formattedEndDate = endDate;
@@ -115,6 +117,8 @@ const Details = ({ session }: Props) => {
 
   // Create New Stripe Checkout Session
   const createBooking = async () => {
+
+    console.log(img);
     
     await axios.post(`/api/post-booking/`, {
         hotelId: hotelId,
@@ -124,6 +128,7 @@ const Details = ({ session }: Props) => {
         location: location,
         startDate: formattedStartDate,
         endDate: formattedEndDate,
+        userEmail:userEmail,
         price: price,
         total: total,
         long: long,

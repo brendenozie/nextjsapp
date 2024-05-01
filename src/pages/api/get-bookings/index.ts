@@ -29,6 +29,8 @@ export default async function handle(
       }),
     ]);
 
+    // console.log(results);
+
     res.json({InfoResponse:{count: results[0] ?? 0,
                 next: currentPage * 20 > results[0] ? currentPage : 0 ,
                 pages: results[0]/20 > 1 ? results[0]/20 : 1 ,
