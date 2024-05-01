@@ -18,6 +18,7 @@ import Header from "../components/Header";
 import MapCardDetails from "../components/MapCardDetails";
 import { IResult, ISuggestionFormatted } from "../types/typings";
 import CarouselCard from "@/components/CarouselCard";
+import { usePaystackPayment } from "react-paystack";
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -35,6 +36,8 @@ const Details = ({ session }: Props) => {
   const [isFav, setIsFav] = useState(false);
   const userEmail = session?.user?.email || "anonymous@user.com";
   const router = useRouter();
+
+
   const {
     cityId,
     favorite,
@@ -78,6 +81,38 @@ const Details = ({ session }: Props) => {
 
   const [allImages, setAllImages] =useState<any>(img? img : [])
   // Update Fav State from Query Value
+
+
+  const config :any = {
+    publicKey: `${process.env.PAYSTACK_SECRET_LIVE_PUBLIC_KEY}`,
+    reference: new Date().getTime(),
+    email: `${userEmail}`,
+    currency: 'KES',
+    amount: `${price}`,
+    // metadata: router.query,
+  };
+
+  const initializePayment : any= usePaystackPayment(config);
+
+  const onSuccess = (reference: any) => {
+
+    // console.log(reference);
+      createBooking(reference)
+    // db.collection("users")
+    //   .doc(user?.uid)
+    //   .collection("orders")
+    //   .doc(reference.trans)
+    //   .set({
+    //     cart,
+    //     amount: getCartTotal(cart) * 100,
+    //     created: new Date().getTime(),
+    //     orderId: reference.trans,
+    //   });
+    // dispatch({ type: "EMPTY_CART" });
+    // history.replace("/orders");
+  };
+
+
   useEffect(() => {
     if (favorite === "true") setIsFav(true);
   }, []);
@@ -116,9 +151,9 @@ const Details = ({ session }: Props) => {
   };
 
   // Create New Stripe Checkout Session
-  const createBooking = async () => {
+  const createBooking = async (reference: any) => {
 
-    console.log(img);
+    console.log(reference);
     
     await axios.post(`/api/post-booking/`, {
         hotelId: hotelId,
@@ -135,6 +170,7 @@ const Details = ({ session }: Props) => {
         lat: lat,
         star: star,
         cityId: cityId,
+        transaction:reference.trans
       }).then(() => {
         router.push("/bookings");
     }).catch(() => {
@@ -143,6 +179,7 @@ const Details = ({ session }: Props) => {
         
     });
   };
+
   // Add Fav Hotel to DB
   const submitFavorite = async () => {
     try {
@@ -252,7 +289,8 @@ const Details = ({ session }: Props) => {
           {fromFavPage === "false" && (
             <div className="w-full flex justify-end">
               <button
-                onClick={createBooking}
+                // onClick={createBooking}
+                onClick={async () => initializePayment(onSuccess)}
                 className="text-md px-3 py-1 italic text-white cursor-pointer bg-orange-500  rounded-xl mt-3 hover:bg-orange-600 active:scale-95 transition duration-250"
               >
                 {/* {!session ? "Sign in to express booking" : "Express Booking"} */}
