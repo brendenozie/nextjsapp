@@ -160,7 +160,7 @@ const Desc = ({
                     >
                       <div className="flex z-60 mx-auto items-center flex-col col-span-3 mb-3 bg-gray-700 pb-5 rounded-b-lg shadow-md" >
                         <DateRangePicker
-                          className="text-black sm:flex-col"
+                          className="text-black flex-col lg:flex-row  lg:[&>*:first-child]:visible [&>*:first-child]:hidden"
                           ranges={[selectionRange]}
                           minDate={new Date()}
                           rangeColors={["#EA640E"]}
