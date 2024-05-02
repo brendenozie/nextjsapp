@@ -409,8 +409,8 @@ export const getServerSideProps = async (
     return {
         props: {
             session,
-            detailsResult,
-            cities
+            detailsResult:detailsResult.results,
+            cities:cities.results
         },
     };
     
