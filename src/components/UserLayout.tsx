@@ -19,7 +19,7 @@ const UserLayout = (props: PropsWithChildren) => {
                       <div className="hidden">
                           <img className="hidden h-24 w-24 rounded-full sm:block object-cover mr-2 border-4 border-yellow-400"
                               src="https://image.flaticon.com/icons/png/512/149/149071.png" alt=""/>
-                          <p className="font-bold text-base  text-gray-400 pt-2 text-center w-24">Brenden</p>
+                          <p className="font-bold text-base  text-gray-400 pt-2 text-center w-24">HOME</p>
                       </div>
                   </div>
                   <div>
@@ -395,7 +395,7 @@ const UserLayout = (props: PropsWithChildren) => {
                                   >
                                       {/* x-on:click="Open = !Open" */}
                                   <a
-                                      className="inline-flex items-center  text-sm font-semibold text-white hover:text-yellow-400" href="/bookings">
+                                      className="inline-flex items-center  text-sm font-semibold text-white hover:text-yellow-400" href="/allbookings">
                                       <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" id="analytics">
                                             <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M123.326 56.625v36.242c0 6.578-5.382 11.961-11.961 11.961H35.978c-6.578 0-11.961-5.382-11.961-11.961V34.093M123.326 34.093v11.779"></path><path fill="#528AC8" d="M126.57 23.055H86.821c-.051-1-1.575-4-3.44-4H63.432c-1.865 0-3.389 3-3.44 4H20.243c-2.521 0-4.883 1.002-4.883 3.452v1.239c0 2.45 2.362 5.309 4.883 5.309H126.57c2.521 0 3.79-2.86 3.79-5.309v-1.239c0-2.45-1.269-3.452-3.79-3.452zm-45.187 4H65.759c-1.269 0-2.307-.731-2.307-2 0-1.269 1.038-2 2.307-2h15.623c1.269 0 2.307.731 2.307 2 .001 1.269-1.037 2-2.306 2z" opacity=".3"></path><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M126.57 22.555H86.821c-.051-1-1.575-4-3.44-4H63.432c-1.865 0-3.389 3-3.44 4H20.243c-2.521 0-4.383 1.639-4.383 4.16v1.275c0 2.521 1.862 5.565 4.383 5.565H126.57c2.521 0 4.29-3.044 4.29-5.565v-1.275c0-2.521-1.769-4.16-4.29-4.16z"></path>
                                             <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M81.627 26.98H65.514a2.068 2.068 0 0 1-2.062-2.062v-.489c0-1.134.928-2.062 2.062-2.062h16.113c1.134 0 2.063.928 2.063 2.062v.489a2.069 2.069 0 0 1-2.063 2.062zM7.541 45.974V56.46M2.298 51.217h10.486M45.15 60.341v6.278M42.011 63.48h6.278M100.283 48.078v6.278M103.422 51.217h-6.278M136.376 68.161v10.486M141.619 73.404h-10.486M73.683 104.828l-.011 14.444"></path>

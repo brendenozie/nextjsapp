@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import InfoCard from "../components/InfoCardBookings";
 import { ISuggestionFormatted } from "../types/typings";
 import Layout from "@/components/AdminLayout";
+import axios from "axios";
 
 type Props = {
-  bookings: any;
+  bookings?: any;
   session: Session;
 };
 
@@ -15,37 +16,36 @@ const AllBookings = ({ bookings, session }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [getBookings, setBookings] = useState(bookings);
-  const [statusView, setStatusView] = useState("active pending");
+  const [statusView, setStatusView] = useState("");
   const [selectedCity, setSelectedCity] = useState<ISuggestionFormatted | null>(
     null
   );
 
   useEffect(() => {
 
-    LoadBookings(statusView);
+    if(statusView){ 
+      LoadBookings();
+    }
 
 },[statusView]);
 
 
-// useEffect(()=>{setBookings(bookings)},[])
+  async function LoadBookings(){
+    
+      const body = { status: `${statusView}` };
 
-  async function LoadBookings(statusView: String){
-  // let url = process.env.NEXT_PUBLIC_API_URL;
-  // let response = await fetch(url+`/get-all-bookings`);
-  const body = { status: statusView };
+      let updateBookingStatus=`${process.env.NEXT_PUBLIC_API_URL}/post-all-booking`;
 
-  let updateBookingStatus=`${process.env.NEXT_PUBLIC_API_URL}/get-all-bookings/status`;
+      let response =await fetch(updateBookingStatus, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
 
-  let response =await fetch(updateBookingStatus, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      let json = await response.json();
 
-  let json = await response.json();
-
-  setBookings(json);
-}
+      setBookings(json);
+  }
 
   return (
       <Layout>
@@ -128,12 +128,6 @@ export const getServerSideProps = async (
       },
     };
   }
-
-  // let url = process.env.NEXT_PUBLIC_API_URL;
-  // const response = await fetch(url+`/get-all-bookings/`+"active pending"
-  // );
-
-  // const json = await response.json();
 
   const body = { status: "active pending" };
 

@@ -21,11 +21,11 @@ export default async function handle(
     updateBooking(req, res)
     return;
   }
-   
+
   if (req.method === 'POST') {
     GetBookings(req, res)
     return;
-  } 
+  }
 
   res.status(404).end()
   return
@@ -70,6 +70,9 @@ async function GetBookings(req: NextApiRequest, res: NextApiResponse) {
   const { status } = req.body
   try {
     const city = await prisma.booking.findMany({
+      // include: {
+      //   img: { select: { id: true, publicId: true, url: true, status: true, } },
+      // },
       where: {
         status: status,
       },
@@ -77,6 +80,6 @@ async function GetBookings(req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json(city)
   } catch (e) {
     console.log(e)
-    res.status(500)
+    return res.status(500)
   }
 }
